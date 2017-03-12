@@ -1,0 +1,48 @@
+<ion-view view-title="Membership" hide-nav-bar="false">
+    <ion-content>
+   
+
+        <div class="content memberships-content">
+
+            <a class="section-image memberships">
+                <p>Our Memberships</p>
+            </a>
+
+            <p class="membership-text">The Club will provide golfers the opportunity to join a superior private golfing facility with membership options designed to offer greater flexibility to suit each member's lifestyle.</p>
+
+            <p ng-click="dropdownMore()" class="read-more">Read more...</p>
+
+            <p class="hidden-info membership-text read-more-info">The Centurion Club will operate as a private club, strictly for the use of its members and their invited guests. Different membership options are available to accommodate each member\u2019s utilisation, whether for business use or for the whole family. A range of facilities and services will be offered throughout The Club, making this the ideal place to relax with family and friends or host that all important business meeting.</p>
+
+            <div ng-repeat="membership in memberships.memberships">
+                <div class="dropdown-title">
+                    <p ng-click="dropdown($event)">{{membership.title}}</p>
+                    <span ng-click="dropdown($event)" class="typcn typcn-chevron-right-outline"></span>
+                </div>
+                <div class="hidden-info">
+                    <p class="membership-text" ng-bind-html="membership.text | nl2br"></p>
+                </div>
+            </div>	
+
+
+
+            <a href="#/contact" class="card">
+                <div class="icon">
+                    <i class="typcn typcn-phone-outline"></i>
+                </div>
+                <p>Join Today</p>
+                <span class="typcn typcn-chevron-right-outline"></span>
+            </a>
+
+            <a href="#/reciprocals" class="card">
+                <div class="icon">
+                    <i class="typcn typcn-arrow-repeat"></i>
+                </div>
+                <p>Reciprocals</p>
+                <span class="typcn typcn-chevron-right-outline"></span>
+            </a>
+
+
+        </div>
+    </ion-content>
+</ion-view>

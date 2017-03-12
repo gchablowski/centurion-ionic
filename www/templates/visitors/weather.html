@@ -1,0 +1,50 @@
+<header>
+	<h2 class="title">Weather</h2>
+	<a class="back-button" ng-click="goBack()"><span class="typcn typcn-chevron-left-outline"></span></a>
+	<a href="#/home" class="home-button"><span class="typcn typcn-home-outline"></span></a>
+</header>
+
+<div class="content">
+
+<div class="weather" ng-show="place">
+
+			
+	<h1 class="weather-title">{{ place.location.city }}</h1>		
+	<h2 class="weather-time">Now</h2>
+	
+	<div class="weather-card">
+		<ul class="table-view">
+			<li class="table-view-cell">
+				<img class="media-object pull-left" src="images/weather/{{place.item.condition.code}}.png" width="50" height="50">
+				<div class="media-body">
+					<h3>{{ place.item.condition.text }}</h3>
+					<p class="inline-list"><span>{{ place.item.condition.temp }}°</span></p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+	<div ng-repeat="forecast in place.item.forecast">
+	
+	
+	<h2 class="content-padded forcast-day">{{ forecast.day }} {{ forecast.date }}</h2>
+
+
+	<div class="weather-card">
+		<ul class="table-view">
+			<li class="table-view-cell">
+				<img class="media-object pull-left" src="images/weather/{{forecast.code}}.png" width="50" height="50">
+				<div class="media-body">
+					<h3>{{ forecast.text }}</h3>
+					<p class="inline-list"><span>High: {{ forecast.high }}°</span><span>Low: {{ forecast.low }}°</span></p>
+				</div>
+			</li>
+		</ul>
+	</div>
+	
+	</div>
+
+</div>
+
+<a href="#/new-booking" class="new-booking"><span class="typcn typcn-plus-outline"></span></a>
+<a href="#/new-booking" class="new-booking-text">New Booking</a>

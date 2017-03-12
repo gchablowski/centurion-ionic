@@ -1,0 +1,76 @@
+<header>
+	<h2 class="title">About</h2>
+	<a class="back-button" ng-click="goBack()"><span class="typcn typcn-chevron-left-outline"></span></a>
+	<a href="#/visitors" class="home-button"><span class="typcn typcn-home-outline"></span></a>
+</header>
+
+<div class="content dropdowns-page">
+
+
+	
+	<div id="gallery" class="gallery">
+		<div class="section-image" ng-repeat="image in gallery" style="background: url('{{image.image_url}}') no-repeat center center; background-size: cover">
+			<p>{{image.type}}</p>
+		</div>
+	</div>
+
+	<a ng-click="dropdownFly()">
+		<div class="card">
+			<div class="icon">
+				<i class="typcn typcn-plane"></i>
+			</div>
+			<p class="card-text">Fly Thru</p>
+
+		</div>
+	</a>
+
+
+	<a ng-click="dropdownVideo()">
+		<div class="card">
+			<div class="icon">
+				<i class="typcn typcn-video"></i>
+			</div>
+			<p class="card-text">Centurion Video</p>
+		</div>
+	</a>
+
+	<a ng-click="dropdownLocation()">
+		<div class="card">
+			<div class="icon">
+				<i class="typcn typcn-location"></i>
+			</div>
+			<p class="card-text">Location</p>
+		</div>
+	</a>
+
+
+	<a href="#/contact">
+		<div class="card">
+			<div class="icon">
+				<i class="typcn typcn-phone-outline"></i>
+			</div>
+			<p class="card-text">Contact Us</p>
+			<span class="typcn typcn-chevron-right-outline card-arrow"></span>
+		</div>
+	</a>
+
+</div>
+
+<div id="fly" class="overlay">	
+	<span ng-click="dropdownFly()" class="typcn typcn-times-outline"></span>
+	<h2>Fly Thru</h2>
+	<p><br />Our plans for the Centurion Club were to create an exceptional, private golf club beyond members dreams. Anything this good, will create its own reputation. This FlyThru aims to share the spirit and emotion of the Course and Clubhouse.</p>
+	<iframe class="about-graphic" src="{{video1 | trustAsResourceUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+<div id="video" class="overlay">	
+	<span ng-click="dropdownVideo()" class="typcn typcn-times-outline"></span>
+	<iframe src="{{video2 | trustAsResourceUrl}}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+<div id="location-overlay" class="overlay">	
+	<span ng-click="dropdownLocation()" class="typcn typcn-times-outline"></span>
+	<h2>Location</h2>
+	<div id="location"></div>
+	<a ng-click="launchMap()" class="btn btn-block btn-positive">Open in Maps</a>
+</div>

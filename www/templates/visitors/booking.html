@@ -1,0 +1,15 @@
+<header>
+	<h2 class="title">Booking</h2>
+	<a class="back-button" ng-click="goBack()"><span class="typcn typcn-chevron-left-outline"></span></a>
+	<a href="#/visitors" class="home-button"><span class="typcn typcn-home-outline"></span></a>
+</header>
+
+<div class="content">
+	
+	<a ng-click="go('/tour/{{contact.id}}')" class="section-image" ng-repeat="contact in contacts" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{contact.image_url}}') no-repeat center center; background-size: cover">
+		<span ng-click="go('/golf-booking/{{course.id}}')" class="typcn typcn-plus-outline add"></span>
+		<p class="list-text">{{contact.name}}</p>
+	</a>
+
+
+</div>

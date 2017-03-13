@@ -2,11 +2,7 @@
 angular.module('visitors', ['ionic', 'ngResource'])
 
         .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
-
-            $ionicConfigProvider.backButton.previousTitleText(false);
-            $ionicConfigProvider.backButton.icon('ion-chevron-left');
-            $ionicConfigProvider.backButton.text('')
-
+         
             $stateProvider
 
                     .state('visitors', {

@@ -1,7 +1,7 @@
 'use strict';
 angular.module('visitors', ['ionic', 'ngResource'])
 
-        .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+        .config(function ($stateProvider, $urlRouterProvider) {
          
             $stateProvider
 

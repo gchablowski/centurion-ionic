@@ -20,7 +20,7 @@ angular.module('main', ['ionic', 'starter.controllers'])
     url: '/search',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/main/search.html'
       }
     }
   })
@@ -29,7 +29,7 @@ angular.module('main', ['ionic', 'starter.controllers'])
       url: '/browse',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
+          templateUrl: 'templates/main/browse.html'
         }
       }
     })
@@ -37,7 +37,7 @@ angular.module('main', ['ionic', 'starter.controllers'])
       url: '/playlists',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
+          templateUrl: 'templates/main/playlists.html',
           controller: 'PlaylistsCtrl'
         }
       }
@@ -47,7 +47,7 @@ angular.module('main', ['ionic', 'starter.controllers'])
     url: '/playlists/:playlistId',
     views: {
       'menuContent': {
-        templateUrl: 'templates/playlist.html',
+        templateUrl: 'templates/main/playlist.html',
         controller: 'PlaylistCtrl'
       }
     }

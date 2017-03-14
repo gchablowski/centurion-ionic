@@ -26,6 +26,15 @@ describe('module: visitors, service: MainServ', function () {
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
+    
+     it('should send a request to get the listings', function () {
+  
+        $httpBackend.when('GET', 'https://centurion.back9solutions.com/visitors/listings').respond(200, {data:1});
+        var result = MainServ.listings();
+        $httpBackend.expectGET('https://centurion.back9solutions.com/visitors/listings');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
 
 
 });

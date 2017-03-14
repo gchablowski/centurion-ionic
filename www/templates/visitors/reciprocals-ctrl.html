@@ -1,0 +1,17 @@
+<ion-view view-title="Reciprocals">
+    <ion-content>
+        <div headermenu title="'Reciprocals'" home="'visitors'" back="'membership'"></div>
+
+
+        <div collection-repeat="listing in listings.listings"
+             item-width="100%" 
+             item-height="170"
+             ui-sref="reciprocalList({ id: listing.id })"
+             >
+            <div class="section-image" style="background: url('{{listing.avatar}}') no-repeat center center; background-size:cover;">
+                <p class="list-text">{{listing.name}}<span> - {{listing.tagline}}</span></p>
+            </div>
+        </div>
+        
+    </ion-content>
+</ion-view>

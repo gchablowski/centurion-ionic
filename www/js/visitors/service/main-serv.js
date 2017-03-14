@@ -5,5 +5,6 @@ angular.module('visitors')
                 return $resource(Config.ENV.SERVER_URL + '/visitors/:action', {}, {
                     memberships: {method: 'GET', params: {action: 'memberships'}, isArray: false},
                     listings: {method: 'GET', params: {action: 'listings'}, isArray: false},
+                    reciprocals: {method: 'GET', params: {action: 'reciprocal'}, isArray: false},
                 });
             }]);

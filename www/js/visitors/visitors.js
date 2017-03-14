@@ -25,6 +25,11 @@ angular.module('visitors', ['ionic', 'ngResource'])
                                 return MainServ.listings().$promise;
                             }
                         }
+                    })
+                    .state('reciprocals', {
+                        url: '/reciprocals',
+                        templateUrl: 'templates/visitors/reciprocals-ctrl.html',
+                        controller: 'ReciprocalsCtrl as ctrl'
                     });
             // if none of the above states are matched, use this as the fallback
             $urlRouterProvider.otherwise('/visitors');

@@ -20,7 +20,7 @@ describe('module: visitors, directive: headermenu', function () {
     $rootScope.$digest();
     expect(element.html()).toContain("Membership");
     expect(element.html()).toContain('<a ui-sref="visitors" class="back-button" href="#/visitors">');
-    expect(element.html()).toContain('<a ui-sref="visitors" class="home-button" href="#/visitors">');
+    expect(element.html()).toContain('<a ng-hide="!visitors" ui-sref="visitors" class="home-button ng-hide" href="#/visitors">');
 
   }));
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('club finder List page', function () {
+describe('reciprocals page', function () {
 
     beforeEach(function () {
         browser.get('/#/reciprocals');
@@ -17,14 +17,13 @@ describe('club finder List page', function () {
     });
 
    
-   /* 
-    it('should allow me to go to the details page when I click on a  elment', function () {
-        var elements = element.all(protractor.By.css('.golfs')).first();
+    it('should allow me to go to the reciprocal page when I click on a elment', function () {
+        var elements = element.all(protractor.By.css('.reciprocals')).first();
         
         elements.click();
         
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:3000/#/main/club-finders/list/detail/1");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/reciprocal/38");
     });
-    */
+    
     
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('club finder List page', function () {
+describe('membership page', function () {
 
     beforeEach(function () {
         browser.get('/#/membership');
@@ -23,7 +23,7 @@ describe('club finder List page', function () {
         var info = element.all(protractor.By.css('.show-info'));
         expect(info.getText()).toEqual(['Senate Membership is available by purchasing a share in Centurion Golf PLC, which is by invitation only. A limited number are available and all details are contained within our prospectus which is subject to its own terms and conditions.']);
     });
-    
+
     it('should allow me to go to the contact page when I click on Join page link', function () {
         var elements = element.all(protractor.By.css('#contact'));
 
@@ -31,8 +31,8 @@ describe('club finder List page', function () {
 
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/contact");
     });
-    
-        it('should allow me to go to the contact page when I click on Join page link', function () {
+
+    it('should allow me to go to the contact page when I click on Join page link', function () {
         var elements = element.all(protractor.By.css('#reciprocals'));
 
         elements.click();

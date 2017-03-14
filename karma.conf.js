@@ -46,7 +46,7 @@ module.exports = function (config) {
         // https://github.com/angular-ui/ui-router/issues/212#issuecomment-69974072
         ngHtml2JsPreprocessor: {
             moduleName: 'ngHtml2Js',
-            stripPrefix: 'www/js/' // the path must be relative to the app.js
+            stripPrefix: 'www/' // the path must be relative to the app.js
         },
         // test results reporter to use
         // possible values: 'dots', 'progress'

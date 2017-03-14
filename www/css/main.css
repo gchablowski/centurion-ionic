@@ -37,9 +37,8 @@ body {
 	background: #292926;
 }
 
-.content {
+.content, .pane, .view {
 	background: #292926;
-	overflow-x: hidden;
 }
 
 

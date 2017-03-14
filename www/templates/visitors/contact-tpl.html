@@ -1,0 +1,18 @@
+<ion-view view-title="Contact">
+    <ion-content>
+        <div headermenu title="'Contact'" home="'visitors'" back="'membership'"></div>
+
+            <div collection-repeat="listing in listings"
+                 item-width="100%" 
+                 item-height="150"
+                 ui-sref="contact-item({ id: listing.id })"
+                 >
+                <div class="section-image" style="background: url('{{listing.avatar}}') no-repeat center center; background-size:cover;">
+                    <p class="list-text">{{listing.name}}<span> - {{listing.tagline}}</span></p>
+                </div>
+            </div>
+
+
+
+    </ion-content>
+</ion-view>

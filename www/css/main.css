@@ -39,7 +39,6 @@ body {
 
 .content {
 	background: #292926;
-	padding-top: 70px;
 	overflow-x: hidden;
 }
 
@@ -85,7 +84,7 @@ form input {
 
 /* Header */
 
-.appbar {
+header {
 	height: 70px !important;
 	background: #5A447A !important;
 }

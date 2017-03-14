@@ -2,5 +2,5 @@
     <h2 class="title">{{title}}</h2>
     <a ui-sref="{{back}}" class="back-button" ><span class="typcn typcn-chevron-left-outline"></span></a>
 
-    <a ui-sref="{{home}}" class="home-button"><span class="typcn typcn-home-outline"></span></a>
+    <a ng-hide="!{{home}}" ui-sref="{{home}}" class="home-button"><span class="typcn typcn-home-outline"></span></a>
 </header>

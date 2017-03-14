@@ -38,7 +38,7 @@ body {
 }
 
 .content {
-	background: none;
+	background: #292926;
 	padding-top: 70px;
 	overflow-x: hidden;
 }
@@ -1953,16 +1953,12 @@ iframe {
 	padding: 20px;
 }
 
-.show-info .membership-text {
-	padding: 20px 5px 0px;
-}
-
 .read-more {
 	padding-left: 20px;
 }
 
 .memberships {
-	background: linear-gradient(rgba(0,0,0,0) 70%, rgba(0,0,0,0.7)), url('../images/golf-ball.jpg') center center;
+	background: linear-gradient(rgba(0,0,0,0) 70%, rgba(0,0,0,0.7)), url('../img/golf-ball.jpg') center center;
 	background-size: cover;
 }
 

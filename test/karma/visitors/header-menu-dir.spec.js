@@ -20,7 +20,15 @@ describe('module: visitors, directive: headermenu', function () {
     $rootScope.$digest();
     expect(element.html()).toContain("Membership");
     expect(element.html()).toContain('<a ui-sref="visitors" class="back-button" href="#/visitors">');
-    expect(element.html()).toContain('<a ng-hide="!visitors" ui-sref="visitors" class="home-button ng-hide" href="#/visitors">');
+    expect(element.html()).toContain('<a ng-hide="!home" ui-sref="visitors" class="home-button" href="#/visitors">');
+
+  }));
+  
+  it('should hide the home menu if home is false', inject(function ($compile) {
+    element = angular.element("<div headermenu title=\"'Membership'\" home=\"false\" back=\"'visitors'\"></div>");
+    element = $compile(element)($rootScope);
+    $rootScope.$digest();
+    expect(element.html()).toContain('<a ng-hide="!home" ui-sref="false" class="home-button ng-hide">');
 
   }));
 });

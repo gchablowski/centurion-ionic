@@ -19,6 +19,7 @@
 
         <!-- compiled css output -->
         <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+        <link rel="stylesheet" href="lib/swiper/dist/css/swiper.min.css">
         <link rel="stylesheet" href="css/ratchet.css">
         <link rel="stylesheet" href="fonts/typicons.min.css">
         <link rel="stylesheet" href="css/leaflet.css">
@@ -34,21 +35,27 @@
         <!-- cordova script (this will be a 404 during development) -->
         <script src="cordova.js"></script>
 
+        <!-- modules -->
+        <script src="lib/swiper/dist/js/swiper.js"></script>
+        <script src="lib/angular-swiper.js"></script>
+
         <!-- your app's js -->
         <script src="js/main/main.js"></script>
         <script src="js/main/controllers/controllers.js"></script>
         <script src="js/visitors/visitors.js"></script>
         <script src="js/visitors/constants/config-const.js"></script>
         <script src="js/visitors/controllers/listing-ctrl.js"></script>
+        <script src="js/visitors/controllers/about-ctrl.js"></script>
         <script src="js/visitors/directives/header-menu-dir.js"></script>
         <script src="js/visitors/service/main-serv.js"></script>
         <script src="js/visitors/filters/nl2br-fil.js"></script>
+        <script src="js/visitors/filters/trust-as-resource-url-fil.js"></script>
         <script src="js/app.js"></script>
 
     </head>
 
     <body ng-app="centurion">
-   
+
     <ion-nav-view></ion-nav-view>
 
 </body>

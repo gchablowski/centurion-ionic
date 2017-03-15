@@ -1,0 +1,85 @@
+<ion-view view-title="About">
+    <ion-content>
+        <div headermenu title="'Contact Us'" home="'visitors'" back="'visitors'"></div>
+
+        <div class="content dropdowns-page">
+
+            <ks-swiper-container loop="true" pagination-is-active="true" pagination-clickable="true" autoplay="2500" class="gallery">
+                <ks-swiper-slide class="swiper-slide" ng-repeat="image in gallery">
+                    <div class="section-image" style="background: url('{{image.image_url}}') no-repeat center center; background-size: cover">
+                        <p>{{image.type}}</p>
+                    </div>
+                </ks-swiper-slide>
+            </ks-swiper-container>
+
+
+            <a ng-click="fly = true">
+                <div class="card">
+                    <div class="icon">
+                        <i class="typcn typcn-plane"></i>
+                    </div>
+                    <p class="card-text">Fly Thru</p>
+
+                </div>
+            </a>
+
+
+            <a ng-click="video = true;">
+                <div class="card">
+                    <div class="icon">
+                        <i class="typcn typcn-video"></i>
+                    </div>
+                    <p class="card-text">Centurion Video</p>
+                </div>
+            </a>
+
+            <a ng-click="location = true">
+                <div class="card">
+                    <div class="icon">
+                        <i class="typcn typcn-location"></i>
+                    </div>
+                    <p class="card-text">Location</p>
+                </div>
+            </a>
+
+
+            <a id="contact" ui-sref="contact">
+                <div class="card">
+                    <div class="icon">
+                        <i class="typcn typcn-phone-outline"></i>
+                    </div>
+                    <p class="card-text">Contact Us</p>
+                    <span class="typcn typcn-chevron-right-outline card-arrow"></span>
+                </div>
+            </a>
+
+        </div>
+
+        <div id="fly" class="overlay" ng-class="{'show': fly}">	
+            <span ng-click="fly = false;" class="typcn typcn-times-outline"></span>
+            <h2>Fly Thru</h2>
+            <p><br />Our plans for the Centurion Club were to create an exceptional, private golf club beyond members dreams. Anything this good, will create its own reputation. This FlyThru aims to share the spirit and emotion of the Course and Clubhouse.</p>
+            <iframe class="about-graphic" src="{{video1| trustAsResourceUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+
+        <div id="video" class="overlay" ng-class="{'show': video}">	
+            <span ng-click="video = false;" class="typcn typcn-times-outline"></span>
+            <iframe src="{{video2| trustAsResourceUrl}}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div>
+
+        <div id="location-overlay" class="overlay" ng-class="{'show': location}">	
+            <span ng-click="location = false" class="typcn typcn-times-outline"></span>
+            <h2>Location</h2>
+                <div id="location" map-lazy-load="https://maps.google.com/maps/api/js">
+                    <ng-map center="51.741901, -0.407283" zoom="13">
+                        <custom-marker  position="51.741901, -0.407283">
+
+                            <img ng-src="img/arrow.png" />
+
+                        </custom-marker>
+                    </ng-map>
+                </div>
+            <a ng-click="launchMap()" class="btn btn-block btn-positive">Open in Maps</a>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('visitors', ['ionic', 'ngResource'])
+angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap'])
 
         .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -67,6 +67,17 @@ angular.module('visitors', ['ionic', 'ngResource'])
                             MainServ: 'MainServ',
                             datasets: ['MainServ', '$stateParams', function (MainServ, $stateParams) {
                                     return MainServ.reciprocal({id: $stateParams.id}).$promise;
+                                }]
+                        }
+                    })
+                    .state('about', {
+                        url: '/about',
+                        templateUrl: 'templates/visitors/about-ctrl.html',
+                        controller: 'AboutCtrl as ctrl',
+                        resolve: {
+                            MainServ: 'MainServ',
+                            datasets: ['MainServ', function (MainServ) {
+                                    return MainServ.gallery().$promise;
                                 }]
                         }
                     });

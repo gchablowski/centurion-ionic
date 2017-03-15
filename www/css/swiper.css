@@ -1,0 +1,15 @@
+.swiper-container-horizontal>.swiper-pagination {
+    bottom: 23px;
+}
+
+.swiper-pagination-bullet-active {
+    background: #fff;
+}
+
+.swiper-pagination-bullet {
+    background: #fff;
+}
+
+.swiper-container-horizontal>.swiper-pagination .swiper-pagination-bullet {
+    margin: 0px 10px;
+}

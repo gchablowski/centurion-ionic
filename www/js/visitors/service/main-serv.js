@@ -7,6 +7,7 @@ angular.module('visitors')
                     listings: {method: 'GET', params: {action: 'listings'}, isArray: false},
                     listing: {method: 'GET', params: {action: 'listing'}, isArray: false},
                     reciprocals: {method: 'GET', params: {action: 'reciprocal'}, isArray: false},
-                    reciprocal: {method: 'GET', params: {action: 'listing'}, isArray: false}
+                    reciprocal: {method: 'GET', params: {action: 'listing'}, isArray: false},
+                    gallery: {method: 'GET', params: {action: 'gallery'}, isArray: false}
                 });
             }]);

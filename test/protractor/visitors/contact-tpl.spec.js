@@ -17,14 +17,12 @@ describe('contact page', function () {
     });
 
    
-   /* 
     it('should allow me to go to the details page when I click on a  elment', function () {
-        var elements = element.all(protractor.By.css('.golfs')).first();
+        var elements = element.all(protractor.By.css('.link')).first();
         
         elements.click();
         
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:3000/#/main/club-finders/list/detail/1");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/contact-item/11");
     });
-    */
     
 });

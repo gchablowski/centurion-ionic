@@ -5,7 +5,8 @@
             <div collection-repeat="contact in listing"
                  item-width="100%" 
                  item-height="170"
-                 ui-sref="contact-item({ id: contact.id })"
+                 ui-sref="contactus({ id: contact.id })"
+                 class="link"
                  >
                 <div class="section-image" style="background: url('{{contact.avatar}}') no-repeat center center; background-size:cover;">
                     <p class="list-text">{{contact.name}}<span> - {{lcontact.tagline}}</span></p>

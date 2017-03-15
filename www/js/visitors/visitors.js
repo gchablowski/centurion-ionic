@@ -37,6 +37,17 @@ angular.module('visitors', ['ionic', 'ngResource'])
                                 }]
                         }
                     })
+                    .state('contactus', {
+                        url: '/contact-item/:id',
+                        templateUrl: 'templates/visitors/contact-item-tpl.html',
+                        controller: 'ListingCtrl as ctrl',
+                        resolve: {
+                            MainServ: 'MainServ',
+                            datasets: ['MainServ', '$stateParams', function (MainServ, $stateParams) {
+                                    return MainServ.listing({id: $stateParams.id}).$promise;
+                                }]
+                        }
+                    })
                     .state('reciprocals', {
                         url: '/reciprocals',
                         templateUrl: 'templates/visitors/reciprocals-tpl.html',

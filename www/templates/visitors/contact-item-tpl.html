@@ -1,0 +1,34 @@
+<ion-view view-title="Contact Us">
+    <ion-content>
+        <div headermenu title="'Contact Us'" home="false" back="'contact'"></div>
+       
+        <div class="content">
+
+            <div class="section-image" style="background: url('{{listing.avatar}}') no-repeat center center; background-size: cover">
+                <p>{{listing.name}}</p>
+
+            </div>
+
+
+            <a href="mailto:{{listing.email}}" class="card">
+                <div class="icon icon-alt">
+                    <i class="typcn typcn-message"></i>
+                </div>
+                <p>Email</p>
+                <span class="typcn typcn-chevron-right-outline card-arrow"></span>
+            </a>
+
+            <a href="tel:{{listing.phone}}" class="card">
+                <div class="icon icon-alt">
+                    <i class="typcn typcn-phone-outline"></i>
+                </div>
+                <p>Call</p>
+                <span class="typcn typcn-chevron-right-outline card-arrow"></span>
+            </a>
+
+
+            <p class="reception-text" ng-bind-html="listing.description | nl2br"></p>
+
+        </div>
+    </ion-content>
+</ion-view>

@@ -14,7 +14,7 @@
 
             <p class="hidden-info membership-text read-more-info" ng-class="{'show-info': more}">The Centurion Club will operate as a private club, strictly for the use of its members and their invited guests. Different membership options are available to accommodate each member\u2019s utilisation, whether for business use or for the whole family. A range of facilities and services will be offered throughout The Club, making this the ideal place to relax with family and friends or host that all important business meeting.</p>
 
-            <div ng-repeat="membership in memberships.memberships">
+            <div ng-repeat="membership in listing">
                 <div class="dropdown-title" ng-click="info[$index] = !info[$index]">
                     <p >{{membership.title}}</p>
                     <span class="typcn typcn-chevron-right-outline" ></span>

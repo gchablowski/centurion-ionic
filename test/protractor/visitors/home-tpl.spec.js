@@ -18,4 +18,12 @@ describe('visitors page', function () {
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/membership");
     });
 
+    it('should allow me to go to the menbership page when I click on membership link', function () {
+        var elements = element.all(protractor.By.css('#contact'));
+
+        elements.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/contact");
+    });
+
 });

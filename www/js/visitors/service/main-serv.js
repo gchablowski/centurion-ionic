@@ -8,6 +8,7 @@ angular.module('visitors')
                     listing: {method: 'GET', params: {action: 'listing'}, isArray: false},
                     reciprocals: {method: 'GET', params: {action: 'reciprocal'}, isArray: false},
                     reciprocal: {method: 'GET', params: {action: 'listing'}, isArray: false},
-                    gallery: {method: 'GET', params: {action: 'gallery'}, isArray: false}
+                    gallery: {method: 'GET', params: {action: 'gallery'}, isArray: false},
+                    contacts: {method: 'GET', params: {action: 'contacts'}, isArray: false},
                 });
             }]);

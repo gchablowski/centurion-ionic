@@ -80,6 +80,17 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap'])
                                     return MainServ.gallery().$promise;
                                 }]
                         }
+                    })
+                    .state('visitors-booking', {
+                        url: '/visitors-booking',
+                        templateUrl: 'templates/visitors/booking-tpl.html',
+                        controller: 'ListingCtrl  as ctrl',
+                        resolve: {
+                            MainServ: 'MainServ',
+                            datasets: ['MainServ', function (MainServ) {
+                                    return MainServ.contacts().$promise;
+                                }]
+                        }
                     });
             // if none of the above states are matched, use this as the fallback
             $urlRouterProvider.otherwise('/visitors');

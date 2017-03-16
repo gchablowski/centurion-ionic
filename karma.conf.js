@@ -13,7 +13,7 @@ module.exports = function (config) {
         basePath: '',
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: [ 'browserify', 'jasmine', 'angular-filesort'],
+        frameworks: [ 'jasmine', 'angular-filesort'],
         
          // sort www/**/*.js files
          angularFilesort: {
@@ -27,20 +27,23 @@ module.exports = function (config) {
             'www/js/**/visitors.js',
             'www/js/**/*.js',
             // other
-            'www/lib/**/*.js',
+            'www/lib/ionic/js/ionic.bundle.js',
+            'www/lib/angular-resource/angular-resource.js',
+            'www/lib/swiper/dist/js/swiper.js',
+            'www/lib/angular-swiper/dist/angular-swiper.js',
+            'http://maps.google.com/maps/api/js',
+            'www/lib/ngmap/build/scripts/ng-map.min.js',
             // test
             'test/karma/**/*.js',
             // templates
             'www/templates/**/*.html'
         ]),
         // list of files to exclude
-        exclude: [
-        ],
+        exclude: [],
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'www/templates/**/*.html': ['ng-html2js'],
-            'www/lib/**/*.js': [ 'browserify' ]
+            'www/templates/**/*.html': ['ng-html2js']
         },
         // use template cache to avoid unexpected $http requests from ui-router
         // https://github.com/angular-ui/ui-router/issues/212#issuecomment-69974072

@@ -32,7 +32,7 @@ describe('membership page', function () {
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/contact");
     });
 
-    it('should allow me to go to the contact page when I click on Join page link', function () {
+    it('should allow me to go to the reciprocals page when I click on Reciprocal', function () {
         var elements = element.all(protractor.By.css('#reciprocals'));
 
         elements.click();

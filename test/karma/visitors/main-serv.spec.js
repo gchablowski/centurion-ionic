@@ -45,5 +45,15 @@ describe('module: visitors, service: MainServ', function () {
         expect(result.data).toEqual(1);
     });
 
+    it('should send a request to get the gallery', function () {
+
+        $httpBackend.when('GET', 'https://centurion.back9solutions.com/visitors/gallery').respond(200, {data: 1});
+        var result = MainServ.gallery();
+        $httpBackend.expectGET('https://centurion.back9solutions.com/visitors/gallery');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
+
+
 
 });

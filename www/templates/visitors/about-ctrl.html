@@ -1,6 +1,6 @@
 <ion-view view-title="About">
     <ion-content>
-        <div headermenu title="'Contact Us'" home="'visitors'" back="'visitors'"></div>
+        <div headermenu title="'About'" home="'visitors'" back="'visitors'"></div>
 
         <div class="content dropdowns-page">
 
@@ -13,7 +13,7 @@
             </ks-swiper-container>
 
 
-            <a ng-click="fly = true">
+            <a id="flybtn" ng-click="fly = true">
                 <div class="card">
                     <div class="icon">
                         <i class="typcn typcn-plane"></i>
@@ -24,7 +24,7 @@
             </a>
 
 
-            <a ng-click="video = true;">
+            <a id="videobtn" ng-click="video = true;">
                 <div class="card">
                     <div class="icon">
                         <i class="typcn typcn-video"></i>
@@ -33,7 +33,7 @@
                 </div>
             </a>
 
-            <a ng-click="location = true">
+            <a id="locationbtn" ng-click="location = true">
                 <div class="card">
                     <div class="icon">
                         <i class="typcn typcn-location"></i>
@@ -43,7 +43,7 @@
             </a>
 
 
-            <a id="contact" ui-sref="contact">
+            <a id="contactbtn" ui-sref="contact">
                 <div class="card">
                     <div class="icon">
                         <i class="typcn typcn-phone-outline"></i>

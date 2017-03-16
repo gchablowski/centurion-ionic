@@ -7,7 +7,7 @@ angular.module('visitors')
                 $scope.video2 = datasets.video2;
 
 
-                $scope.launchMap = function (lat, lon) {
+                $scope.launchMap = function () {
                     $window.open('maps:q=51.741901,-0.407283', '_system');
                 };
 

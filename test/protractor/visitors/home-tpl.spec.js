@@ -9,6 +9,22 @@ describe('visitors page', function () {
     it('Should have a title', function () {
         expect(browser.getTitle()).toEqual('visitor');
     });
+    
+    it('should allow me to go to the booking page when I click on booking link', function () {
+        var elements = element.all(protractor.By.css('#visitors-booking'));
+
+        elements.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/visitors-booking");
+    });
+
+    it('should allow me to go to the about page when I click on about link', function () {
+        var elements = element.all(protractor.By.css('#about'));
+
+        elements.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/about");
+    });
 
     it('should allow me to go to the menbership page when I click on membership link', function () {
         var elements = element.all(protractor.By.css('#membership'));

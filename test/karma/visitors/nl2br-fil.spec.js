@@ -1,6 +1,6 @@
 'use strict';
 
-describe('module: main, filter: bobfilter', function () {
+describe('module: main, filter: nl2br', function () {
 
   // load the filter's module
   beforeEach(module('visitors'));

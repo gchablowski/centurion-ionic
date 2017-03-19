@@ -47,7 +47,6 @@ describe('module: visitors, controller: AboutCtrl', function () {
             return true;
         } );
         scope.launchMap();
-        expect( $window.open ).toHaveBeenCalled();
         expect( $window.open ).toHaveBeenCalledWith( 'maps:q=51.741901,-0.407283', '_system' );
     } ) );
     

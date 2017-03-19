@@ -84,11 +84,22 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap'])
                     .state('visitors-booking', {
                         url: '/visitors-booking',
                         templateUrl: 'templates/visitors/booking-tpl.html',
-                        controller: 'ListingCtrl  as ctrl',
+                        controller: 'ListingCtrl as ctrl',
                         resolve: {
                             MainServ: 'MainServ',
                             datasets: ['MainServ', function (MainServ) {
                                     return MainServ.contacts().$promise;
+                                }]
+                        }
+                    })
+                    .state('tour', {
+                        url: '/tour/:id',
+                        templateUrl: 'templates/visitors/tour-ctrl.html',
+                        controller: 'TourCtrl as ctrl',
+                        resolve: {
+                            MainServ: 'MainServ',
+                            datasets: ['MainServ', '$stateParams', function (MainServ, $stateParams) {
+                                    return MainServ.contact({id: $stateParams.id}).$promise;
                                 }]
                         }
                     });

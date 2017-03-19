@@ -1,0 +1,33 @@
+<ion-view view-title="{{contact.name}}">
+    <ion-content>
+        <div headermenu title="contact.name" home="'visitors'" back="'visitors'"></div>
+
+        <div class="content">
+
+            <div class="section-image" style="background: url('{{contact.image_url}}') no-repeat center center; background-size: cover">
+                <p class="list-text">{{contact.name}}</p>
+            </div>	
+
+            <form ng-submit="sendForm()" class="booking-form">
+                <p>* Name</p>
+                <input type="text" ng-model="formData.name">
+                <p>* Email</p>
+                <input type="email" ng-model="formData.email">
+                <p>Phone</p>
+                <input type="tel" ng-model="formData.phone">
+                <p>* Message</p>
+                <textarea type="text" ng-model="formData.message"></textarea>
+                <input id="terms" type="checkbox" class="terms" ng-model="formData.terms">
+                <label class="terms-label" for="terms">Accept <a href="#/terms">Terms and Conditions</a></label>
+                <button type="submit" class="btn btn-block btn-positive">Send</button>
+            </form>
+        </div>
+
+        <div class="app-message accept-message" ng-class="{'show-message':appMessage.show}">
+            <p class="message-title">{{appMessage.title}}</p>
+            <p class="message-text">{{appMessage.content}}</p>
+            <p class="message-close" ng-click="appMessage.show = false">Close</p>
+        </div>
+
+    </ion-content>
+</ion-view>

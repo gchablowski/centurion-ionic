@@ -10,5 +10,7 @@ angular.module('visitors')
                     reciprocal: {method: 'GET', params: {action: 'listing'}, isArray: false},
                     gallery: {method: 'GET', params: {action: 'gallery'}, isArray: false},
                     contacts: {method: 'GET', params: {action: 'contacts'}, isArray: false},
+                    contact: {method: 'GET', params: {action: 'contact'}, isArray: false},
+                    contactPost: {method: 'POST', params: {action: 'contact'}}
                 });
             }]);

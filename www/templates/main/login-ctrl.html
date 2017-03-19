@@ -1,0 +1,56 @@
+<ion-view view-title="Login">
+    <ion-content scroll="false">>
+
+        <video class="login-video" autoplay loop id="bgvid" webkit-playsinline>
+            <source src="img/login-bg.mp4" type="video/mp4">
+        </video>
+
+        <div class="video-cover content">
+
+            <div class="login">
+
+                <img src="img/logo.png" class="login-logo" style="margin: 30px auto">
+
+                <div class="content-padded">
+
+                    <form class="login-form" ng-submit="processLogin()">
+                        <div class="form-entry">
+                            <div>
+                                <i class="typcn typcn-user"></i>
+                            </div>
+                            <input type="email" name="email" placeholder="Email Address" ng-model="loginData.email">		
+                        </div>				
+                        <div class="form-entry">
+                            <div>
+                                <i class="typcn typcn-lock-closed-outline"></i>
+                            </div>
+                            <input type="password" name="password" placeholder="Password" ng-model="loginData.password">
+                        </div>	
+                        <a ng-click="processForgot()" class="forgot">Forgot Password?</a>
+
+
+
+                        <div class="inline-buttons">
+                            <button type="submit" class="btn btn-block btn-positive">Login</button>
+                            <a href="#/details" class="btn btn-block btn-positive">Register</a>
+                        </div>
+
+                    </form>			
+                    <a ng-click="loginFacebook()" class="btn btn-block btn-primary" style="border-radius: 40px">Facebook Connect</a>
+
+                </div>	
+            </div>
+
+            <a ui-sref="visitors" class="visitors-link">Visitors</a>
+
+        </div>
+
+         <div class="app-message" ng-class="{'show-message':appMessage.show}">
+            <p class="message-title">{{appMessage.title}}</p>
+            <p class="message-text">{{appMessage.content}}</p>
+            <p class="message-close" ng-click="appMessage.show = false">Close</p>
+        </div>
+
+    </ion-content>
+</ion-view>
+

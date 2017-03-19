@@ -104,5 +104,5 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap'])
                         }
                     });
             // if none of the above states are matched, use this as the fallback
-            $urlRouterProvider.otherwise('/visitors');
+            $urlRouterProvider.otherwise('/login');
         });

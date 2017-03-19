@@ -24,6 +24,7 @@ module.exports = function (config) {
     
         // list of files / patterns to load in the browser
         files: bowerFiles.concat([
+            'www/js/**/main.js',
             'www/js/**/visitors.js',
             'www/js/**/*.js',
             // other
@@ -33,6 +34,9 @@ module.exports = function (config) {
             'www/lib/angular-swiper/dist/angular-swiper.js',
             'http://maps.google.com/maps/api/js',
             'www/lib/ngmap/build/scripts/ng-map.min.js',
+            'www/lib/localforage/dist/localforage.js',
+            'www/lib/angular-localForage/dist/angular-localForage.js',
+            
             // test
             'test/karma/**/*.js',
             // templates

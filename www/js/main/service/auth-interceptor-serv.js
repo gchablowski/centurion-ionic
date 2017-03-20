@@ -14,8 +14,9 @@ angular.module("main")
                     responseError: function (rejection) {
                   
                         if (rejection.status === 401) {
+
                             $localStorage.$reset();
-                            $location.path('login');
+                            $location.path('#/login');
                         }
                         return $q.reject(rejection);
                     }

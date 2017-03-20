@@ -47,7 +47,7 @@ describe('module: main, service: AuthInterceptorServ', function () {
     
         it('should have a handler for response that call $location.path("login") if response.status === 401', inject(function (AuthInterceptorServ) {
         AuthInterceptorServ.responseError({status: 401});
-        expect(location.path).toHaveBeenCalledWith("login");
+        expect(location.path).toHaveBeenCalledWith("#/login");
     }));
 
 

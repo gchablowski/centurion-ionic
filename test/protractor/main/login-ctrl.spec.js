@@ -60,11 +60,11 @@ describe('login page', function () {
         var form = element.all(protractor.By.css('.login-form'));
 
         form.submit().then(function () {
-            expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/member");
+            expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/");
 
             browser.get('/#/login');
 
-            expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/member");
+            expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/");
         });
 
     });

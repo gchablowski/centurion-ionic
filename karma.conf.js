@@ -34,8 +34,7 @@ module.exports = function (config) {
             'www/lib/angular-swiper/dist/angular-swiper.js',
             'http://maps.google.com/maps/api/js',
             'www/lib/ngmap/build/scripts/ng-map.min.js',
-            'www/lib/localforage/dist/localforage.js',
-            'www/lib/angular-localForage/dist/angular-localForage.js',
+            'www/lib/ngstorage/ngStorage.js',
             
             // test
             'test/karma/**/*.js',

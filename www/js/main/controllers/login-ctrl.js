@@ -1,9 +1,19 @@
 'use strict';
 angular.module('main')
-        .controller('LoginCtrl', ['$scope', 'LoginServ', '$state', '$localForage', function ($scope, LoginServ, $state, $localForage) {
+        .controller('LoginCtrl', ['$scope', 'LoginServ', '$state', '$localStorage', function ($scope, LoginServ, $state, $localStorage) {
                 var $this = this;
                 $scope.loginData = {};
                 $scope.appMessage = {};
+
+                
+                //helper function
+                $this.redirect = function (user) {
+                    if (user.membership_id) {
+                        $state.go('home');
+                    }
+                    //TODO
+                    //$state.go('member');
+                };
 
                 $this.success = function (data) {
 
@@ -14,25 +24,28 @@ angular.module('main')
                         return false;
                     }
 
-                    $localForage.setItem('token', data.token);
-                    $localForage.setItem('user', data.user);
-                    $localForage.setItem('stats', data.stats);
+                    $localStorage.token = data.token;
+                    $localStorage.user = data.user;
+                    $localStorage.stats = data.stats;
 
-                    if (data.user.membership_id) {
-                        $state.go('profile');
-                    }
-                    
-                    $state.go('member');
+                    $this.redirect(data.user);
 
                 };
 
-                $this.error = function (data) {
+                $this.error = function () {
                     $scope.appMessage.title = 'Invalid Details';
                     $scope.appMessage.content = "We encouter a problem to log you in";
                     $scope.appMessage.show = true;
                 };
+                
+                //redirect user if he is already logged
+                if ($localStorage.token) {
+                    $this.redirect($localStorage.user);
+                }
 
+                //process login form submit
                 $scope.processLogin = function () {
+
                     LoginServ.login({}, $scope.loginData, $this.success, $this.error);
                 };
             }]);

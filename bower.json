@@ -8,6 +8,7 @@
   "dependencies": {
     "angular-resource": "1.5.3",
     "angular-swiper": "^0.4.0",
-    "ngmap": "^1.18.4"
+    "ngmap": "^1.18.4",
+    "ngstorage": "^0.3.11"
   }
 }

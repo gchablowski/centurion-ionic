@@ -2,7 +2,7 @@
 describe('module: main, controller: LoginCtrl', function () {
 
     // instantiate controller
-    var LoginCtrl, LoginServMock, $localForageMock, scope;
+    var LoginCtrl, LoginServMock, $localStorageMock, scope;
 
     // load the controller's module
     beforeEach(module('main'));
@@ -11,6 +11,8 @@ describe('module: main, controller: LoginCtrl', function () {
 
     // define a mock of service called
     beforeEach(inject(function ($state) {
+
+        $localStorageMock = {token: 0, user: 0};
 
         LoginServMock = {
             login: function () {
@@ -21,14 +23,6 @@ describe('module: main, controller: LoginCtrl', function () {
 
         spyOn(LoginServMock, 'login').and.callThrough();
 
-        $localForageMock = {
-            setItem: function () {
-                var datas = {data: 1};
-                return datas;
-            }
-        };
-
-        spyOn($localForageMock, 'setItem');
 
         spyOn($state, 'go');
 
@@ -41,7 +35,7 @@ describe('module: main, controller: LoginCtrl', function () {
         LoginCtrl = $controller('LoginCtrl', {
             $scope: scope,
             LoginServ: LoginServMock,
-            $localForage: $localForageMock
+            $localStorage: $localStorageMock
         });
     }));
 
@@ -68,25 +62,26 @@ describe('module: main, controller: LoginCtrl', function () {
         expect(scope.appMessage.show).toEqual(true);
     });
 
-    it('should define a this.success function that call locastorage and store the user data', function () {
+    it('should define a this.success function that call localStorage and store the user data', function () {
         var data = {token: "1", 'user': '2', stats: '3'};
         LoginCtrl.success(data);
-        expect($localForageMock.setItem).toHaveBeenCalledWith('token', data.token);
-        expect($localForageMock.setItem).toHaveBeenCalledWith('user', data.user);
-        expect($localForageMock.setItem).toHaveBeenCalledWith('stats', data.stats);
+        expect($localStorageMock.token).toEqual(data.token);
+        expect($localStorageMock.user).toEqual(data.user);
+        expect($localStorageMock.stats).toEqual(data.stats);
     });
 
     it('should define a this.success function that got to profile if the data.user.membership_id is present in the data', inject(function ($state) {
         var data = {token: "1", 'user': {membership_id: 2}, stats: '3'};
         LoginCtrl.success(data);
-        expect($state.go).toHaveBeenCalledWith("profile");
+        expect($state.go).toHaveBeenCalledWith('home');
     }));
 
-    it('should define a this.success function that got to profile if the data.user.membership_id is present in the data', inject(function ($state) {
-        var data = {token: "1", 'user': '2', stats: '3'};
-        LoginCtrl.success(data);
-        expect($state.go).toHaveBeenCalledWith('member');
-    }));
-
+    /* TODO
+     it('should define a this.success function that got to profile if the data.user.membership_id is present in the data', inject(function ($state) {
+     var data = {token: "1", 'user': '2', stats: '3'};
+     LoginCtrl.success(data);
+     expect($state.go).toHaveBeenCalledWith('member');
+     }));
+     */
 });
 

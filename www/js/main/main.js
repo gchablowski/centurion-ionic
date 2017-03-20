@@ -1,16 +1,22 @@
-angular.module('main', ['ionic', 'LocalForageModule'])
+'use strict';
+angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
 
-        .config(function ($stateProvider, $urlRouterProvider) {
+        .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+            
+             //include the interceptor for login 
+            $httpProvider.interceptors.push('AuthInterceptorServ');
+            
             $stateProvider
-                    .state('profile', {
+                    .state('home', {
                         url: '/',
-                        templateUrl: 'templates/main/profile-ctrl.html',
-                        controller: 'ProfileCtrl as ctrl'
-                    })
-                    .state('member', {
-                        url: '/member',
-                        templateUrl: 'templates/main/profile-ctrl.html',
-                        controller: 'ProfileCtrl as ctrl'
+                        templateUrl: 'templates/main/home-ctrl.html',
+                        controller: 'HomeCtrl as ctrl',
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', function (UserServ) {
+                                    return UserServ.profile().$promise;
+                                }]
+                        }
                     })
                     .state('login', {
                         url: '/login',

@@ -10,7 +10,16 @@ describe('login page', function () {
         expect(browser.getTitle()).toEqual('Login');
     });
 
-    it('should show me tan erro message if I submit without login and password', function () {
+    it('should allow me to go to the vistors page when I clik the visitor button', function () {
+        var elements = element.all(protractor.By.css('.visitors-link'));
+
+        elements.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/visitors");
+
+    });
+
+    it('should show me an error message if I submit without login and password', function () {
 
         var form = element.all(protractor.By.css('.login-form'));
 
@@ -23,7 +32,7 @@ describe('login page', function () {
         });
     });
 
-    it('should show me tan erro message if I submit a false login and password', function () {
+    it('should show me an error message if I submit a false login and password', function () {
         var email = element.all(protractor.By.model('loginData.email'));
         var password = element.all(protractor.By.model('loginData.password'));
 
@@ -41,7 +50,7 @@ describe('login page', function () {
         });
     });
 
-    it('should allow me to enter my login and password and to login in the app', function () {
+    it('should allow me to enter my login and password and to login in the app and to return to the menber page if I am already logged', function () {
         var email = element.all(protractor.By.model('loginData.email'));
         var password = element.all(protractor.By.model('loginData.password'));
 
@@ -52,15 +61,11 @@ describe('login page', function () {
 
         form.submit().then(function () {
             expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/member");
+
+            browser.get('/#/login');
+
+            expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/member");
         });
-    });
-
-    it('should allow me to go to the vistors page when I clik a button', function () {
-        var elements = element.all(protractor.By.css('.visitors-link'));
-
-        elements.click();
-
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/visitors");
 
     });
 

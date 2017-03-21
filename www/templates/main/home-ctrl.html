@@ -30,9 +30,7 @@
                     </ks-swiper-slide>
                 </ks-swiper-container> 
             </div>
-
-
-
+            
             <a href="#/new-booking" class="home-booking-button">
                 <span class="typcn typcn-plus-outline"></span>
             </a>
@@ -55,7 +53,7 @@
                 <p class="card-text">Bookings</p>
                 <p class="card-notification" ng-hide="bookings == 0">{{bookings}}</p>
             </a>
-            <a ui-sref="news" class="card">
+            <a id="news" ui-sref="news" class="card">
                 <div class="icon">
                     <i class="typcn typcn-info-large-outline"></i>
                 </div>
@@ -80,14 +78,14 @@
                 </div>
                 <p class="card-text">Weather</p>
             </a>
-            <a ui-sref="reciprocals" class="card">
+            <a id="reciprocals" ui-sref="reciprocals" class="card">
                 <div class="icon">
                     <i class="typcn typcn-arrow-repeat"></i>
                 </div>
                 <p>Reciprocals</p>
                 <span class="typcn typcn-chevron-right-outline"></span>
             </a>
-            <a ui-sref="contact" class="card">
+            <a id="contact" ui-sref="contact" class="card">
                 <div class="icon">
                     <i class="typcn typcn-phone"></i>
                 </div>

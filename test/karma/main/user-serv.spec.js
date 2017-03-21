@@ -26,7 +26,7 @@ describe('module: main, service: UserServ', function () {
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
-    
+
     it('should send a request to get the load', function () {
 
         $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/load').respond(200, {data: 1});
@@ -35,5 +35,13 @@ describe('module: main, service: UserServ', function () {
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
-   
+
+    it('should send a request to get the posts', function () {
+
+        $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/posts').respond(200, {data: 1});
+        var result = UserServ.posts();
+        $httpBackend.expectGET('https://centurion.back9solutions.com/app/posts');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
 });

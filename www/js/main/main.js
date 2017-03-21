@@ -2,10 +2,10 @@
 angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
 
         .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-            
-             //include the interceptor for login 
+
+            //include the interceptor for login 
             $httpProvider.interceptors.push('AuthInterceptorServ');
-            
+
             $stateProvider
                     .state('home', {
                         url: '/',
@@ -15,6 +15,17 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                             UserServ: 'UserServ',
                             datasets: ['UserServ', function (UserServ) {
                                     return UserServ.profile().$promise;
+                                }]
+                        }
+                    })
+                    .state('news', {
+                        url: 'news',
+                        templateUrl: 'templates/main/news-ctrl.html',
+                        controller: 'NewsCtrl as ctrl',
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', function (UserServ) {
+                                    return UserServ.posts().$promise;
                                 }]
                         }
                     })

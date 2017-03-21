@@ -1,5 +1,5 @@
 'use strict';
-angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap'])
+angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStorage'])
 
         .config(function ($stateProvider, $urlRouterProvider) {
 

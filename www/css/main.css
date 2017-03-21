@@ -88,12 +88,17 @@ form input {
 
 /* Header */
 
-header {
-    height: 70px !important;
-    background: #5A447A !important;
+.has-header.page-has-header{
+    top: 70px
 }
 
-.title {
+header.bar.bar-header {
+    height: 70px !important;
+    background: #5A447A;
+    border:none;
+}
+
+header.bar.bar-header h2.title {
     color: #fff;
     line-height: 50px;
     margin: 20px auto 0;

@@ -1,29 +1,28 @@
 <ion-view view-title="Reciprocal">
-    <ion-content>
-        <div headermenu title="'Reciprocal'" home="false"></div>
+    <div headermenu title="'Reciprocal'" home="false"></div>
+    <ion-content class="has-header page-has-header">
+        <div class="section-image" style="background: url('{{listing.avatar}}') no-repeat center center; background-size: cover">
+            <p>{{listing.name}}</p>
+        </div>
 
-	<div class="section-image" style="background: url('{{listing.avatar}}') no-repeat center center; background-size: cover">
-		<p>{{listing.name}}</p>
-	</div>
+        <a href="mailto:{{listing.email}}" class="card" ng-if="user.id">
+            <div class="icon icon-alt">
+                <i class="typcn typcn-message"></i>
+            </div>
+            <p>Email</p>
+            <span class="typcn typcn-chevron-right-outline card-arrow"></span>
+        </a>
 
-	<a href="mailto:{{listing.email}}" class="card" ng-if="user.id">
-		<div class="icon icon-alt">
-			<i class="typcn typcn-message"></i>
-		</div>
-		<p>Email</p>
-		<span class="typcn typcn-chevron-right-outline card-arrow"></span>
-	</a>
+        <a href="tel:{{listing.phone}}" class="card" ng-if="user.id">
+            <div class="icon icon-alt">
+                <i class="typcn typcn-phone-outline"></i>
+            </div>
+            <p>Call</p>
+            <span class="typcn typcn-chevron-right-outline card-arrow"></span>
+        </a>
 
-	<a href="tel:{{listing.phone}}" class="card" ng-if="user.id">
-		<div class="icon icon-alt">
-			<i class="typcn typcn-phone-outline"></i>
-		</div>
-		<p>Call</p>
-		<span class="typcn typcn-chevron-right-outline card-arrow"></span>
-	</a>
-
-	<p class="reception-text" ng-bind-html="listing.description | nl2br"></p>
+        <p class="reception-text" ng-bind-html="listing.description | nl2br"></p>
 
 
-            </ion-content>
+    </ion-content>
 </ion-view>

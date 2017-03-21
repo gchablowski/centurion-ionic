@@ -20,7 +20,7 @@ describe('module: visitors, directive: headermenu', function () {
     $rootScope.$digest();
     expect(element.html()).toContain("Membership");
     expect(element.html()).toContain('<a ng-click="gotoBack()" class="back-button"><span class="typcn typcn-chevron-left-outline"></span></a>');
-    expect(element.html()).toContain('<a ng-hide="!home" ui-sref="visitors" class="home-button" href="#/visitors">');
+    expect(element.html()).toContain('<a ng-hide="!home" ng-click="gotoHome()" class="home-button"><span class="typcn typcn-home-outline"></span>');
 
   }));
   
@@ -28,7 +28,7 @@ describe('module: visitors, directive: headermenu', function () {
     element = angular.element("<div headermenu title=\"'Membership'\" home=\"false\" back=\"'visitors'\"></div>");
     element = $compile(element)($rootScope);
     $rootScope.$digest();
-    expect(element.html()).toContain('<a ng-hide="!home" ui-sref="false" class="home-button ng-hide">');
+    expect(element.html()).toContain('<a ng-hide="!home" ng-click="gotoHome()" class="home-button ng-hide">');
 
   }));
 });

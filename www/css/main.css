@@ -41,6 +41,11 @@ body {
     background: #292926;
 }
 
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "quicksand", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+}
 
 h2 {
     font-size: 18px;
@@ -958,20 +963,30 @@ input.terms {
 ==================================*/
 
 .home {
-    margin-top: 278px;
     padding-top: 0;
+}
+.home-has-header {
+    top: 278px;
+}
+
+.home-bar{
+    background-color: transparent;
+    border: 0px;
+    height: 278px;
 }
 
 .home-top {
     padding-top: 30px;
     margin-bottom: -10px;	
     position: relative;
-    background: linear-gradient(rgba(90,68,122,0.8), rgba(90,68,122,0.8)), url('../images/logo.png') no-repeat center center;
+    background: linear-gradient(rgba(90,68,122,0.8), rgba(90,68,122,0.8)), url('../img/logo.png') no-repeat center center;
     background-size: 80%;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+    height: 278px;
+
 }
 
 
@@ -999,6 +1014,7 @@ input.terms {
     text-align: center;
     line-height: 18px;
     font-size: 26px;
+    color: white;
 }
 
 .home-points {
@@ -1017,6 +1033,10 @@ input.terms {
 .next-event h2 {
     font-variant: normal;
     font-size: 16px;
+}
+
+.social-banner{
+    margin-top:35px;
 }
 
 .social-banner .social-item {

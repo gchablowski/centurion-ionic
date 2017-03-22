@@ -3,9 +3,7 @@
 describe('news list page', function () {
 
     beforeAll(function () {
-        browser.get('/#/');
-
-        element(protractor.By.css('#news')).click();
+        browser.get('/#/news');
     });
 
     it('Should have a title', function () {
@@ -18,14 +16,13 @@ describe('news list page', function () {
         expect(elements.get(0).getText()).toContain('Introducing Oli');
     });
 
-    /*
-     it('should allow me to go to the news-item page when I clik on one of the post', function () {
-     var elements = element.all(protractor.By.css('.visitors-link'));
-     
-     elements.click();
-     
-     expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/visitors");
-     
-     });
-     */
+    it('should allow me to go to the news-item page when I clik on one of the post', function () {
+        var elements = element.all(protractor.By.css('.news-headline')).first();
+
+        elements.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/news-item/20");
+
+    });
+
 });

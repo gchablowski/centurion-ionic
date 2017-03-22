@@ -44,4 +44,13 @@ describe('module: main, service: UserServ', function () {
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
+    
+    it('should send a request to get the posts', function () {
+
+        $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/post/1').respond(200, {data: 1});
+        var result = UserServ.post({id: 1});
+        $httpBackend.expectGET('https://centurion.back9solutions.com/app/post/1');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
 });

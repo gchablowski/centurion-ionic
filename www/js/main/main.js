@@ -20,7 +20,7 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                     })
                     .state('news', {
                         url: '/news',
-                        templateUrl: 'templates/main/news-ctrl.html',
+                        templateUrl: 'templates/main/news-tpl.html',
                         controller: 'NewsCtrl as ctrl',
                         resolve: {
                             UserServ: 'UserServ',
@@ -31,7 +31,7 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                     })
                     .state('newsItem', {
                         url: '/news-item/:id',
-                        templateUrl: 'templates/main/news-item.html',
+                        templateUrl: 'templates/main/news-item-tpl.html',
                         controller: 'NewsCtrl as ctrl',
                         resolve: {
                              UserServ: 'UserServ',

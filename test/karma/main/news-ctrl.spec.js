@@ -2,7 +2,7 @@
 describe('module: main, controller: NewsCtrl', function () {
 
     // instantiate controller
-    var NewsCtrl, datasetsMock, scope;
+    var NewsCtrl, datasetsMock, scope, spy;
 
     // load the controller's module
     beforeEach(module('main'));
@@ -10,12 +10,18 @@ describe('module: main, controller: NewsCtrl', function () {
     beforeEach(module('ngHtml2Js'));
 
     // define a mock of service called
+    spy = 0;
     beforeEach(inject(function () {
-
-        datasetsMock = {
-            posts: 1
-        };
-
+        if (spy == 0) {
+            datasetsMock = {
+                posts: 1
+            };
+        } else {
+            datasetsMock = {
+                post: 2
+            };
+        }
+        spy++;
     }));
 
     // instantiate controller
@@ -28,8 +34,12 @@ describe('module: main, controller: NewsCtrl', function () {
         });
     }));
 
-    it('should define a $scope.loginData', function () {
+    it('should call the datasets service and populate $scope.posts with dataset.posts if it exist', function () {
         expect(scope.posts).toEqual(1);
+    });
+
+    it('should call the datasets service and populate $scope.posts with dataset.posts if it exist', function () {
+        expect(scope.posts).toEqual(2);
     });
 
 });

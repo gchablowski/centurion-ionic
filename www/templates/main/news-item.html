@@ -1,0 +1,17 @@
+<ion-view view-title="News">
+    <div headermenu title="'News'" home="'home'"></div>
+    <ion-content class="has-header page-has-header">
+
+        <div class="content">
+            <div class="news-headline">
+                <p class="news-title">{{posts.title}}</p>
+                <img src="img/logo.png"><p class="news-time">{{posts.created_at| messageDateFormat}}</p>
+            </div>
+
+            <div class="news-info">
+                <p ng-bind-html="posts.text"></p>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

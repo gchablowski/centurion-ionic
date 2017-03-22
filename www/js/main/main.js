@@ -19,13 +19,24 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                         }
                     })
                     .state('news', {
-                        url: 'news',
+                        url: '/news',
                         templateUrl: 'templates/main/news-ctrl.html',
                         controller: 'NewsCtrl as ctrl',
                         resolve: {
                             UserServ: 'UserServ',
                             datasets: ['UserServ', function (UserServ) {
                                     return UserServ.posts().$promise;
+                                }]
+                        }
+                    })
+                    .state('newsItem', {
+                        url: '/news-item/:id',
+                        templateUrl: 'templates/main/news-item.html',
+                        controller: 'NewsCtrl as ctrl',
+                        resolve: {
+                             UserServ: 'UserServ',
+                            datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
+                                    return UserServ.post({id: $stateParams.id}).$promise;
                                 }]
                         }
                     })

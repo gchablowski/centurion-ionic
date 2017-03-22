@@ -5,6 +5,8 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
 
             //include the interceptor for login 
             $httpProvider.interceptors.push('AuthInterceptorServ');
+            //include the interceptor for the spinner
+            $httpProvider.interceptors.push('LoaderInjectorServ');
 
             $stateProvider
                     .state('home', {

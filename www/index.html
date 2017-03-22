@@ -52,8 +52,10 @@
         <script src="js/main/controllers/account-ctrl.js"></script>
         <script src="js/main/service/login-serv.js"></script>
         <script src="js/main/service/user-serv.js"></script>
+        <script src="js/main/service/loader-interceptor-serv.js"></script>
         <script src="js/main/service/auth-interceptor-serv.js"></script>
         <script src="js/main/filters/message-date-format-fil.js"></script>
+        <script src="js/main/directives/loader-dir.js"></script>
 
         <script src="js/visitors/constants/config-const.js"></script>
         <script src="js/visitors/controllers/listing-ctrl.js"></script>
@@ -69,7 +71,7 @@
     </head>
 
     <body ng-app="centurion">
-
+        <div id="loaderDiv" loader></div>
     <ion-nav-view></ion-nav-view>
 
 </body>

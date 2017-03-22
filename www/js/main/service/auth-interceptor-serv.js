@@ -15,7 +15,7 @@ angular.module("main")
                   
                         if (rejection.status === 401) {
                             $localStorage.$reset({});
-                            $location.path("login");
+                            $location.path("/login");
                         }
                         return $q.reject(rejection);
                     }

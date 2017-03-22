@@ -34,11 +34,16 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                         templateUrl: 'templates/main/news-item-tpl.html',
                         controller: 'NewsCtrl as ctrl',
                         resolve: {
-                             UserServ: 'UserServ',
+                            UserServ: 'UserServ',
                             datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
                                     return UserServ.post({id: $stateParams.id}).$promise;
                                 }]
                         }
+                    })
+                    .state('account', {
+                        url: '/account',
+                        templateUrl: 'templates/main/account-ctrl.html',
+                        controller: 'AccountCtrl as ctrl'
                     })
                     .state('login', {
                         url: '/login',

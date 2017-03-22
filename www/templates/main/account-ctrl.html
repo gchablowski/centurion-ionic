@@ -1,0 +1,33 @@
+<ion-view view-title="Account">
+    <ion-content scroll="false">
+        <a ui-sref="home" class="home-button"><span class="typcn typcn-home-outline"></span></a>
+
+        <div class="account-top">
+
+            <div class="avatar" style="background: url('{{user.avatar}}') center center; background-size: cover;"></div>
+            <h2>{{user.name}}</h2>
+            <p class="account-points">Member</p>
+
+        </div>
+
+        <div class="content account">
+
+            <div class="card">
+                <div class="icon">
+                    <i class="typcn typcn-mail"></i>
+                </div>
+                <p class="card-text">{{user.email}}</p>
+            </div>
+
+            <div class="clearfix">
+                <a href="#/update" class="account-instruction" ng-hide="{{user.facebook_id}}">Edit Info</a>
+                <a href="#/password" class="account-instruction change-password" ng-hide="{{user.facebook_id}}">Change Password</a>
+            </div>
+
+            <a href="#/photo" class="btn btn-block btn-positive">Change Photo</a>
+
+            <a ng-click="logout()" class="btn btn-block btn-positive">Log Out</a>
+
+        </div>
+    </ion-content>
+</ion-view>

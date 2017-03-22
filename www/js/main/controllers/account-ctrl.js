@@ -5,13 +5,13 @@ angular.module('main')
                 var $this = this;
                 $scope.user = $localStorage.user;
 
-                $this.succes = function(){
-                    $localStorage.$reset();
+                $this.success = function(){
+                    $localStorage.$reset({});
                     $state.go('login');
                 };
 
                 $scope.logout = function () {
-                    UserServ.logout({}, $this.succes);
+                    UserServ.logout({}, $this.success);
                 };
 
             }]);

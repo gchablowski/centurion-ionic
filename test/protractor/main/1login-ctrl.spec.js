@@ -36,8 +36,8 @@ describe('login page', function () {
         var email = element.all(protractor.By.model('loginData.email'));
         var password = element.all(protractor.By.model('loginData.password'));
 
-        email.sendKeys('bob@bob.com');
-        password.sendKeys('bob');
+        email.sendKeys('boba@boba.com');
+        password.sendKeys('boba');
 
         var form = element.all(protractor.By.css('.login-form'));
 

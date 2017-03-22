@@ -23,7 +23,6 @@ describe('module: main, controller: LoginCtrl', function () {
 
         spyOn(LoginServMock, 'login').and.callThrough();
 
-
         spyOn($state, 'go');
 
     }));

@@ -1,7 +1,7 @@
 'use strict';
 
 describe('home page', function () {
-    
+
     beforeAll(function () {
         browser.get('/#/login');
     });
@@ -16,6 +16,22 @@ describe('home page', function () {
         elements.click();
 
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/news");
+    });
+
+    it('should allow me to go to the account page when I click on account link', function () {
+        var elements = element.all(protractor.By.css('#account'));
+
+        elements.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/account");
+    });
+
+    it('should allow me to go to the account page when I click on account link', function () {
+        var elements = element.all(protractor.By.css('#accounttitle'));
+
+        elements.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/account");
     });
 
     it('should allow me to go to the reciprocals page when I click on reciprocals link', function () {

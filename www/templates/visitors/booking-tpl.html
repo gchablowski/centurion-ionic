@@ -1,11 +1,9 @@
 <ion-view view-title="Booking">
-
-    <div headermenu title="'Booking'" home="'visitors'"></div>
     <ion-content class="has-header page-has-header">
         <div collection-repeat="contact in listing"
              item-width="100%" 
              item-height="170"
-             ui-sref="tour({ id: contact.id })"
+             ui-sref="menu.tour({ id: contact.id })"
              class="reciprocals"
              >
             <div class="section-image" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{contact.image_url}}') no-repeat center center; background-size: cover">

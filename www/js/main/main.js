@@ -20,10 +20,15 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                                 }]
                         }
                     })
-                    .state('news', {
+                    .state('menu.news', {
+                        cache: false,
                         url: '/news',
-                        templateUrl: 'templates/main/news-tpl.html',
-                        controller: 'NewsCtrl as ctrl',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/news-tpl.html',
+                                controller: 'NewsCtrl as ctrl'
+                            }
+                        },
                         resolve: {
                             UserServ: 'UserServ',
                             datasets: ['UserServ', function (UserServ) {
@@ -31,10 +36,14 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                                 }]
                         }
                     })
-                    .state('newsItem', {
+                    .state('menu.newsItem', {
                         url: '/news-item/:id',
-                        templateUrl: 'templates/main/news-item-tpl.html',
-                        controller: 'NewsCtrl as ctrl',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/news-item-tpl.html',
+                                controller: 'NewsCtrl as ctrl'
+                            }
+                        },
                         resolve: {
                             UserServ: 'UserServ',
                             datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {

@@ -4,7 +4,7 @@
         <div collection-repeat="post in posts|  orderBy: '-created_at'"
              item-width="100%" 
              item-height="130px"
-             ui-sref="newsItem({ id: post.id })"
+             ui-sref="menu.newsItem({ id: post.id })"
              >
             <div class="news-headline">
                 <p class="news-title">{{post.title}}</p>

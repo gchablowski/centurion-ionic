@@ -1,10 +1,9 @@
 <ion-view view-title="Reciprocals">
-    <div headermenu title="'Reciprocals'" home="'visitors'" home-user="'home'"></div>
     <ion-content class="has-header page-has-header">
         <div collection-repeat="reciprocal in listing"
              item-width="100%" 
              item-height="170"
-             ui-sref="reciprocal({ id: reciprocal.id })"
+             ui-sref="menu.reciprocal({ id: reciprocal.id })"
              class="reciprocals"
              >
             <div class="section-image" style="background: url('{{reciprocal.avatar}}') no-repeat center center; background-size:cover;">

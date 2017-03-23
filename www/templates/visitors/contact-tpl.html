@@ -1,11 +1,10 @@
 <ion-view view-title="Contact">
-    <div headermenu title="'Contact'" home="'visitors'" home-user="'home'"></div>
     <ion-content  <ion-content class="has-header page-has-header">
         
             <div collection-repeat="contact in listing"
                  item-width="100%" 
                  item-height="170"
-                 ui-sref="contactus({ id: contact.id })"
+                 ui-sref="menu.contactus({ id: contact.id })"
                  class="link"
                  >
                 <div class="section-image" style="background: url('{{contact.avatar}}') no-repeat center center; background-size:cover;">

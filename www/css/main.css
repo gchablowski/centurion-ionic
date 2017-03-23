@@ -206,25 +206,45 @@ header.bar.bar-header h2.title {
 
 /* Buttons
 =================================*/
+.bar.bar-royal{
+    background: #5A447A;
+    background-image: none;
+    border-color: #5A447A;
+}
 
-.back-button,
+.bar .button.back-button,
 .home-button {
-    position: absolute;
-    display: block;
-    bottom: top;
-    left: 0;
-    padding: 6px;
+
     border: 1px solid rgba(255,255,255,0.6);
-    font-size: 20px;
     color: rgba(255,255,255,1);
     border-radius: 50%;
-    margin: 27px 12px;
-    z-index: 100;
+    background-color: none;
+}
+
+.bar .button.back-button{
+    margin-top: 28px;
 }
 
 .home-button {
-    right: 0;
-    left: auto;
+    padding-top: 6px;
+    font-size: 20px;
+}
+
+.home-button i{
+    padding:6px;
+}
+
+.bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar .button.button-clear.icon-left:before, .bar .button.button-clear.icon-right:before, .bar button.button-clear .icon:before, .bar button.button-clear.icon:before, .bar button.button-clear.icon-left:before, .bar button.button-clear.icon-right:before{
+    font-size: 25px;
+}
+
+.bar .title{
+    margin-top: 30px;
+}
+
+.bar .buttons-right span {
+    margin-top: 26px;
+    display: inherit;
 }
 
 .btn {

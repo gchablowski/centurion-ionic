@@ -1,9 +1,13 @@
 'use strict';
+
 angular.module('centurion', [
     // load your modules here
     'main',
     'visitors'
 ])
+        .config(function ($ionicConfigProvider) {
+            $ionicConfigProvider.backButton.text(' ').icon('typcn typcn-chevron-left-outline').previousTitleText(false);
+        })
         .run(function ($ionicPlatform) {
             $ionicPlatform.ready(function () {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -18,5 +22,4 @@ angular.module('centurion', [
                     StatusBar.styleDefault();
                 }
             });
-        })
-        ;
+        });

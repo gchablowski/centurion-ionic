@@ -15,10 +15,24 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStora
                                 }]
                         }
                     })
-                    .state('membership', {
+                    .state("menu", {
+                        url: "/menu",
+                        abstract: true,
+                        templateUrl: "templates/visitors/menu-ctrl.html",
+                        controller: "MenuCtrl as ctrl",
+                        data: {
+                            buttonHome: true
+                        }
+                    })
+                    .state('menu.membership', {
+                        cache: false,
                         url: '/membership',
-                        templateUrl: 'templates/visitors/membership-tpl.html',
-                        controller: 'ListingCtrl as ctrl',
+                        views: {
+                            "content": {
+                                templateUrl: "templates/visitors/membership-tpl.html",
+                                controller: 'ListingCtrl as ctrl'
+                            }
+                        },
                         resolve: {
                             MainServ: 'MainServ',
                             datasets: ['MainServ', function (MainServ) {
@@ -26,10 +40,15 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStora
                                 }]
                         }
                     })
-                    .state('contact', {
+                    .state('menu.contact', {
+                        cache: false,
                         url: '/contact',
-                        templateUrl: 'templates/visitors/contact-tpl.html',
-                        controller: 'ListingCtrl as ctrl',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/visitors/contact-tpl.html',
+                                controller: 'ListingCtrl as ctrl'
+                            }
+                        },
                         resolve: {
                             MainServ: 'MainServ',
                             datasets: ['MainServ', function (MainServ) {
@@ -37,10 +56,18 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStora
                                 }]
                         }
                     })
-                    .state('contactus', {
+                    .state('menu.contactus', {
+                        cache: false,
                         url: '/contact-item/:id',
-                        templateUrl: 'templates/visitors/contact-item-tpl.html',
-                        controller: 'ListingCtrl as ctrl',
+                        data: {
+                            buttonHome: false
+                        },
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/visitors/contact-item-tpl.html',
+                                controller: 'ListingCtrl as ctrl'
+                            }
+                        },
                         resolve: {
                             MainServ: 'MainServ',
                             datasets: ['MainServ', '$stateParams', function (MainServ, $stateParams) {
@@ -48,10 +75,15 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStora
                                 }]
                         }
                     })
-                    .state('reciprocals', {
+                    .state('menu.reciprocals', {
+                        cache: false,
                         url: '/reciprocals',
-                        templateUrl: 'templates/visitors/reciprocals-tpl.html',
-                        controller: 'ListingCtrl as ctrl',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/visitors/reciprocals-tpl.html',
+                                controller: 'ListingCtrl as ctrl'
+                            }
+                        },
                         resolve: {
                             MainServ: 'MainServ',
                             datasets: ['MainServ', function (MainServ) {
@@ -59,10 +91,18 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStora
                                 }]
                         }
                     })
-                    .state('reciprocal', {
+                    .state('menu.reciprocal', {
+                        cache: false,
                         url: '/reciprocal/:id',
-                        templateUrl: 'templates/visitors/reciprocal-tpl.html',
-                        controller: 'ListingCtrl  as ctrl',
+                        data: {
+                            buttonHome: false
+                        },
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/visitors/reciprocal-tpl.html',
+                                controller: 'ListingCtrl  as ctrl',
+                            }
+                        },
                         resolve: {
                             MainServ: 'MainServ',
                             datasets: ['MainServ', '$stateParams', function (MainServ, $stateParams) {
@@ -70,10 +110,15 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStora
                                 }]
                         }
                     })
-                    .state('about', {
+                    .state('menu.about', {
+                        cache: false,
                         url: '/about',
-                        templateUrl: 'templates/visitors/about-ctrl.html',
-                        controller: 'AboutCtrl as ctrl',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/visitors/about-ctrl.html',
+                                controller: 'AboutCtrl as ctrl'
+                            }
+                        },
                         resolve: {
                             MainServ: 'MainServ',
                             datasets: ['MainServ', function (MainServ) {
@@ -81,10 +126,15 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStora
                                 }]
                         }
                     })
-                    .state('visitors-booking', {
+                    .state('menu.visitors-booking', {
+                        cache: false,
                         url: '/visitors-booking',
-                        templateUrl: 'templates/visitors/booking-tpl.html',
-                        controller: 'ListingCtrl as ctrl',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/visitors/booking-tpl.html',
+                                controller: 'ListingCtrl as ctrl',
+                            }
+                        },
                         resolve: {
                             MainServ: 'MainServ',
                             datasets: ['MainServ', function (MainServ) {
@@ -92,10 +142,15 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStora
                                 }]
                         }
                     })
-                    .state('tour', {
+                    .state('menu.tour', {
+                        cache: false,
                         url: '/tour/:id',
-                        templateUrl: 'templates/visitors/tour-ctrl.html',
-                        controller: 'TourCtrl as ctrl',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/visitors/tour-ctrl.html',
+                                controller: 'TourCtrl as ctrl',
+                            }
+                        },
                         resolve: {
                             MainServ: 'MainServ',
                             datasets: ['MainServ', '$stateParams', function (MainServ, $stateParams) {

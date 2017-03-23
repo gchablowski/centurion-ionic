@@ -12,8 +12,6 @@ describe('module: main, controller: AccountCtrl', function () {
     // define a mock of service called
     beforeEach(inject(function ($state) {
 
-        $localStorageMock = {user: 1};
-
         $localStorageMock = {
             user: 1,
             $reset: function () {

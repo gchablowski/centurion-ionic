@@ -8,7 +8,7 @@ exports.config = {
         }
     },
     baseUrl: 'http://localhost:8100',
-    specs: ['test/protractor/main/*.js'],
+    specs: ['test/protractor/**/*.js'],
     jasmineNodeOpts: {
         isVerbose: true,
     }

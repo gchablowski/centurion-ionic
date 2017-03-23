@@ -22,4 +22,5 @@ angular.module('centurion', [
                     StatusBar.styleDefault();
                 }
             });
+
         });

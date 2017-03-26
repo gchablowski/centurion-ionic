@@ -13,23 +13,27 @@
 
                 <div class="content-padded">
 
-                    <form class="login-form" ng-submit="processLogin()">
+                    <form name="form" class="login-form" ng-submit="processLogin()">
+                        <div class="center">
+                            <span id="email-valid " ng-show="form.email.$error.email && form.email.$touched">This email is not valid.</span>
+                            <span id="email-require" ng-show="form.email.$error.required && form.email.$touched">An email is required.</span>
+                        </div>
                         <div class="form-entry">
                             <div>
                                 <i class="typcn typcn-user"></i>
                             </div>
-                            <input type="email" name="email" placeholder="Email Address" ng-model="loginData.email">		
-                        </div>				
+                            <input type="email" name="email" placeholder="Email Address" ng-model="loginData.email" required>		
+                        </div>	
+                        <div class="center">
+                            <span id="email-valid center" ng-show="form.password.$error.required && form.password.$touched">You need to type your password.</span>
+                        </div>
                         <div class="form-entry">
                             <div>
                                 <i class="typcn typcn-lock-closed-outline"></i>
                             </div>
-                            <input type="password" name="password" placeholder="Password" ng-model="loginData.password">
+                            <input type="password" name="password" placeholder="Password" ng-model="loginData.password" required>
                         </div>	
                         <a ng-click="processForgot()" class="forgot">Forgot Password?</a>
-
-
-
                         <div class="inline-buttons">
                             <button type="submit" class="btn btn-block btn-positive">Login</button>
                             <a href="#/details" class="btn btn-block btn-positive">Register</a>
@@ -43,12 +47,6 @@
 
             <a ui-sref="visitors" class="visitors-link">Visitors</a>
 
-        </div>
-
-         <div class="app-message" ng-class="{'show-message':appMessage.show}">
-            <p class="message-title">{{appMessage.title}}</p>
-            <p class="message-text">{{appMessage.content}}</p>
-            <p class="message-close" ng-click="appMessage.show = false">Close</p>
         </div>
 
     </ion-content>

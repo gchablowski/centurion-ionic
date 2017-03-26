@@ -1,11 +1,11 @@
 'use strict';
 angular.module('main')
-        .controller('LoginCtrl', ['$scope', 'LoginServ', '$state', '$localStorage', function ($scope, LoginServ, $state, $localStorage) {
+        .controller('LoginCtrl', ['$scope', 'LoginServ', '$state', '$localStorage', "$ionicPopup", function ($scope, LoginServ, $state, $localStorage, $ionicPopup) {
                 var $this = this;
                 $scope.loginData = {};
                 $scope.appMessage = {};
 
-                
+
                 //helper function
                 $this.redirect = function (user) {
                     if (user.membership_id) {
@@ -15,12 +15,18 @@ angular.module('main')
                     //$state.go('member');
                 };
 
+                $this.showAlert = function (title, template) {
+                    $ionicPopup.alert({
+                        title: title,
+                        template: template
+                    });
+                    
+                };
+
                 $this.success = function (data) {
 
                     if (data.error) {
-                        $scope.appMessage.title = 'Invalid Details';
-                        $scope.appMessage.content = data.error;
-                        $scope.appMessage.show = true;
+                        $this.showAlert('Invalid Details', data.error);
                         return false;
                     }
 
@@ -33,11 +39,9 @@ angular.module('main')
                 };
 
                 $this.error = function () {
-                    $scope.appMessage.title = 'Invalid Details';
-                    $scope.appMessage.content = "We encouter a problem to log you in";
-                    $scope.appMessage.show = true;
+                    $this.showAlert('Invalid Details', "We encouter a problem to log you in");
                 };
-                
+
                 //redirect user if he is already logged
                 if ($localStorage.token) {
                     $this.redirect($localStorage.user);

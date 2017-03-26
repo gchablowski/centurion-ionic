@@ -10,7 +10,7 @@ describe('module: visitors, controller: TourCtrl', function () {
     beforeEach(module('ngHtml2Js'));
 
     // define a mock of service called
-    beforeEach(function () {
+    beforeEach(inject(function ($ionicPopup) {
 
         datasetsMock = {
             contact: {data: 1},
@@ -24,8 +24,9 @@ describe('module: visitors, controller: TourCtrl', function () {
         };
 
         spyOn(MainServMock, 'contactPost').and.callThrough();
+        spyOn($ionicPopup, 'alert').and.callThrough();
 
-    });
+    }));
 
     // instantiate controller
     beforeEach(inject(function ($controller, $rootScope) {
@@ -49,20 +50,16 @@ describe('module: visitors, controller: TourCtrl', function () {
     it('should define scope.contact and populate it with datasets.contact', function () {
         expect(scope.contact).toEqual({data: 1});
     });
+    
+    it('should define a $this.showAlert function that call $ionicPopup', inject(function ($ionicPopup) {
+        TourCtrl.showAlert("a", "b");
+        expect($ionicPopup.alert).toHaveBeenCalledWith({ title: 'a', template: 'b' });
+    }));
 
-    it('should define a scope.sendForm function that return an error message if scope.formData.terms = false', function () {
+    it('should define a scope.sendForm function that call a $this.showAlert function', function () {
+        spyOn(TourCtrl, 'showAlert');
         scope.sendForm();
-        expect(scope.appMessage.title).toEqual('Terms and Conditions');
-        expect(scope.appMessage.content).toEqual('Please accept the terms and conditions');
-        expect(scope.appMessage.show).toEqual(true);
-    });
-
-    it('should define a scope.sendForm function that return an error message if !$scope.formData.name && !$scope.formData.email && !$scope.formData.message', function () {
-        scope.formData.terms = true;
-        scope.sendForm();
-        expect(scope.appMessage.title).toEqual('Invalid Details');
-        expect(scope.appMessage.content).toEqual('Please ensure all require fields are filled');
-        expect(scope.appMessage.show).toEqual(true);
+        expect(TourCtrl.showAlert).toHaveBeenCalledWith('Terms and Conditions', 'Please accept the terms and conditions');
     });
 
     it('should define a scope.sendForm function that call MainServ.contactPost if $scope.formData is filled', function () {
@@ -76,19 +73,17 @@ describe('module: visitors, controller: TourCtrl', function () {
     });
 
     it('should define a $this.success function that call create an error message when there an error', function () {
+        spyOn(TourCtrl, 'showAlert');
         var error = {error: "error"};
         TourCtrl.success(error);
-        expect(scope.appMessage.title).toEqual('Invalid Details');
-        expect(scope.appMessage.content).toEqual("error");
-        expect(scope.appMessage.show).toEqual(true);
+        expect(TourCtrl.showAlert).toHaveBeenCalledWith('Invalid Details', 'error');
     });
 
     it('should define a $this.success function that call create an validation message when there a validation', function () {
-        var error = {name: "name"};
-        TourCtrl.success(error);
-        expect(scope.appMessage.title).toEqual('Sent!');
-        expect(scope.appMessage.content).toEqual('Thank you for your enquiry, we will get back to you as soon as possible!');
-        expect(scope.appMessage.show).toEqual(true);
+        spyOn(TourCtrl, 'showAlert');
+        var success = {name: "name"};
+        TourCtrl.success(success);
+        expect(TourCtrl.showAlert).toHaveBeenCalledWith('Sent!', 'Thank you for your enquiry, we will get back to you as soon as possible!');
     });
 
 });

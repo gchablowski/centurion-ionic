@@ -19,17 +19,51 @@ describe('login page', function () {
 
     });
 
-    it('should show me an error message if I submit without login and password', function () {
+    it("should show me an error message if I don't enter an email", function () {
 
-        var form = element.all(protractor.By.css('.login-form'));
+        var email = element.all(protractor.By.name('email'));
 
-        form.submit().then(function () {
-            var message = element.all(protractor.By.css('.show-message'));
-            var title = element.all(protractor.By.css('.message-title'));
+        email.click();
 
-            expect(message.count()).toEqual(1);
-            expect(title.getText()).toEqual(['Invalid Details']);
-        });
+        var password = element.all(protractor.By.name('password'));
+
+        password.click();
+
+        var message = element(protractor.By.id('email-require'));
+
+        expect(message.isDisplayed()).toBe(true);
+    });
+
+    it("should show an error when I don't fill the email properly", function () {
+
+        var email = element.all(protractor.By.name('email'));
+
+        email.sendKeys("aaa");
+
+        var password = element.all(protractor.By.name('password'));
+
+        password.click();
+
+        var message = element(protractor.By.id('email-valid'));
+
+        expect(message.isDisplayed()).toBe(true);
+
+    });
+
+    it("should show an error when I don't fill the password", function () {
+
+        var password = element.all(protractor.By.name('password'));
+
+        password.click();
+
+        var email = element.all(protractor.By.name('email'));
+
+        email.sendKeys("aaa");
+
+        var message = element(protractor.By.id('password-valid'));
+
+        expect(message.isDisplayed()).toBe(true);
+
     });
 
     it('should show me an error message if I submit a false login and password', function () {
@@ -42,8 +76,8 @@ describe('login page', function () {
         var form = element.all(protractor.By.css('.login-form'));
 
         form.submit().then(function () {
-            var message = element.all(protractor.By.css('.show-message'));
-            var title = element.all(protractor.By.css('.message-title'));
+            var message = element.all(protractor.By.css('.popup'));
+            var title = element.all(protractor.By.css('.popup-head h3'));
 
             expect(message.count()).toEqual(1);
             expect(title.getText()).toEqual(['Invalid Details']);

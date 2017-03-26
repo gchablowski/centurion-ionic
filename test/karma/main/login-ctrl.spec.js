@@ -10,7 +10,7 @@ describe('module: main, controller: LoginCtrl', function () {
     beforeEach(module('ngHtml2Js'));
 
     // define a mock of service called
-    beforeEach(inject(function ($state) {
+    beforeEach(inject(function ($state, $ionicPopup) {
 
         $localStorageMock = {token: 0, user: 0};
 
@@ -22,7 +22,7 @@ describe('module: main, controller: LoginCtrl', function () {
         };
 
         spyOn(LoginServMock, 'login').and.callThrough();
-
+        spyOn($ionicPopup, 'alert').and.callThrough();
         spyOn($state, 'go');
 
     }));
@@ -38,7 +38,6 @@ describe('module: main, controller: LoginCtrl', function () {
         });
     }));
 
-
     it('should define a $scope.loginData', function () {
         expect(scope.loginData).toEqual({});
     });
@@ -53,13 +52,18 @@ describe('module: main, controller: LoginCtrl', function () {
         expect(LoginServMock.login).toHaveBeenCalledWith({}, scope.loginData, jasmine.any(Function), jasmine.any(Function));
     });
 
-    it('should define a this.success function that call error if there an error on the answer of the server', function () {
+    it('should define a $this.showAlert function that call $ionicPopup', inject(function ($ionicPopup) {
+        LoginCtrl.showAlert("a", "b");
+        expect($ionicPopup.alert).toHaveBeenCalledWith({title: 'a', template: 'b'});
+    }));
+
+    it('should define a this.success function that call $this.showAlert for displaying an error if there an error on the answer of the server', function () {
+        spyOn(LoginCtrl, 'showAlert');
         var data = {error: "error"};
         LoginCtrl.success(data);
-        expect(scope.appMessage.title).toEqual('Invalid Details');
-        expect(scope.appMessage.content).toEqual("error");
-        expect(scope.appMessage.show).toEqual(true);
+        expect(LoginCtrl.showAlert).toHaveBeenCalledWith('Invalid Details', 'error');
     });
+   
 
     it('should define a this.success function that call localStorage and store the user data', function () {
         var data = {token: "1", 'user': '2', stats: '3'};
@@ -74,6 +78,12 @@ describe('module: main, controller: LoginCtrl', function () {
         LoginCtrl.success(data);
         expect($state.go).toHaveBeenCalledWith('home');
     }));
+    
+     it('should define a this.error function that call $this.showAlert for displaying an error', function () {
+        spyOn(LoginCtrl, 'showAlert');
+        LoginCtrl.error();
+        expect(LoginCtrl.showAlert).toHaveBeenCalledWith('Invalid Details', "We encouter a problem to log you in");
+    });
 
     /* TODO
      it('should define a this.success function that got to profile if the data.user.membership_id is present in the data', inject(function ($state) {

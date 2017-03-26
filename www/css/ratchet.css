@@ -386,11 +386,12 @@ p {
   border: 1px solid #3071a9;
 }
 
-.btn-positive {
+.btn-positive, .button.button-positive, .button.button-positive.activated {
   color: #fff;
   background-color: #5A447A;
   border: 1px solid #5A447A;
 }
+
 .btn-positive:active, .btn-positive.active {
   color: #fff;
   background-color: #7976a9;

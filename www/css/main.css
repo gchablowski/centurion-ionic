@@ -685,23 +685,31 @@ header.bar.bar-header h2.title {
 /* In app message 
 =======================================*/
 
-.app-message {
+.popup-container.active .popup  {
     height: 170px;
-    position: absolute;
     width: 250px;
-    top: -50%;
-    left: 0;
-    right: 0;
-    margin: auto;
     background: #5A447A;
     border-radius: 20px;	
-    margin-top: -70px;
-    -webkit-transition: top 0.5s;
-    transition: top 0.5s;
 }
 
-.show-message {
-    top: 50%;
+.popup-head {
+    padding: 15px 10px;
+    border-bottom: 0px;
+    text-align: center;
+    color: #fff;
+}
+
+.popup-head h3{
+    text-align: center;
+    color: #fff;
+    font-style: italic;
+}
+
+.popup-body{
+    text-align: center;
+    padding: 15px;
+    color: #eee;
+    line-height: 1.5em;
 }
 
 .blur-content {
@@ -709,20 +717,6 @@ header.bar.bar-header h2.title {
     filter: blur(4.5px);
 }
 
-.message-title {
-    text-align: center;
-    margin-top: 10px;
-    padding: 10px 5px 5px;
-    color: #fff;
-    font-style: italic;
-}
-
-.message-text {
-    text-align: center;
-    padding: 15px;
-    color: #eee;
-    line-height: 1.5em;
-}
 
 .message-close {
     position: absolute;

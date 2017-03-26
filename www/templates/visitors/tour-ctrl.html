@@ -6,25 +6,23 @@
                 <p class="list-text">{{contact.name}}</p>
             </div>	
 
-            <form ng-submit="sendForm()" class="booking-form">
+            <form name="form" ng-submit="sendForm()" class="booking-form">
                 <p>* Name</p>
-                <input type="text" ng-model="formData.name">
+                <span ng-show="form.name.$error.required && form.name.$touched">Your name is required.</span>
+                <input name="name" type="text" ng-model="formData.name" required>
                 <p>* Email</p>
-                <input type="email" ng-model="formData.email">
+                <span ng-show="form.email.$error.required && form.email.$touched">An email is required.</span>
+                <span ng-show="form.email.$error.email && form.email.$touched">This email is not valid.</span>
+                <input name="email" type="email" ng-model="formData.email" required>
                 <p>Phone</p>
                 <input type="tel" ng-model="formData.phone">
                 <p>* Message</p>
-                <textarea type="text" ng-model="formData.message"></textarea>
+                <span ng-show="form.message.$error.required && form.message.$touched">A message is required.</span>
+                <textarea name="message" ng-model="formData.message" required></textarea>
                 <input id="terms" type="checkbox" class="terms" ng-model="formData.terms">
                 <label class="terms-label" for="terms">Accept <a href="#/terms">Terms and Conditions</a></label>
                 <button id="submit" type="submit" class="btn btn-block btn-positive">Send</button>
             </form>
-        </div>
-
-        <div class="app-message accept-message" ng-class="{'show-message':appMessage.show}">
-            <p class="message-title">{{appMessage.title}}</p>
-            <p class="message-text">{{appMessage.content}}</p>
-            <p class="message-close" ng-click="appMessage.show = false">Close</p>
         </div>
 
     </ion-content>

@@ -3,7 +3,7 @@
 describe('reciprocals page', function () {
 
     beforeEach(function () {
-        browser.get('/#/visitors-booking');
+        browser.get('/#/menu/visitors-booking');
     });
 
     it('Should have a title', function () {
@@ -17,13 +17,13 @@ describe('reciprocals page', function () {
     });
 
    
-   /* it('should allow me to go to the tour page when I click on the elment', function () {
-        var elements = element.all(protractor.By.css('.reciprocals')).first();
+   it('should allow me to go to the tour page when I click on the elment', function () {
+        var elements = element.all(protractor.By.css('.section-image')).first();
         
         elements.click();
         
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/reciprocal/38");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/tour/4");
     });
-    */
+   
     
 });

@@ -3,7 +3,7 @@
 describe('reciprocals page', function () {
 
     beforeEach(function () {
-        browser.get('/#/contact');
+        browser.get('/#/menu/contact');
     });
 
     it('Should have a title', function () {
@@ -22,7 +22,7 @@ describe('reciprocals page', function () {
         
         elements.click();
         
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/contact-item/11");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/contact-item/11");
     });
     
     

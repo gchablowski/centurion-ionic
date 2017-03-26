@@ -15,7 +15,7 @@ describe('visitors page', function () {
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/visitors-booking");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/visitors-booking");
     });
 
     it('should allow me to go to the about page when I click on about link', function () {
@@ -23,7 +23,7 @@ describe('visitors page', function () {
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/about");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/about");
     });
 
     it('should allow me to go to the menbership page when I click on membership link', function () {
@@ -31,7 +31,7 @@ describe('visitors page', function () {
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/membership");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/membership");
     });
 
     it('should allow me to go to the menbership page when I click on membership link', function () {
@@ -39,7 +39,7 @@ describe('visitors page', function () {
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/contact");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/contact");
     });
 
 });

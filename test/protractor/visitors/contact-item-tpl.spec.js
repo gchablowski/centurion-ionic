@@ -3,7 +3,7 @@
 describe('contact page', function () {
 
     beforeEach(function () {
-        browser.get('/#/contact-item/11');
+        browser.get('/#/menu/contact-item/11');
     });
 
     it('Should have a title', function () {

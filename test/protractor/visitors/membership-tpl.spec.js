@@ -3,7 +3,7 @@
 describe('membership page', function () {
 
     beforeEach(function () {
-        browser.get('/#/membership');
+        browser.get('/#/menu/membership');
     });
 
     it('Should have a title', function () {
@@ -29,7 +29,7 @@ describe('membership page', function () {
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/contact");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/contact");
     });
 
     it('should allow me to go to the reciprocals page when I click on Reciprocal', function () {
@@ -37,7 +37,7 @@ describe('membership page', function () {
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/reciprocals");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/reciprocals");
     });
 
 });

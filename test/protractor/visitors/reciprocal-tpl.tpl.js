@@ -3,7 +3,7 @@
 describe('reciprocal page', function () {
 
     beforeEach(function () {
-        browser.get('/#/reciprocal/38');
+        browser.get('/#/menu/reciprocal/38');
     });
 
     it('Should have a title', function () {

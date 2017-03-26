@@ -15,7 +15,7 @@
 
                     <form name="form" class="login-form" ng-submit="processLogin()">
                         <div class="center">
-                            <span id="email-valid " ng-show="form.email.$error.email && form.email.$touched">This email is not valid.</span>
+                            <span id="email-valid" ng-show="form.email.$error.email && form.email.$touched">This email is not valid.</span>
                             <span id="email-require" ng-show="form.email.$error.required && form.email.$touched">An email is required.</span>
                         </div>
                         <div class="form-entry">
@@ -25,7 +25,7 @@
                             <input type="email" name="email" placeholder="Email Address" ng-model="loginData.email" required>		
                         </div>	
                         <div class="center">
-                            <span id="email-valid center" ng-show="form.password.$error.required && form.password.$touched">You need to type your password.</span>
+                            <span id="password-valid" ng-show="form.password.$error.required && form.password.$touched">You need to type your password.</span>
                         </div>
                         <div class="form-entry">
                             <div>

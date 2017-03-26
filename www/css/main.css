@@ -1876,44 +1876,38 @@ textarea {
 
 /* About */
 
-.overlay {
-    position: fixed;
-    width: 0%;
-    height: 0%;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1000000;
-    margin: auto;
+.space-modal .modal {
+    min-height: 0 !important;
+}
+
+.modal.active.about-modal {
+    width: 95%;
+    height: 95%;
+    top: 2.5%;
+    left: 2.5%;
+    right: 2.5%;
+    bottom: 2.5%;
     background: rgba(20,20,20,0.95);
     border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.8s;
 }
 
-.overlay.show {
-    height: 95%;
-    width: 95%;
-}
-
-.overlay p {
-    padding: 0 30px;
-    min-width: 80vw;
-}
-
-.overlay h2 {
-    padding-top: 30px;
+.modal.active.about-modal h2 {
     color: #fff;
+    margin-top: 30px;
 }
 
-.overlay span {
+.modal.active.about-modal span {
     position: absolute;
     top: 0;
     right: 0;
     padding: 20px;
     font-size: 28px;
     z-index: 100000;
+}
+
+.modal.active.about-modal p {
+    padding: 0 30px;
+    min-width: 80vw;
 }
 
 
@@ -1936,24 +1930,6 @@ textarea {
 .location-info {
     padding: 0;
     margin-top: 20px;
-}
-
-.slick-dots li button::before {
-    font-size: 30px;
-    top: -55px;
-    color: rgba(255,255,255,0.5);
-}
-
-.slick-dots li.slick-active button::before {
-    color: rgba(255,255,255,1);
-}
-
-#slider {
-    padding-top: 10px;
-}
-
-#slider .slick-dots li button::before {
-    top: -5px;
 }
 
 #location {

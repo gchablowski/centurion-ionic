@@ -1,6 +1,6 @@
 <ion-view view-title="About">
-   <ion-content class="has-header page-has-header">
-        
+    <ion-content class="has-header page-has-header">
+
         <div class="content dropdowns-page">
 
             <ks-swiper-container loop="true" pagination-is-active="true" pagination-clickable="true" autoplay="2500" class="gallery">
@@ -12,7 +12,7 @@
             </ks-swiper-container>
 
 
-            <a id="flybtn" ng-click="fly = true">
+            <a id="flybtn" ng-click="openModal('fly')">
                 <div class="card">
                     <div class="icon">
                         <i class="typcn typcn-plane"></i>
@@ -23,7 +23,7 @@
             </a>
 
 
-            <a id="videobtn" ng-click="video = true;">
+            <a id="videobtn" ng-click="openModal('video')">
                 <div class="card">
                     <div class="icon">
                         <i class="typcn typcn-video"></i>
@@ -32,7 +32,7 @@
                 </div>
             </a>
 
-            <a id="locationbtn" ng-click="location = true">
+            <a id="locationbtn" ng-click="openModal('location')">
                 <div class="card">
                     <div class="icon">
                         <i class="typcn typcn-location"></i>
@@ -52,33 +52,6 @@
                 </div>
             </a>
 
-        </div>
-
-        <div id="fly" class="overlay" ng-class="{'show': fly}">	
-            <span ng-click="fly = false;" class="typcn typcn-times-outline"></span>
-            <h2>Fly Thru</h2>
-            <p><br />Our plans for the Centurion Club were to create an exceptional, private golf club beyond members dreams. Anything this good, will create its own reputation. This FlyThru aims to share the spirit and emotion of the Course and Clubhouse.</p>
-            <iframe class="about-graphic" src="{{video1| trustAsResourceUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        </div>
-
-        <div id="video" class="overlay" ng-class="{'show': video}">	
-            <span ng-click="video = false;" class="typcn typcn-times-outline"></span>
-            <iframe src="{{video2| trustAsResourceUrl}}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        </div>
-
-        <div id="location-overlay" class="overlay" ng-class="{'show': location}">	
-            <span ng-click="location = false" class="typcn typcn-times-outline"></span>
-            <h2>Location</h2>
-                <div id="location" map-lazy-load="https://maps.google.com/maps/api/js">
-                    <ng-map center="51.741901, -0.407283" zoom="13">
-                        <custom-marker  position="51.741901, -0.407283">
-
-                            <img ng-src="img/arrow.png" />
-
-                        </custom-marker>
-                    </ng-map>
-                </div>
-            <a ng-click="launchMap()" class="btn btn-block btn-positive">Open in Maps</a>
         </div>
     </ion-content>
 </ion-view>

@@ -1,0 +1,30 @@
+<div class="space-modal">
+    <ion-modal-view class="about-modal">
+        <ion-content scroll="false">
+            <span ng-click="closeModal()" class="typcn typcn-times-outline"></span>
+            <div ng-if="modalcontent == 'fly'">
+                <h2>Fly Thru</h2>
+                <p><br />Our plans for the Centurion Club were to create an exceptional, private golf club beyond members dreams. Anything this good, will create its own reputation. This FlyThru aims to share the spirit and emotion of the Course and Clubhouse.</p>
+                <iframe class="about-graphic" src="{{video1| trustAsResourceUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+
+            <div id="video" ng-if="modalcontent == 'video'">
+                <iframe src="{{video2| trustAsResourceUrl}}" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+
+            <div id="location-overlay" ng-if="modalcontent == 'location'">
+                <h2>Location</h2>
+                <div id="location" map-lazy-load="https://maps.google.com/maps/api/js">
+                    <ng-map center="51.741901, -0.407283" zoom="13">
+                        <custom-marker  position="51.741901, -0.407283">
+
+                            <img ng-src="img/arrow.png" />
+
+                        </custom-marker>
+                    </ng-map>
+                </div>
+                <a ng-click="launchMap()" class="btn btn-block btn-positive">Open in Maps</a>
+            </div>
+        </ion-content>
+    </ion-modal-view>
+</div>

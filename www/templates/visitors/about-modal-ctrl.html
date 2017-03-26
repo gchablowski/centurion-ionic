@@ -2,7 +2,7 @@
     <ion-modal-view class="about-modal">
         <ion-content scroll="false">
             <span ng-click="closeModal()" class="typcn typcn-times-outline"></span>
-            <div ng-if="modalcontent == 'fly'">
+            <div id="fly" ng-if="modalcontent == 'fly'">
                 <h2>Fly Thru</h2>
                 <p><br />Our plans for the Centurion Club were to create an exceptional, private golf club beyond members dreams. Anything this good, will create its own reputation. This FlyThru aims to share the spirit and emotion of the Course and Clubhouse.</p>
                 <iframe class="about-graphic" src="{{video1| trustAsResourceUrl}}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>

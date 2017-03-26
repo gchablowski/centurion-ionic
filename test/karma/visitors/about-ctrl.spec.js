@@ -2,7 +2,7 @@
 describe('module: visitors, controller: AboutCtrl', function () {
 
     // instantiate controller
-    var AboutCtrl, datasetsMock, scope;
+    var AboutCtrl, datasetsMock, scope, $q, deferred;
 
     // load the controller's module
     beforeEach(module('visitors'));
@@ -10,15 +10,19 @@ describe('module: visitors, controller: AboutCtrl', function () {
     beforeEach(module('ngHtml2Js'));
 
     // define a mock of service called
-    beforeEach(function () {
+    beforeEach(inject(function ( $ionicModal, _$q_) {
 
         datasetsMock = {
             gallery: {data: 1},
             video1: {data: 2},
             video2: {data: 3}
         };
+        
+        $q = _$q_;
+        deferred = _$q_.defer();
+        spyOn($ionicModal, 'fromTemplateUrl').and.returnValue(deferred.promise);
 
-    });
+    }));
 
     // instantiate controller
     beforeEach(inject(function ($controller, $rootScope) {
@@ -50,5 +54,43 @@ describe('module: visitors, controller: AboutCtrl', function () {
         expect( $window.open ).toHaveBeenCalledWith( 'maps:q=51.741901,-0.407283', '_system' );
     } ) );
     
+     it('should call $ionicModal.fromTemplateUrl();', inject(function ($ionicModal) {
+        expect($ionicModal.fromTemplateUrl).toHaveBeenCalledWith("templates/visitors/about-modal-ctrl.html", {
+            scope: scope,
+            animation: 'zoom-in'
+        });
+    }));
+
+    it('should call $ionicModal.fromTemplateUrl(); and then set $scope.modal = modal', inject(function ($ionicModal) {
+        var modal = {};
+        deferred.resolve(modal);
+
+        scope.$apply();
+
+        expect(scope.modal).toBe(modal);
+    }));
+
+    it('should define a $scope.closeModal method that hide the modal', inject(function ($ionicModal) {
+        //to create the modal
+        var modal = {hide: function () {}};
+        deferred.resolve(modal);
+        scope.$apply();
+
+        spyOn(scope.modal, "hide").and.returnValue(deferred.promise);
+        scope.closeModal();
+        expect(scope.modal.hide).toHaveBeenCalled();
+    }));
+
+    it('should define a $scope.openModal() method that show the modal', inject(function ($ionicModal) {
+        //to create the modal
+        var modal = {show: function () {}};
+        deferred.resolve(modal);
+        scope.$apply();
+
+        spyOn(scope.modal, "show").and.returnValue(deferred.promise);
+        scope.openModal();
+        expect(scope.modal.show).toHaveBeenCalled();
+    }));
+
 });
 

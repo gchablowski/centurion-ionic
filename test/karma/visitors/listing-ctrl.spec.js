@@ -20,6 +20,8 @@ describe('module: visitors, controller: ListingCtrl', function () {
             datasetsMock = {memberships: {data: 3}};
         } else if (spy == 3) {
             datasetsMock = {contacts: {data: 4}};
+        } else if (spy == 4) {
+            datasetsMock = {content: {data: 5}};
         }
         spy++;
     });
@@ -48,6 +50,10 @@ describe('module: visitors, controller: ListingCtrl', function () {
 
     it('should call the datasets service and populate $scope.listing with dataset.contacts if it exist', function () {
         expect(scope.listing).toEqual({data: 4});
+    });
+    
+    it('should call the datasets service and populate $scope.listing with dataset.content if it exist', function () {
+        expect(scope.listing).toEqual({data: 5});
     });
 });
 

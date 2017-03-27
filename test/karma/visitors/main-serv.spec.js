@@ -63,7 +63,7 @@ describe('module: visitors, service: MainServ', function () {
         expect(result.data).toEqual(1);
     });
 
-    it('should send a request to get the gallery', function () {
+    it('should send a request to GET the gallery', function () {
 
         $httpBackend.when('GET', 'https://centurion.back9solutions.com/visitors/gallery').respond(200, {data: 1});
         var result = MainServ.gallery();
@@ -72,7 +72,7 @@ describe('module: visitors, service: MainServ', function () {
         expect(result.data).toEqual(1);
     });
 
-    it('should send a request POST to send the contacts', function () {
+    it('should send a request GET to get the contacts', function () {
 
         $httpBackend.when('GET', 'https://centurion.back9solutions.com/visitors/contacts').respond(200, {data: 1});
         var result = MainServ.contacts();
@@ -81,7 +81,7 @@ describe('module: visitors, service: MainServ', function () {
         expect(result.data).toEqual(1);
     });
 
-    it('should send a request POST to send the contact', function () {
+    it('should send a request GET to get the contact', function () {
 
         $httpBackend.when('GET', 'https://centurion.back9solutions.com/visitors/contact/1').respond(200, {data: 1});
         var result = MainServ.contact({id: 1});
@@ -95,6 +95,15 @@ describe('module: visitors, service: MainServ', function () {
         $httpBackend.when('POST', 'https://centurion.back9solutions.com/visitors/contact/1').respond(200, {data: 1});
         var result = MainServ.contactPost({id: 1});
         $httpBackend.expectPOST('https://centurion.back9solutions.com/visitors/contact/1');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
+    
+    it('should send a request POST to send the page', function () {
+
+        $httpBackend.when('GET', 'https://centurion.back9solutions.com/visitors/page/9').respond(200, {data: 1});
+        var result = MainServ.page({id: 9});
+        $httpBackend.expectGET('https://centurion.back9solutions.com/visitors/page/9');
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });

@@ -2,6 +2,14 @@
 
 describe('login page', function () {
 
+    afterAll(function () {
+        browser.get('/#/account');
+
+        element(protractor.By.id('logout')).click().then(function () {
+            browser.sleep(2000);
+        });
+    });
+
     beforeEach(function () {
         browser.get('/#/login');
     });
@@ -102,5 +110,6 @@ describe('login page', function () {
         });
 
     });
+
 
 });

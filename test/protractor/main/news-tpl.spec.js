@@ -26,27 +26,25 @@ describe('news list page', function () {
     });
 
     beforeEach(function () {
-        browser.get('/#/menu/news-item/20');
+        browser.get('/#/menu/news');
     });
 
     it('Should have a title', function () {
-        expect(browser.getTitle()).toEqual('7:04PM 30 Mar');
+        expect(browser.getTitle()).toEqual('News');
     });
 
-    it('should get a title', function () {
-        var elements = element(protractor.By.css('.news-title'));
-
-        expect(elements.getText()).toEqual("Introducing Oli");
-
+    it('Should get a list of elements', function () {
+        var elements = element.all(protractor.By.css('.news-headline'));
+        expect(elements.count()).toEqual(20);
+        expect(elements.get(0).getText()).toContain('Introducing Oli');
     });
 
-    it('should get a text', function () {
-        var elements = element.all(protractor.By.css('.news-info'));
+    it('should allow me to go to the menu item page when I click on a elment', function () {
+        var elements = element.all(protractor.By.css('.news-headline')).first();
 
-        elements.then(function (text) {
-            expect(text.length).toBeGreaterThan(0);
-        })
+        elements.click();
 
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/news-item/20");
     });
 
 });

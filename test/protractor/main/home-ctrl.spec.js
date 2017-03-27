@@ -4,7 +4,31 @@ describe('home page', function () {
 
     beforeAll(function () {
         browser.get('/#/login');
+        var email = element(protractor.By.model('loginData.email'));
+        var password = element(protractor.By.model('loginData.password'));
+
+        email.sendKeys('matt@back9solutions.com');
+        password.sendKeys('centurion');
+
+        var form = element(protractor.By.css('.login-form'));
+
+        form.submit().then(function () {
+            browser.sleep(2000);
+        });
     });
+    
+    afterAll(function () {
+        browser.get('/#/account');
+
+        element(protractor.By.id('logout')).click().then(function () {
+            browser.sleep(2000);
+        });
+    });
+
+    beforeEach(function () {
+        browser.get('/#/');
+    });
+
 
     it('Should have a title', function () {
         expect(browser.getTitle()).toEqual('Home');
@@ -15,7 +39,7 @@ describe('home page', function () {
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/news");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/news");
     });
 
     it('should allow me to go to the account page when I click on account link', function () {
@@ -41,7 +65,7 @@ describe('home page', function () {
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/reciprocals");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/reciprocals");
     });
 
     it('should allow me to go to the contact page when I click on contact link', function () {
@@ -53,7 +77,7 @@ describe('home page', function () {
 
         contact.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/contact");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/contact");
 
     });
 

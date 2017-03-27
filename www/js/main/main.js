@@ -10,6 +10,7 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
 
             $stateProvider
                     .state('home', {
+                        cache: false,
                         url: '/',
                         templateUrl: 'templates/main/home-ctrl.html',
                         controller: 'HomeCtrl as ctrl',
@@ -39,6 +40,7 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                         authenticate: true
                     })
                     .state('menu.newsItem', {
+                        cache: false,
                         url: '/news-item/:id',
                         views: {
                             "content": {
@@ -55,12 +57,14 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                         authenticate: true
                     })
                     .state('account', {
+                        cache: false,
                         url: '/account',
                         templateUrl: 'templates/main/account-ctrl.html',
                         controller: 'AccountCtrl as ctrl',
                         authenticate: true
                     })
                     .state('login', {
+                        cache: false,
                         url: '/login',
                         templateUrl: 'templates/main/login-ctrl.html',
                         controller: 'LoginCtrl as ctrl'

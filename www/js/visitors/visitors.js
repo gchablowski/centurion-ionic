@@ -6,6 +6,7 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStora
             $stateProvider
 
                     .state('visitors', {
+                        cache: false,
                         url: '/visitors',
                         templateUrl: 'templates/visitors/home-tpl.html',
                         controller: 'ListingCtrl as ctrl',

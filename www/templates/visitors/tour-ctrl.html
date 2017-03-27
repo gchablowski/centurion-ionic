@@ -20,10 +20,10 @@
                 <span id="message-require" ng-show="form.message.$error.required && form.message.$touched">A message is required.</span>
                 <textarea name="message" ng-model="formData.message" required></textarea>
                 <input id="terms" type="checkbox" class="terms" ng-model="formData.terms">
-                <label class="terms-label" for="terms">Accept <a href="#/terms">Terms and Conditions</a></label>
+                <label class="terms-label" for="terms">Accept </label>
+                <a href="#/menu/terms">Terms and Conditions</a>
                 <button id="submit" type="submit" class="btn btn-block btn-positive">Send</button>
             </form>
         </div>
-
     </ion-content>
 </ion-view>

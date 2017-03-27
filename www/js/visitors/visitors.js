@@ -157,6 +157,25 @@ angular.module('visitors', ['ionic', 'ngResource', 'ksSwiper', 'ngMap', 'ngStora
                                     return MainServ.contact({id: $stateParams.id}).$promise;
                                 }]
                         }
+                    })
+                    .state('menu.terms', {
+                        cache: false,
+                        url: '/terms',
+                        data: {
+                            buttonHome: false
+                        },
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/visitors/terms-tpl.html',
+                                controller: 'ListingCtrl as ctrl',
+                            }
+                        },
+                        resolve: {
+                            MainServ: 'MainServ',
+                            datasets: ['MainServ', '$stateParams', function (MainServ) {
+                                    return MainServ.page({id: 9}).$promise;
+                                }]
+                        }
                     });
             // if none of the above states are matched, use this as the fallback
             $urlRouterProvider.otherwise('/login');

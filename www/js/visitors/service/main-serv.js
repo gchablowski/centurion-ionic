@@ -11,6 +11,7 @@ angular.module('visitors')
                     gallery: {method: 'GET', params: {action: 'gallery'}, isArray: false},
                     contacts: {method: 'GET', params: {action: 'contacts'}, isArray: false},
                     contact: {method: 'GET', params: {action: 'contact'}, isArray: false},
-                    contactPost: {method: 'POST', params: {action: 'contact'}}
+                    contactPost: {method: 'POST', params: {action: 'contact'}},
+                    page: {method: 'GET', params: {action: 'page'}}
                 });
             }]);

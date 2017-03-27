@@ -1,6 +1,6 @@
 'use strict';
 
-describe('module: main, filter: messageDateFormat', function () {
+describe('module: main, filter: dateFormat', function () {
 
   // load the filter's module
   beforeEach(module('main'));
@@ -10,12 +10,12 @@ describe('module: main, filter: messageDateFormat', function () {
   // initialize a new instance of the filter before each test
   var $filter;
   beforeEach(inject(function (_$filter_) {
-    $filter = _$filter_('messageDateFormat');
+    $filter = _$filter_('dateFormat');
   }));
 
-  it('should return a date formated <br/>:"', function () {
+  it('should return a date formated"', function () {
     var date = '2015-03-08 15:17:27';
-    expect($filter(date)).toBe('3:17PM 8 Mar');
+    expect($filter(date, "h:mma d MMM")).toBe('3:17PM 8 Mar');
   });
 
 });

@@ -45,11 +45,20 @@ describe('module: main, service: UserServ', function () {
         expect(result.data).toEqual(1);
     });
     
-    it('should send a request to get the posts', function () {
+    it('should send a request to get the post', function () {
 
         $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/post/1').respond(200, {data: 1});
         var result = UserServ.post({id: 1});
         $httpBackend.expectGET('https://centurion.back9solutions.com/app/post/1');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
+    
+        it('should send a request to get the events', function () {
+
+        $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/events').respond(200, {data: 1});
+        var result = UserServ.events();
+        $httpBackend.expectGET('https://centurion.back9solutions.com/app/events');
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });

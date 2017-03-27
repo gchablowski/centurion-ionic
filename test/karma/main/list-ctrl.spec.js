@@ -1,8 +1,8 @@
 'use strict';
-describe('module: main, controller: NewsCtrl', function () {
+describe('module: main, controller: ListCtrl', function () {
 
     // instantiate controller
-    var NewsCtrl, datasetsMock, scope, spy;
+    var ListCtrl, datasetsMock, scope, spy;
 
     // load the controller's module
     beforeEach(module('main'));
@@ -16,9 +16,13 @@ describe('module: main, controller: NewsCtrl', function () {
             datasetsMock = {
                 posts: 1
             };
-        } else {
+        } else if (spy == 1)  {
             datasetsMock = {
                 post: 2
+            };
+        }else if (spy == 2)  {
+            datasetsMock = {
+                events: 3
             };
         }
         spy++;
@@ -28,7 +32,7 @@ describe('module: main, controller: NewsCtrl', function () {
     beforeEach(inject(function ($controller, $rootScope) {
 
         scope = $rootScope.$new();
-        NewsCtrl = $controller('NewsCtrl', {
+        ListCtrl = $controller('ListCtrl', {
             $scope: scope,
             datasets: datasetsMock
         });
@@ -40,6 +44,10 @@ describe('module: main, controller: NewsCtrl', function () {
 
     it('should call the datasets service and populate $scope.posts with dataset.posts if it exist', function () {
         expect(scope.posts).toEqual(2);
+    });
+    
+    it('should call the datasets service and populate $scope.posts with dataset.events if it exist', function () {
+        expect(scope.posts).toEqual(3);
     });
 
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('news item page', function () {
+describe('events list page', function () {
 
     beforeAll(function () {
         browser.get('/#/login');
@@ -26,27 +26,26 @@ describe('news item page', function () {
     });
 
     beforeEach(function () {
-        browser.get('/#/menu/news-item/20');
+        browser.get('/#/menu/events');
     });
 
     it('Should have a title', function () {
-        expect(browser.getTitle()).toEqual('7:04PM 30 Mar');
+        expect(browser.getTitle()).toEqual('Events');
     });
 
-    it('should get a title', function () {
-        var elements = element(protractor.By.css('.news-title'));
-
-        expect(elements.getText()).toEqual("Introducing Oli");
-
+    it('Should get a list of elements', function () {
+        var elements = element.all(protractor.By.css('.card'));
+        expect(elements.count()).toEqual(20);
+        expect(elements.get(0).getText()).toContain('Lorem ipsum');
     });
 
-    it('should get a text', function () {
-        var elements = element.all(protractor.By.css('.news-info'));
+/*
+    it('should allow me to go to the menu item page when I click on a elment', function () {
+        var elements = element.all(protractor.By.css('.card')).first();
 
-        elements.then(function (text) {
-            expect(text.length).toBeGreaterThan(0);
-        })
+        elements.click();
 
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/events-item/20");
     });
-
+     */
 });

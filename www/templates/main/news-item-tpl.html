@@ -1,11 +1,10 @@
-<ion-view view-title="{{posts.created_at| messageDateFormat}}">
-    <div headermenu title="posts.created_at| messageDateFormat" home="'home'"></div>
+<ion-view view-title="{{posts.created_at| dateFormat:'yyyy-MM-dd'}}">
     <ion-content class="has-header page-has-header">
 
         <div class="content">
             <div class="news-headline">
                 <p class="news-title">{{posts.title}}</p>
-                <img src="img/logo.png"><p class="news-time">{{posts.created_at| messageDateFormat}}</p>
+                <img src="img/logo.png"><p class="news-time">{{posts.created_at| dateFormat:'yyyy-MM-dd'}}</p>
             </div>
 
             <div class="news-info">

@@ -28,7 +28,7 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                         views: {
                             "content": {
                                 templateUrl: 'templates/main/news-tpl.html',
-                                controller: 'NewsCtrl as ctrl'
+                                controller: 'ListCtrl as ctrl'
                             }
                         },
                         resolve: {
@@ -45,13 +45,30 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                         views: {
                             "content": {
                                 templateUrl: 'templates/main/news-item-tpl.html',
-                                controller: 'NewsCtrl as ctrl'
+                                controller: 'ListCtrl as ctrl'
                             }
                         },
                         resolve: {
                             UserServ: 'UserServ',
                             datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
                                     return UserServ.post({id: $stateParams.id}).$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
+                    .state('menu.events', {
+                        cache: false,
+                        url: '/events',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/events-tpl.html',
+                                controller: 'ListCtrl as ctrl'
+                            }
+                        },
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
+                                    return UserServ.events().$promise;
                                 }]
                         },
                         authenticate: true
@@ -73,8 +90,8 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
             $urlRouterProvider.otherwise('/login');
         })
         .run(function ($rootScope, $state, $localStorage) {
-           $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
-               
+            $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+
                 if (toState.authenticate && !$localStorage.token) {
                     // User isn’t authenticated
                     $state.transitionTo("login");

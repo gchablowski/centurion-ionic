@@ -1,0 +1,24 @@
+<ion-view view-title="Events">
+    <ion-content class="has-header page-has-header">
+
+        <div collection-repeat="event in posts| orderBy: 'date': reverse"
+             item-width="100%" 
+             item-height="80px"
+             ui-sref="menu.eventItem({ id: event.id })"
+             >
+            <div class="card">
+                <div class="icon">
+                    <p>{{event.date + ' ' + event.time| dateFormat:'d'}}</p>
+                    <p class="month">{{event.date + ' ' + event.time| dateFormat:'MMM'}}</p>
+                </div>
+                <p class="card-text" style="padding-left: 8px">{{event.title}}</p>
+                <div ng-if="event.image" class="card-info"  style="background: url({{event.image}}) no-repeat center center; background-size: cover">
+                    <span ng-if="event.registrations[0].status == 'New'" class="typcn typcn-tick-outline status"></span>
+                </div>
+                <div ng-if="!event.image" class="card-info"  style="background: url({{event.listing.avatar}}) no-repeat center center; background-size: cover">
+                    <span ng-if="event.registrations[0].status == 'New'" class="typcn typcn-tick-outline status"></span>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

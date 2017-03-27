@@ -1,5 +1,4 @@
 <ion-view view-title="News">
-    <div headermenu title="'News'" home="'home'"></div>
     <ion-content class="has-header page-has-header">
         <div collection-repeat="post in posts|  orderBy: '-created_at'"
              item-width="100%" 
@@ -9,7 +8,7 @@
             <div class="news-headline">
                 <p class="news-title">{{post.title}}</p>
                 <img src="img/logo.png">
-                <p class="news-time">{{post.created_at| messageDateFormat}}</p>
+                <p class="news-time">{{post.created_at| dateFormat:'yyyy-MM-dd'}}</p>
             </div>
         </div>
 

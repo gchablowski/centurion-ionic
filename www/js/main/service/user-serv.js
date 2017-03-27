@@ -7,6 +7,7 @@ angular.module('main')
                     load: {method: 'GET', params: {action: 'load'}, isArray: false},
                     posts: {method: 'GET', params: {action: 'posts'}, isArray: false},
                     post: {method: 'GET', params: {action: 'post'}, isArray: false},
-                    logout: {method: 'POST', params: {action: 'logout'}, isArray: false}
+                    logout: {method: 'POST', params: {action: 'logout'}, isArray: false},
+                    events: {method: 'GET', params: {action: 'events'}, isArray: false}
                 });
             }]);

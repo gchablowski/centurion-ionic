@@ -34,12 +34,20 @@ describe('home page', function () {
         expect(browser.getTitle()).toEqual('Home');
     });
 
-    it('should allow me to go to the reciprocals page when I click on reciprocals link', function () {
+    it('should allow me to go to the news page when I click on news link', function () {
         var elements = element.all(protractor.By.css('#news'));
 
         elements.click();
 
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/news");
+    });
+    
+    it('should allow me to go to the events page when I click on events link', function () {
+        var elements = element.all(protractor.By.css('#events'));
+
+        elements.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/events");
     });
 
     it('should allow me to go to the account page when I click on account link', function () {

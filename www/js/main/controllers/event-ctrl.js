@@ -1,10 +1,11 @@
 'use strict';
 angular.module('main')
-        .controller('EventCtrl', ["$scope", "datasets", "UserServ", "$ionicPopup", "$state", "$stateParams", "$cordovaSocialSharing", function ($scope, datasets, UserServ, $ionicPopup, $state, $stateParams, $cordovaSocialSharing) {
+        .controller('EventCtrl', ["$scope", "datasets", "UserServ", "$ionicPopup", "$state", "$stateParams", "$cordovaSocialSharing", "$filter", function ($scope, datasets, UserServ, $ionicPopup, $state, $stateParams, $cordovaSocialSharing, $filter) {
 
                 var $this = this;
                 var id = $stateParams.id;
                 $scope.event = datasets.event;
+                
                 $this.success = function () {
                     $state.go("menu.events");
                 }

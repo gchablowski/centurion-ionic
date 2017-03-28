@@ -39,13 +39,13 @@ describe('events list page', function () {
         expect(elements.get(0).getText()).toContain('Lorem ipsum');
     });
 
-/*
+
     it('should allow me to go to the menu item page when I click on a elment', function () {
         var elements = element.all(protractor.By.css('.card')).first();
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/events-item/20");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/event/18");
     });
-     */
+    
 });

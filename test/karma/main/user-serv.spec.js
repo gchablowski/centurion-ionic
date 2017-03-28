@@ -36,7 +36,7 @@ describe('module: main, service: UserServ', function () {
         expect(result.data).toEqual(1);
     });
 
-    it('should send a request to get the posts', function () {
+    it('should send a request to GET the posts', function () {
 
         $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/posts').respond(200, {data: 1});
         var result = UserServ.posts();
@@ -44,8 +44,8 @@ describe('module: main, service: UserServ', function () {
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
-    
-    it('should send a request to get the post', function () {
+
+    it('should send a request to GET the post', function () {
 
         $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/post/1').respond(200, {data: 1});
         var result = UserServ.post({id: 1});
@@ -53,12 +53,48 @@ describe('module: main, service: UserServ', function () {
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
-    
-        it('should send a request to get the events', function () {
+
+    it('should send a request to POST the logout', function () {
+
+        $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/logout').respond(200, {data: 1});
+        var result = UserServ.logout();
+        $httpBackend.expectPOST('https://centurion.back9solutions.com/app/logout');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
+
+    it('should send a request toGET the events', function () {
 
         $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/events').respond(200, {data: 1});
         var result = UserServ.events();
         $httpBackend.expectGET('https://centurion.back9solutions.com/app/events');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
+
+    it('should send a request to get the event', function () {
+
+        $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/event/1').respond(200, {data: 1});
+        var result = UserServ.event({id: 1});
+        $httpBackend.expectGET('https://centurion.back9solutions.com/app/event/1');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
+
+    it('should send a request to POST the registration', function () {
+
+        $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/registration/1').respond(200, {data: 1});
+        var result = UserServ.registration({id:1});
+        $httpBackend.expectPOST('https://centurion.back9solutions.com/app/registration/1');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
+    
+        it('should send a request to POST to cancel the registration', function () {
+
+        $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/cancel-registration/1').respond(200, {data: 1});
+        var result = UserServ.cancelRegistration({id:1});
+        $httpBackend.expectPOST('https://centurion.back9solutions.com/app/cancel-registration/1');
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });

@@ -78,7 +78,7 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         url: '/event/:id',
                         views: {
                             "content": {
-                                templateUrl: 'templates/main/event-tpl.html',
+                                templateUrl: 'templates/main/event-ctrl.html',
                                 controller: 'EventCtrl as ctrl'
                             }
                         },

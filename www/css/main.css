@@ -58,6 +58,7 @@ h2 {
     font-variant: small-caps;
     letter-spacing: 1px;
     text-align: center;
+    color: #fff;
 }
 
 h3 {
@@ -729,16 +730,26 @@ header.bar.bar-header h2.title {
 
 .popup-body{
     text-align: center;
-    padding: 15px;
+    padding: 8px;
     color: #eee;
     line-height: 1.5em;
 }
+
+.popup-buttons .button-default {
+    color: #fff;
+    text-align: center;	
+    padding: 5px 40px;
+    margin: 0px 4px 0;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 30px;
+    background: transparent;
+}
+
 
 .blur-content {
     -webkit-filter: blur(4.5px);
     filter: blur(4.5px);
 }
-
 
 .message-close {
     position: absolute;
@@ -750,17 +761,6 @@ header.bar.bar-header h2.title {
 
 .yes-no {
     text-align: center;
-}
-
-.yes-no p {
-    display: inline-block;
-    float: center;
-    color: #fff;
-    text-align: center;	
-    padding: 5px 40px;
-    margin: -5px 4px 0;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 30px;
 }
 
 .yes-no p:hover,

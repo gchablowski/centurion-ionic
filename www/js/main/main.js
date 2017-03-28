@@ -1,5 +1,5 @@
 'use strict';
-angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
+angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordova'])
 
         .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
@@ -67,8 +67,25 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper'])
                         },
                         resolve: {
                             UserServ: 'UserServ',
-                            datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
+                            datasets: ['UserServ', '$stateParams', function (UserServ) {
                                     return UserServ.events().$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
+                    .state('menu.eventsItem', {
+                        cache: false,
+                        url: '/event/:id',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/event-tpl.html',
+                                controller: 'EventCtrl as ctrl'
+                            }
+                        },
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
+                                    return UserServ.event({id: $stateParams.id}).$promise;
                                 }]
                         },
                         authenticate: true

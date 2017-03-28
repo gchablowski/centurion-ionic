@@ -8,6 +8,9 @@ angular.module('main')
                     posts: {method: 'GET', params: {action: 'posts'}, isArray: false},
                     post: {method: 'GET', params: {action: 'post'}, isArray: false},
                     logout: {method: 'POST', params: {action: 'logout'}, isArray: false},
-                    events: {method: 'GET', params: {action: 'events'}, isArray: false}
+                    events: {method: 'GET', params: {action: 'events'}, isArray: false},
+                    event: {method: 'GET', params: {action: 'event'}, isArray: false},
+                    registration: {method: 'POST', params: {action: 'registration'}, isArray: false},
+                    cancelRegistration: {method: 'POST', params: {action: 'cancel-registration'}, isArray: false}
                 });
             }]);

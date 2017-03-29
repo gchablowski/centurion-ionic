@@ -20,7 +20,7 @@ angular.module('main')
                         title: title,
                         template: template
                     });
-                    
+
                 };
 
                 $this.success = function (data) {
@@ -45,11 +45,13 @@ angular.module('main')
                 //redirect user if he is already logged
                 if ($localStorage.token) {
                     $this.redirect($localStorage.user);
+                    return false;
                 }
 
                 //process login form submit
                 $scope.processLogin = function () {
-
+                    $localStorage.$reset({});
                     LoginServ.login({}, $scope.loginData, $this.success, $this.error);
                 };
+
             }]);

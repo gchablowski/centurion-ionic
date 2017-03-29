@@ -6,7 +6,7 @@ angular.module("main")
                         config.data = config.data || {};
 
                         if ($localStorage.token) {
-                            config.headers = {"X-Auth-Token": "" + $localStorage.token + ""};
+                            config.headers["X-Auth-Token"] = $localStorage.token ;
                         }
 
                         return config || $q.when(config);

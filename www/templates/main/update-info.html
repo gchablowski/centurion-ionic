@@ -3,7 +3,7 @@
 
         <div class="content password-wrapper">
 
-            <form name="form" ng-submit="processUpdate()">
+            <form id="update-info" name="form" ng-submit="processUpdate()">
                 <div class="center">
                     <span id="name-valid" ng-show="form.name.$error.minlength && form.name.$touched">The name should be at least of 2 letters.</span>
                     <span id="name-require" ng-show="form.name.$error.required && form.name.$touched">A name is required.</span>

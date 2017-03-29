@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-        .controller('UpdateInfoCtrl', ["$scope", "$localStorage", "UserServ", "$ionicPopup", "$state", function ($scope, $localStorage, UserServ, $ionicPopup, $state) {
+        .controller('UpdateInfoCtrl', ["$scope", "$localStorage", "UserServ", "$ionicPopup", "$state", "$httpParamSerializer", function ($scope, $localStorage, UserServ, $ionicPopup, $state) {
 
                 var $this = this;
                 $scope.updateData = $localStorage.user;
@@ -13,13 +13,13 @@ angular.module('main')
                         });
                         return false;
                     }
-                    
+
                     $localStorage.user = data.user;
                     $state.go('account');
                 };
 
                 $scope.processUpdate = function () {
-                    UserServ.registration({}, $scope.updateData, $this.success);
+                    UserServ.updateInfo({}, $scope.updateData, $this.success);
                 };
 
             }]);

@@ -12,6 +12,6 @@ angular.module('main')
                     event: {method: 'GET', params: {action: 'event'}, isArray: false},
                     registration: {method: 'POST', params: {action: 'registration'}, isArray: false},
                     cancelRegistration: {method: 'POST', params: {action: 'cancel-registration'}, isArray: false},
-                    update: {method: 'POST', params: {action: 'update'}, isArray: false}
+                    updateInfo: {method: 'POST', params: {action: 'update'}, headers: {'Content-Type': 'application/json'}, isArray: false}
                 });
             }]);

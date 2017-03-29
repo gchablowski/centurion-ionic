@@ -12,7 +12,12 @@ describe('module: main, controller: LoginCtrl', function () {
     // define a mock of service called
     beforeEach(inject(function ($state, $ionicPopup) {
 
-        $localStorageMock = {token: 0, user: 0};
+        $localStorageMock = {
+            token: 0, 
+            user: 0,
+            $reset: function () {
+                return true;
+            }};
 
         LoginServMock = {
             login: function () {
@@ -24,7 +29,8 @@ describe('module: main, controller: LoginCtrl', function () {
         spyOn(LoginServMock, 'login').and.callThrough();
         spyOn($ionicPopup, 'alert').and.callThrough();
         spyOn($state, 'go');
-
+        spyOn($localStorageMock, '$reset').and.callThrough();
+        
     }));
 
     // instantiate controller
@@ -45,6 +51,12 @@ describe('module: main, controller: LoginCtrl', function () {
     it('should define a $scope.appMessage', function () {
         expect(scope.appMessage).toEqual({});
     });
+    
+    it('should define a scope.processLogin function that call $localStorage.$reset before submiting the login form', function () {
+        scope.loginData = {data: 1};
+        scope.processLogin();
+        expect($localStorageMock.$reset).toHaveBeenCalledWith({});
+    });
 
     it('should define a scope.processLogin function that call LoginServ.login for submit the login form', function () {
         scope.loginData = {data: 1};
@@ -63,7 +75,7 @@ describe('module: main, controller: LoginCtrl', function () {
         LoginCtrl.success(data);
         expect(LoginCtrl.showAlert).toHaveBeenCalledWith('Invalid Details', 'error');
     });
-   
+
 
     it('should define a this.success function that call localStorage and store the user data', function () {
         var data = {token: "1", 'user': '2', stats: '3'};

@@ -61,6 +61,16 @@ describe('event page', function () {
             expect(tick.first().isDisplayed()).toBeTruthy();
         });
     });
+    
+    it('Should have an slider on home page when we suign up for an events events', function () {
+        browser.get('/#/');
+        
+        browser.sleep(4000);
+
+        var pagination = element(protractor.By.css('.swiper-pagination'));
+        
+        expect(pagination.isDisplayed()).toBeTruthy();
+    });
 
     it('Should get an Cancel button to cancel the registration the events', function () {
         var button = element(protractor.By.id('cancel'));

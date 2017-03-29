@@ -33,9 +33,9 @@ describe('module: main, service: AuthInterceptorServ', function () {
 
 
     it('should have a handler for request that return config if $localStorage.token is defined', inject(function (AuthInterceptorServ) {
-        var data = AuthInterceptorServ.request({});
+        var data = AuthInterceptorServ.request({headers:{}});
 
-        expect(data).toEqual({data: {}, headers: {'X-Auth-Token': '1'}});
+        expect(data).toEqual({ headers: {"X-Auth-Token": 1}, data: {} });
     }));
 
 

@@ -84,17 +84,26 @@ describe('module: main, service: UserServ', function () {
     it('should send a request to POST the registration', function () {
 
         $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/registration/1').respond(200, {data: 1});
-        var result = UserServ.registration({id:1});
+        var result = UserServ.registration({id: 1});
         $httpBackend.expectPOST('https://centurion.back9solutions.com/app/registration/1');
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
-    
-        it('should send a request to POST to cancel the registration', function () {
+
+    it('should send a request to POST to cancel the registration', function () {
 
         $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/cancel-registration/1').respond(200, {data: 1});
-        var result = UserServ.cancelRegistration({id:1});
+        var result = UserServ.cancelRegistration({id: 1});
         $httpBackend.expectPOST('https://centurion.back9solutions.com/app/cancel-registration/1');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
+
+    it('should send a request to POST to update info', function () {
+
+        $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/update').respond(200, {data: 1});
+        var result = UserServ.updateInfo();
+        $httpBackend.expectPOST('https://centurion.back9solutions.com/app/update');
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });

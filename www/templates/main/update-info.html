@@ -1,0 +1,27 @@
+<ion-view view-title="Update Info">
+    <ion-content class="has-header page-has-header">
+
+        <div class="content password-wrapper">
+
+            <form name="form" ng-submit="processUpdate()">
+                <div class="center">
+                    <span id="name-valid" ng-show="form.name.$error.minlength && form.name.$touched">The name should be at least of 2 letters.</span>
+                    <span id="name-require" ng-show="form.name.$error.required && form.name.$touched">A name is required.</span>
+                </div>
+                <div class="form-entry update-item">
+                    <input name="name" type="text" ng-model="updateData.name" ng-minlength="2" ng-trim="true" required>
+                </div>
+                <div class="center">
+                    <span id="email-valid" ng-show="form.email.$error.email && form.email.$touched">This email is not valid.</span>
+                    <span id="email-require" ng-show="form.email.$error.required && form.email.$touched">An email is required.</span>
+                </div>
+                <div class="form-entry update-item">
+                    <input name="email" type="email" ng-model="updateData.email" required>
+                </div>
+
+                <button type="submit" class="btn btn-block btn-positive">Update</button>
+
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

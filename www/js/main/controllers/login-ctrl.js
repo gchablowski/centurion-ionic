@@ -20,7 +20,6 @@ angular.module('main')
                         title: title,
                         template: template
                     });
-
                 };
 
                 $this.success = function (data) {

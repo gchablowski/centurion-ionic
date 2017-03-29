@@ -97,6 +97,16 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         controller: 'AccountCtrl as ctrl',
                         authenticate: true
                     })
+                    .state('menu.updateInfo', {
+                        cache: false,
+                        url: '/update',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/update-info.html',
+                                controller: 'UpdateInfoCtrl as ctrl',
+                            }
+                        }
+                    })
                     .state('login', {
                         cache: false,
                         url: '/login',

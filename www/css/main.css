@@ -1049,6 +1049,13 @@ input.terms {
     color: rgba(255,255,255,0.7);
 }
 
+#slider{
+    height: 193px;
+}
+
+.home-top .swiper-container-horizontal>.swiper-pagination {
+    bottom: 0px;
+}
 
 .home-top h2 {
     padding-top: 20px;
@@ -1077,7 +1084,7 @@ input.terms {
 }
 
 .social-banner{
-    margin-top:35px;
+    margin-top:5px;
 }
 
 .social-banner .social-item {

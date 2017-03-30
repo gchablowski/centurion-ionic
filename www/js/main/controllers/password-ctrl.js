@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-        .controller('PasswordCtrl', ["$scope", "$localStorage", "UserServ", "$ionicPopup", "$state", "$httpParamSerializer", function ($scope, $localStorage, UserServ, $ionicPopup, $state) {
+        .controller('PasswordCtrl', ["$scope", "$localStorage", "UserServ", "$ionicPopup", "$state", function ($scope, $localStorage, UserServ, $ionicPopup, $state) {
 
                 var $this = this;
                 $scope.updateData = $localStorage.user;

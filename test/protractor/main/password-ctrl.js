@@ -1,78 +1,182 @@
 'use strict';
-describe('module: main, controller: PasswordCtrl', function () {
 
-    // instantiate controller
-    var PasswordCtrl, $localStorageMock, datasetsMock, scope, UserServMock;
+describe('password page', function () {
 
-    // load the controller's module
-    beforeEach(module('main'));
-    // load all the templates to prevent unexpected $http requests from ui-router
-    beforeEach(module('ngHtml2Js'));
+    beforeAll(function () {
+        browser.get('/#/login');
+        var email = element(protractor.By.model('loginData.email'));
+        var password = element(protractor.By.model('loginData.password'));
 
-    // define a mock of service called
-    beforeEach(inject(function ($state, $ionicPopup) {
-        UserServMock = {password: function () {
-                return true;
-            }};
+        email.sendKeys('bob@bob.com');
+        password.sendKeys('bob');
 
-        $localStorageMock = {user: 1};
+        var form = element(protractor.By.css('.login-form'));
 
-        spyOn($ionicPopup, 'alert').and.callThrough();
-        spyOn($state, 'go');
-        spyOn(UserServMock, 'password').and.callThrough();
-
-    }));
-
-    // instantiate controller
-    beforeEach(inject(function ($controller, $rootScope) {
-
-        scope = $rootScope.$new();
-        PasswordCtrl = $controller('PasswordCtrl', {
-            $scope: scope,
-            datasets: datasetsMock,
-            $localStorage: $localStorageMock,
-            UserServ: UserServMock
+        form.submit().then(function () {
+            browser.sleep(2000);
+            browser.get('/#/menu/update');
         });
-    }));
-
-    it('should define a $scope.updateData', function () {
-        expect(scope.updateData).toEqual(1);
     });
 
-    it('should define a $this.showAlert function that call $ionicPopup for displaying error', inject(function ($ionicPopup) {
-        PasswordCtrl.showAlert("title", "template");
-        expect($ionicPopup.alert).toHaveBeenCalledWith({title: 'title', template: 'template'});
-    }));
+    afterAll(function () {
 
-    it('should define a this.success function that call $this.showAlert if there an error', function () {
-        spyOn(PasswordCtrl, "showAlert").and.callThrough();
-        var data = {error: "error"};
-        PasswordCtrl.success(data);
-        expect(PasswordCtrl.showAlert).toHaveBeenCalledWith('Error', 'error');
+        browser.get('/#/menu/password');
+
+        var old = element.all(protractor.By.name('old'));
+
+        old.sendKeys("bab");
+
+        var new1 = element.all(protractor.By.name('new1'));
+
+        new1.sendKeys("bob");
+
+        var new2 = element.all(protractor.By.name('new2'));
+
+        new2.sendKeys("bob");
+
+        var form = element.all(protractor.By.id('update-password'));
+
+        form.submit().then(function () {
+            element(protractor.By.css('.popup-buttons .button')).click().then(function () {
+                element(protractor.By.id('logout')).click().then(function () {
+                    browser.sleep(2000);
+                });
+            });
+        });
     });
 
-    it('should define a this.success function that call localStorage and store the user data', function () {
-        var data = {'user': '2'};
-        PasswordCtrl.success(data);
-        expect($localStorageMock.user).toEqual(data.user);
+    beforeEach(function () {
+        browser.get('/#/menu/password');
     });
 
-    it('should define a this.success function that call $this.showAlert to show a messagee of validation', inject(function ($state) {
-        spyOn(PasswordCtrl, "showAlert").and.callThrough();
-        var data = {'user': 2};
-        PasswordCtrl.success(data);
-        expect(PasswordCtrl.showAlert).toHaveBeenCalledWith('Password Updated', 'Your password has been updated');
-    }));
+    afterEach(function () {
 
-    it('should define a this.success function that got to profile if the data.user.membership_id is present in the data', inject(function ($state) {
-        var data = {'user': 2};
-        PasswordCtrl.success(data);
-        expect($state.go).toHaveBeenCalledWith('account');
-    }));
+        browser.get('/#/menu/password');
 
-    it('should define a scope.passwordUpdate function that call UserServ.password for submit the update form', function () {
-        scope.updateData = {data: 1};
-        scope.passwordUpdate();
-        expect(UserServMock.password).toHaveBeenCalledWith({}, scope.updateData, jasmine.any(Function));
+        var old = element.all(protractor.By.name('old'));
+
+        old.clear();
+
+        var new1 = element.all(protractor.By.name('new1'));
+
+        new1.clear();
+
+        var new2 = element.all(protractor.By.name('new2'));
+
+        new2.clear();
+
     });
+
+    it('Should have a title', function () {
+        expect(browser.getTitle()).toEqual('Change Password');
+    });
+
+    it("should show me an error message if I don't enter a old password", function () {
+
+        var old = element.all(protractor.By.name('old'));
+
+        old.click();
+
+        var new1 = element.all(protractor.By.name('new1'));
+
+        new1.click();
+
+        var message = element(protractor.By.id('old-require'));
+
+        expect(message.isDisplayed()).toBe(true);
+    });
+
+    it("should show me an error message if the old password and the new one are the same", function () {
+
+        var old = element.all(protractor.By.name('old'));
+
+        old.sendKeys("bab");
+
+        var new1 = element.all(protractor.By.name('new1'));
+
+        new1.sendKeys("bab");
+
+        var message = element(protractor.By.id('old-match'));
+
+        expect(message.isDisplayed()).toBe(true);
+    });
+
+    it("should show me an error message if I don't enter a new password in the New password input", function () {
+
+        var new1 = element.all(protractor.By.name('new1'));
+
+        new1.click();
+
+        var old = element.all(protractor.By.name('old'));
+
+        old.click();
+
+        var message = element(protractor.By.id('new1-require'));
+
+        expect(message.isDisplayed()).toBe(true);
+    });
+
+    it("should show me an error message if I don't enter a confirm password", function () {
+
+        var new2 = element.all(protractor.By.name('new2'));
+
+        new2.click();
+
+        var old = element.all(protractor.By.name('old'));
+
+        old.click();
+
+        var message = element(protractor.By.id('new2-require'));
+
+        expect(message.isDisplayed()).toBe(true);
+    });
+
+    it("should show me an error message if the news password and the confirm passsword doesn't match", function () {
+
+        var new1 = element.all(protractor.By.name('new1'));
+
+        new1.click();
+        new1.sendKeys("bab");
+
+        var new2 = element.all(protractor.By.name('new2'));
+
+        new2.click();
+        new2.sendKeys("blab");
+
+        var old = element.all(protractor.By.name('old'));
+
+        old.click();
+
+        var message = element(protractor.By.id('new2-match'));
+
+        expect(message.isDisplayed()).toBe(true);
+    });
+
+    it("should allow me to change my password", function () {
+
+        var old = element.all(protractor.By.name('old'));
+
+        old.sendKeys("bob");
+
+        var new1 = element.all(protractor.By.name('new1'));
+
+        new1.sendKeys("bab");
+
+        var new2 = element.all(protractor.By.name('new2'));
+
+        new2.sendKeys("bab");
+
+        var form = element.all(protractor.By.id('update-password'));
+
+        form.submit().then(function () {
+            browser.sleep(5000);
+            expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/account");
+
+            var popup = element(protractor.By.css('.popup'));
+
+            expect(popup.isDisplayed()).toBe(true);
+        });
+
+    });
+
 });

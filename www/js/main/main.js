@@ -117,6 +117,16 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                             }
                         }
                     })
+                    .state('menu.photo', {
+                        cache: false,
+                        url: '/photo',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/photo-ctrl.html',
+                                controller: 'PhotoCtrl as ctrl',
+                            }
+                        }
+                    })
                     .state('login', {
                         cache: false,
                         url: '/login',

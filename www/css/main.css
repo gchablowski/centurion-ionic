@@ -559,7 +559,7 @@ header.bar.bar-header h2.title {
     width: 150px;
     margin: auto;
     border-radius: 50%;
-    background: url('../images/user.png') no-repeat center center;
+    background: url('../img/user.png') no-repeat center center;
     background-size: cover;
 }
 
@@ -1186,7 +1186,7 @@ input.terms {
 ==================================*/
 
 .change-photo {
-    padding-top: 90px;
+    padding-top: 10px;
 }
 
 /* Rewards

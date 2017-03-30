@@ -1,0 +1,14 @@
+<ion-view view-title="Change Photo">
+    <ion-content class="has-header page-has-header">
+
+        <div class="content change-photo">
+
+            <img id="avatar_preview" ng-src="{{ user.avatar }}">
+
+            <button ng-click="uploadAvatar()" class="btn btn-block btn-positive">Update photo</button>
+
+            <a ng-click="changeAvatar()" class="btn btn-block btn-positive">Save</a>
+
+        </div>
+    </ion-content>
+</ion-view>

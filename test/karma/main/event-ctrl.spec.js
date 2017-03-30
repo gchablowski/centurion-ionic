@@ -10,7 +10,7 @@ describe('module: main, controller: EventCtrl', function () {
     beforeEach(module('ngHtml2Js'));
 
     // define a mock of service called
-    beforeEach(inject(function ($state, $ionicPopup, $q, $cordovaSocialSharing) {
+    beforeEach(inject(function ($state, $ionicPopup, $q) {
         var deferred = $q.defer();
         deferred.resolve(true);
 

@@ -42,6 +42,15 @@ describe('news list page', function () {
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/password");
 
     });
+    
+     it('should allow me to got update photo page', function () {
+        var button = element(protractor.By.id('updatephoto'));
+
+        button.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/photo");
+
+    });
 
     it('should allow me to logout', function () {
         var logout = element(protractor.By.css('#logout'));

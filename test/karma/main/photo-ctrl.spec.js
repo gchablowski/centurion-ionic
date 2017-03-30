@@ -1,8 +1,14 @@
 'use strict';
-describe('module: main, controller: PasswordCtrl', function () {
+
+//create to test $cordovaCamera call
+var Camera = {
+    DestinationType: {DATA_URL: ""},
+    PictureSourceType: {SAVEDPHOTOALBUM: ""}
+};
+describe('module: main, controller: PhotoCtrl', function () {
 
     // instantiate controller
-    var PasswordCtrl, $localStorageMock, datasetsMock, scope, UserServMock;
+    var PhotoCtrl, $localStorageMock, datasetsMock, scope, UserServMock, $cordovaCameraMock;
 
     // load the controller's module
     beforeEach(module('main'));
@@ -10,16 +16,37 @@ describe('module: main, controller: PasswordCtrl', function () {
     beforeEach(module('ngHtml2Js'));
 
     // define a mock of service called
-    beforeEach(inject(function ($state, $ionicPopup) {
-        UserServMock = {password: function () {
+    beforeEach(inject(function ($state, $ionicPopup, $q) {
+
+
+        UserServMock = {
+            updateInfo: function () {
                 return true;
             }};
 
-        $localStorageMock = {user: 1};
+        spyOn(UserServMock, 'updateInfo').and.callThrough();
+
+        $localStorageMock = {
+            user: {
+                avatar: "",
+                avatar_new: ""
+            }
+        };
+        $cordovaCameraMock = {
+            getPicture: function () {
+                return true;
+            }
+        };
+
+        var deferred = $q.defer();
+        deferred.resolve(true);
+        spyOn($cordovaCameraMock, 'getPicture').and.callFake(function () {
+            return deferred.promise;
+        });
 
         spyOn($ionicPopup, 'alert').and.callThrough();
         spyOn($state, 'go');
-        spyOn(UserServMock, 'password').and.callThrough();
+        spyOn(ionic.Platform, 'ready').and.callThrough();
 
     }));
 
@@ -27,53 +54,66 @@ describe('module: main, controller: PasswordCtrl', function () {
     beforeEach(inject(function ($controller, $rootScope) {
 
         scope = $rootScope.$new();
-        PasswordCtrl = $controller('PasswordCtrl', {
+        PhotoCtrl = $controller('PhotoCtrl', {
             $scope: scope,
             datasets: datasetsMock,
             $localStorage: $localStorageMock,
-            UserServ: UserServMock
+            UserServ: UserServMock,
+            $cordovaCamera: $cordovaCameraMock
         });
     }));
 
-    it('should define a $scope.updateData', function () {
-        expect(scope.updateData).toEqual(1);
+    it('should define a $scope.user', function () {
+        expect(scope.user).toEqual({avatar: '', avatar_new: ''});
     });
 
-    it('should define a $this.showAlert function that call $ionicPopup for displaying error', inject(function ($ionicPopup) {
-        PasswordCtrl.showAlert("title", "template");
-        expect($ionicPopup.alert).toHaveBeenCalledWith({title: 'title', template: 'template'});
-    }));
+    it('should define a this.success function that call $ionicPopup for displaying an error if there an error on the answer of the server', inject(function ($ionicPopup) {
 
-    it('should define a this.success function that call $this.showAlert if there an error', function () {
-        spyOn(PasswordCtrl, "showAlert").and.callThrough();
         var data = {error: "error"};
-        PasswordCtrl.success(data);
-        expect(PasswordCtrl.showAlert).toHaveBeenCalledWith('Error', 'error');
-    });
+        PhotoCtrl.success(data);
+        expect($ionicPopup.alert).toHaveBeenCalledWith({title: 'Error', template: 'error'});
+    }));
 
     it('should define a this.success function that call localStorage and store the user data', function () {
         var data = {'user': '2'};
-        PasswordCtrl.success(data);
+        PhotoCtrl.success(data);
         expect($localStorageMock.user).toEqual(data.user);
     });
 
-    it('should define a this.success function that call $this.showAlert to show a messagee of validation', inject(function ($state) {
-        spyOn(PasswordCtrl, "showAlert").and.callThrough();
-        var data = {'user': 2};
-        PasswordCtrl.success(data);
-        expect(PasswordCtrl.showAlert).toHaveBeenCalledWith('Password Updated', 'Your password has been updated');
-    }));
-
     it('should define a this.success function that got to profile if the data.user.membership_id is present in the data', inject(function ($state) {
         var data = {'user': 2};
-        PasswordCtrl.success(data);
-        expect($state.go).toHaveBeenCalledWith('account');
+        PhotoCtrl.success(data);
+        expect($state.go).toHaveBeenCalledWith('home');
     }));
 
-    it('should define a scope.passwordUpdate function that call UserServ.password for submit the update form', function () {
-        scope.updateData = {data: 1};
-        scope.passwordUpdate();
-        expect(UserServMock.password).toHaveBeenCalledWith({}, scope.updateData, jasmine.any(Function));
+    it('should define a this.changeImage function that populate $scope.user.avatar', function () {
+        var data = 1;
+        PhotoCtrl.changeImage(data);
+        expect(scope.user.avatar).toEqual("data:image/jpeg;base64,1");
     });
+
+    it('should define a this.changeImage function that populate $scope.user.avatar', function () {
+        var data = 1;
+        PhotoCtrl.changeImage(data);
+        expect(scope.user.avatar_new).toEqual("data:image/jpeg;base64,1");
+    });
+
+    it('should define a this.camera function that call $cordovaCamera.getPicture', function () {
+        var data = {'user': '2'};
+        PhotoCtrl.camera();
+        expect($cordovaCameraMock.getPicture).toHaveBeenCalledWith({quality: 50, destinationType: '', sourceType: '', targetWidth: 400, targetHeight: 400});
+    });
+
+    it('should define a $scope.uploadAvatar function that call ionic.Platform.ready', function () {
+        scope.uploadAvatar();
+        expect(ionic.Platform.ready).toHaveBeenCalled();
+    });
+
+    it('should define a $scope.changeAvatar function that call UserServ.updateInfo for submit the image if $scope.user.avatar_new is defined', function () {
+        scope.user.avatar_new = 1;
+        scope.changeAvatar();
+        expect(UserServMock.updateInfo).toHaveBeenCalledWith({}, scope.user, jasmine.any(Function));
+    });
+
 });
 

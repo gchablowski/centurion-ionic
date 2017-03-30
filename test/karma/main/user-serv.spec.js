@@ -107,4 +107,13 @@ describe('module: main, service: UserServ', function () {
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
+
+    it('should send a request to POST to update info', function () {
+
+        $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/password').respond(200, {data: 1});
+        var result = UserServ.password();
+        $httpBackend.expectPOST('https://centurion.back9solutions.com/app/password');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
 });

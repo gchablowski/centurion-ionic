@@ -1,0 +1,31 @@
+'use strict';
+angular.module('main')
+        .controller('PasswordCtrl', ["$scope", "$localStorage", "UserServ", "$ionicPopup", "$state", "$httpParamSerializer", function ($scope, $localStorage, UserServ, $ionicPopup, $state) {
+
+                var $this = this;
+                $scope.updateData = $localStorage.user;
+
+                $this.showAlert = function (title, template) {
+                    $ionicPopup.alert({
+                        title: title,
+                        template: template
+                    });
+                };
+
+                $this.success = function (data) {
+                    if (data.error) {
+                        $this.showAlert('Error', data.error);
+                        return false;
+                    }
+
+                    $localStorage.user = data.user;
+                    $this.showAlert('Password Updated', 'Your password has been updated');
+                    $state.go('account');
+
+                };
+
+                $scope.passwordUpdate = function () {
+                    UserServ.password({}, $scope.updateData, $this.success);
+                };
+
+            }]);

@@ -1,5 +1,5 @@
 'use strict';
-angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordova'])
+angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordova', 'validation.match'])
 
         .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
@@ -102,8 +102,18 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         url: '/update',
                         views: {
                             "content": {
-                                templateUrl: 'templates/main/update-info.html',
+                                templateUrl: 'templates/main/update-info-ctrl.html',
                                 controller: 'UpdateInfoCtrl as ctrl',
+                            }
+                        }
+                    })
+                    .state('menu.password', {
+                        cache: false,
+                        url: '/password',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/password-ctrl.html',
+                                controller: 'PasswordCtrl as ctrl',
                             }
                         }
                     })

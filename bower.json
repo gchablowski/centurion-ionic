@@ -11,6 +11,7 @@
     "ngmap": "^1.18.4",
     "ngstorage": "^0.3.11",
     "angular-sanitize": "1.5.3",
-    "ngCordova": "^0.1.27-alpha"
+    "ngCordova": "^0.1.27-alpha",
+    "angular-validation-match": "^1.9.0"
   }
 }

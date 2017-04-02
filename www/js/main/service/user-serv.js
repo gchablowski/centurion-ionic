@@ -13,6 +13,7 @@ angular.module('main')
                     registration: {method: 'POST', params: {action: 'registration'}, isArray: false},
                     cancelRegistration: {method: 'POST', params: {action: 'cancel-registration'}, isArray: false},
                     updateInfo: {method: 'POST', params: {action: 'update'}, headers: {'Content-Type': 'application/json'}, isArray: false},
-                    password: {method: 'POST', params: {action: 'password'}, headers: {'Content-Type': 'application/json'}, isArray: false}
+                    password: {method: 'POST', params: {action: 'password'}, headers: {'Content-Type': 'application/json'}, isArray: false},
+                    bookings: {method: 'GET', params: {action: 'bookings'}, isArray: false}
                 });
             }]);

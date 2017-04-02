@@ -22,6 +22,23 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         },
                         authenticate: true
                     })
+                    .state('menu.new-booking', {
+                        cache: false,
+                        url: '/new-booking',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/new-booking-tpl.html',
+                                controller: 'BookingsCtrl'
+                            }
+                        },
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', function (UserServ) {
+                                    return UserServ.bookings().$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
                     .state('menu.news', {
                         cache: false,
                         url: '/news',
@@ -105,7 +122,8 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                                 templateUrl: 'templates/main/update-info-ctrl.html',
                                 controller: 'UpdateInfoCtrl as ctrl',
                             }
-                        }
+                        },
+                        authenticate: true
                     })
                     .state('menu.password', {
                         cache: false,
@@ -115,7 +133,8 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                                 templateUrl: 'templates/main/password-ctrl.html',
                                 controller: 'PasswordCtrl as ctrl',
                             }
-                        }
+                        },
+                        authenticate: true
                     })
                     .state('menu.photo', {
                         cache: false,
@@ -125,7 +144,8 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                                 templateUrl: 'templates/main/photo-ctrl.html',
                                 controller: 'PhotoCtrl as ctrl',
                             }
-                        }
+                        },
+                        authenticate: true
                     })
                     .state('login', {
                         cache: false,

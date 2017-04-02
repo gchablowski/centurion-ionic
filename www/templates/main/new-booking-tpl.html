@@ -1,0 +1,16 @@
+<ion-view view-title="New Booking">
+    <ion-content class="has-header page-has-header">
+
+        <div collection-repeat="list in concat"
+             item-width="100%" 
+             item-height="170"
+             ui-sref= "{{list.category_id == 2 ? 'menu.restaurant-booking({id: list.id})' : 'menu.golf-booking({id: list.id})'}}"
+             >
+            <div class="section-image" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{list.avatar}}') no-repeat center center;background-size: cover;">
+                 <span class="typcn typcn-plus-outline add"></span>
+                <p>{{list.name}}<span> - {{list.tagline}}</span></p>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

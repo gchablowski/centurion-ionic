@@ -1030,7 +1030,6 @@ input.terms {
 
 }
 
-
 .home-top .home-booking-button {
     position: absolute;
     top: 10px;
@@ -1039,6 +1038,7 @@ input.terms {
     width: 40px;
     border-color: rgba(255,255,255,0.3);
     border: none;
+    z-index: 1000;
 }
 
 .home-top .home-booking-button span {

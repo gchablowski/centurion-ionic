@@ -16,7 +16,7 @@ describe('home page', function () {
             browser.sleep(2000);
         });
     });
-    
+
     afterAll(function () {
         browser.get('/#/account');
 
@@ -35,15 +35,15 @@ describe('home page', function () {
     });
 
     it('should allow me to go to the news page when I click on news link', function () {
-        var elements = element.all(protractor.By.css('#news'));
+        var elements = element.all(protractor.By.id('news'));
 
         elements.click();
 
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/news");
     });
-    
+
     it('should allow me to go to the events page when I click on events link', function () {
-        var elements = element.all(protractor.By.css('#events'));
+        var elements = element.all(protractor.By.id('events'));
 
         elements.click();
 
@@ -51,7 +51,7 @@ describe('home page', function () {
     });
 
     it('should allow me to go to the account page when I click on account link', function () {
-        var elements = element.all(protractor.By.css('#account'));
+        var elements = element.all(protractor.By.id('account'));
 
         elements.click();
 
@@ -59,7 +59,7 @@ describe('home page', function () {
     });
 
     it('should allow me to go to the account page when I click on account link', function () {
-        var elements = element.all(protractor.By.css('#accounttitle'));
+        var elements = element.all(protractor.By.id('accounttitle'));
 
         elements.click();
 
@@ -67,9 +67,8 @@ describe('home page', function () {
     });
 
     it('should allow me to go to the reciprocals page when I click on reciprocals link', function () {
-        browser.get('/#/');
 
-        var elements = element.all(protractor.By.css('#reciprocals'));
+        var elements = element.all(protractor.By.id('reciprocals'));
 
         elements.click();
 
@@ -77,15 +76,24 @@ describe('home page', function () {
     });
 
     it('should allow me to go to the contact page when I click on contact link', function () {
-        browser.get('/#/');
 
-        var contact = element(protractor.By.css('#contact'));
+        var contact = element(protractor.By.id('contact'));
 
         browser.actions().mouseMove(contact).perform();
 
         contact.click();
 
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/contact");
+
+    });
+
+    it('should allow me to go to the new booking page page when I click on + icon', function () {
+
+        var newBooking = element(protractor.By.id('new-booking'));
+
+        newBooking.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/new-booking");
 
     });
 

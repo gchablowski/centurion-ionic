@@ -116,4 +116,13 @@ describe('module: main, service: UserServ', function () {
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
+
+    it('should send a request toGET the events', function () {
+
+        $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/bookings').respond(200, {data: 1});
+        var result = UserServ.bookings();
+        $httpBackend.expectGET('https://centurion.back9solutions.com/app/bookings');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
 });

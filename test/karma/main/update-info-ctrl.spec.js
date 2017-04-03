@@ -11,12 +11,14 @@ describe('module: main, controller: UpdateInfoCtrl', function () {
 
     // define a mock of service called
     beforeEach(inject(function ($state, $ionicPopup) {
-        UserServMock = {updateInfo: function () {
+        UserServMock = {
+            updateInfo: function () {
                 return true;
-            }};
-        
+            }
+        };
+
         $localStorageMock = {user: 1};
-        
+
         spyOn($ionicPopup, 'alert').and.callThrough();
         spyOn($state, 'go');
         spyOn(UserServMock, 'updateInfo').and.callThrough();

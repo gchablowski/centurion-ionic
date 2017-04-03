@@ -40,14 +40,23 @@ describe('news list page', function () {
         expect(elements.get(1).getText()).toContain('Galvin @ Centurion');
     });
 
-/*
-    it('should allow me to go to the news-item page when I clik on one of the post', function () {
-        var elements = element.all(protractor.By.css('.news-headline')).first();
+
+    it('should allow me to go to the golf-booking page when the tee bookings button is clicked', function () {
+        var elements = element.all(protractor.By.css('.section-image')).first();
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/news-item/20");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/golf-booking/7");
 
     });
-*/
+    
+        it('should allow me to go to the restaurant-booking page when the restaurant bookings button is clicked', function () {
+        var elements = element.all(protractor.By.css('.section-image'));
+
+        elements.get(1).click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/golf-booking/8");
+
+    });
+
 });

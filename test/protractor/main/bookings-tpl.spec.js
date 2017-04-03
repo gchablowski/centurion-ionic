@@ -7,8 +7,8 @@ describe('news list page', function () {
         var email = element(protractor.By.model('loginData.email'));
         var password = element(protractor.By.model('loginData.password'));
 
-        email.sendKeys('bob@bob.com');
-        password.sendKeys('bob');
+        email.sendKeys('matt@back9solutions.com');
+        password.sendKeys('centurion');
 
         var form = element(protractor.By.css('.login-form'));
 

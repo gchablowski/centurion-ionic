@@ -1,0 +1,91 @@
+<ion-view view-title="New Booking">
+    <ion-content class="has-header page-has-header">
+
+            <div class="content">
+
+                <div href="#/golf-booking" class="section-image" style="background: url('{{listing.avatar}}') no-repeat center center; background-size: cover">
+                    <p class="list-text">{{listing.name}}</p>
+                </div>
+
+
+                <form ng-submit="submitForm()">
+
+                    <div class="booking-form">
+
+                        <div class="card position-off-screen">
+                            <div class="icon">
+                                <i class="typcn typcn-user-outline"></i>
+                            </div>		
+                            <p class="card-text">Name</p>
+                            <div class="card-info">
+                                <input type="text" value="{{user.name}}" disabled="disabled">
+                            </div>
+                        </div>
+                        <label for="members" class="card">
+
+                            <div class="icon">
+                                <i class="typcn typcn-user-outline"></i>
+                            </div>
+                            <p class="card-text">Members</p>
+                            <div class="card-info">
+                                <p class="booking-amount" ng-bind="formData.members"></p>
+                            </div>
+                        </label>
+                        <select id="members" class="position-off-screen" ng-model="formData.members">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+
+                        <label for="guests" class="card">
+
+                            <div class="icon">
+                                <i class="typcn typcn-user-outline"></i>
+                            </div>
+                            <p class="card-text">Guests</p>
+                            <div class="card-info">
+                                <p class="booking-amount" ng-bind="formData.guests"></p>
+                            </div>
+                        </label>
+                        <select id="guests" class="position-off-screen" ng-model="formData.guests">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <label for="date" class="card">
+
+                            <div class="icon">
+                                <i class="typcn typcn-calender"></i>
+                            </div>
+                            <p class="card-text">Date</p>
+                            <div class="card-info">
+                                <span ng-bind="formData.date | dateFormat: 'd '"></span>
+                                <span class="month" ng-bind="formData.date | dateFormat: 'MMM'"></span>			
+                            </div>
+                        </label>
+                        <input id="date" class="position-off-screen" type="date" ng-model="formData.date">
+                        <label for="time" class="card">
+
+                            <div class="icon">
+                                <i class="typcn typcn-time"></i>
+                            </div>
+                            <p class="card-text">Time</p>
+                            <div class="card-info">
+                                <p class="booking-amount" ng-bind="formData.time| dateFormat: 'h:mma'"></p> 
+                            </div>
+                        </label>
+                        <input id="time" class="position-off-screen" type="time" ng-model="formData.time">
+
+                    </div>
+
+                    <button type="submit" class="btn btn-block btn-positive">Request</button>
+
+                </form>
+            </div>
+
+    </ion-content>
+</ion-view>
+
+

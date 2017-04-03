@@ -22,19 +22,70 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         },
                         authenticate: true
                     })
-                    .state('menu.new-booking', {
+                    .state('menu.bookings', {
                         cache: false,
-                        url: '/new-booking',
+                        url: '/bookings',
                         views: {
                             "content": {
-                                templateUrl: 'templates/main/new-booking-tpl.html',
-                                controller: 'BookingsCtrl'
+                                templateUrl: 'templates/main/bookings-tpl.html',
+                                controller: 'BookingsCtrl as ctrl',
                             }
                         },
                         resolve: {
                             UserServ: 'UserServ',
                             datasets: ['UserServ', function (UserServ) {
                                     return UserServ.bookings().$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
+                    .state('menu.new-booking', {
+                        cache: false,
+                        url: '/new-booking',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/new-booking-tpl.html',
+                                controller: 'BookingsCtrl as ctrl'
+                            }
+                        },
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', function (UserServ) {
+                                    return UserServ.bookings().$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
+                    .state('menu.golf-booking', {
+                        cache: false,
+                        url: '/golf-booking/:id',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/golf-booking-tpl.html',
+                                controller: 'BookingFormCtrl as ctrl'
+                            }
+                        },
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
+                                    return UserServ.bookingform({id: $stateParams.id}).$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
+                    .state('menu.restaurant-booking', {
+                        cache: false,
+                        url: '/restaurant-booking/:id',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/restaurant-booking-tpl.html',
+                                controller: 'BookingFormCtrl as ctrl'
+                            }
+                        },
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
+                                    return UserServ.bookingform({id: $stateParams.id}).$promise;
                                 }]
                         },
                         authenticate: true

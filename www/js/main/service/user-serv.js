@@ -14,6 +14,8 @@ angular.module('main')
                     cancelRegistration: {method: 'POST', params: {action: 'cancel-registration'}, isArray: false},
                     updateInfo: {method: 'POST', params: {action: 'update'}, headers: {'Content-Type': 'application/json'}, isArray: false},
                     password: {method: 'POST', params: {action: 'password'}, headers: {'Content-Type': 'application/json'}, isArray: false},
-                    bookings: {method: 'GET', params: {action: 'bookings'}, isArray: false}
+                    bookings: {method: 'GET', params: {action: 'bookings'}, isArray: false},
+                    bookingform: {method: 'GET', params: {action: 'bookingform'}, isArray: false},
+                    bookingformPost: {method: 'POST', params: {action: 'bookingform'}, headers: {'Content-Type': 'application/json'}, isArray: false}
                 });
             }]);

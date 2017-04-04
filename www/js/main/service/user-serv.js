@@ -15,7 +15,10 @@ angular.module('main')
                     updateInfo: {method: 'POST', params: {action: 'update'}, headers: {'Content-Type': 'application/json'}, isArray: false},
                     password: {method: 'POST', params: {action: 'password'}, headers: {'Content-Type': 'application/json'}, isArray: false},
                     bookings: {method: 'GET', params: {action: 'bookings'}, isArray: false},
+                    booking: {method: 'GET', params: {action: 'booking'}, isArray: false},
                     bookingform: {method: 'GET', params: {action: 'bookingform'}, isArray: false},
-                    bookingformPost: {method: 'POST', params: {action: 'bookingform'}, headers: {'Content-Type': 'application/json'}, isArray: false}
+                    bookingformPost: {method: 'POST', params: {action: 'bookingform'}, headers: {'Content-Type': 'application/json'}, isArray: false},
+                    bookingCancel: {method: 'POST', params: {action: 'booking-cancel'}, headers: {'Content-Type': 'application/json'}, isArray: false},
+                    bookingReschedule: {method: 'POST', params: {action: 'booking-reschedule'}, headers: {'Content-Type': 'application/json'}, isArray: false}
                 });
             }]);

@@ -1,0 +1,49 @@
+<ion-view view-title="{{booking.start| dateFormat:'MMM d, y'}}">
+    <ion-content class="has-header page-has-header">
+        
+        <div class="content">
+
+            <div class="section-image" style="background: url({{booking.listing.avatar}}), no-repeat center center; background-size: cover">
+                <p class="list-text">{{booking.listing.name}}</p>
+            </div>
+
+            <div class="card">
+                <div class="icon">
+                    <i class="typcn typcn-group-outline"></i>
+                </div>
+                <p class="card-text">People</p>
+                <div class="card-info">
+                    <p>{{booking.persons}}</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="icon">
+                    <i class="typcn typcn-time"></i>
+                </div>
+                <p class="card-text">Time</p>
+                <div class="card-info">
+                    <p>{{booking.start| dateFormat:"HH:mm"}}</p>
+                </div>
+            </div>
+
+            <div class="section first-section booking-status">
+                <h2 ng-if="booking.status == 'Rejected'"><span class="typcn typcn-times-outline"></span> Unavailable</h2>
+                <h2 ng-if="booking.status == 'New'"><span class="typcn typcn-arrow-sync-outline"></span> Pending Approval</h2>
+                <h2 ng-if="booking.status == 'Accepted'"><span class="typcn typcn-tick-outline"></span> Approved</h2>
+
+                <p class="reschedule" ng-if="booking.reschedule">New time: {{booking.reschedule| myTimeFormat}}</p>
+                <p class="comment" ng-if="booking.status == 'Rejected'" ng-bind-html="booking.comment | nl2br"></p>
+
+                <a ng-click="messageCancelAppear()" class="btn btn-block btn-positive" ng-hide="booking.status == 'Rejected'">Cancel</a>
+                <div class="inline-buttons" ng-if="booking.status == 'Rejected'" ng-class="{'three-buttons': booking.reschedule}">
+                    <a ng-click="reschedule()" class="btn btn-block btn-positive" ng-if="booking.reschedule">Accept</a>
+                    <a ng-click="go('/chat/0/0/{{booking.listing.id}}')" class="btn btn-block btn-positive">Respond</a>
+                    <a ng-click="messageCancelAppear()" class="btn btn-block btn-positive">Cancel</a>
+                </div>	
+            </div>
+
+        </div>
+  
+    </ion-content>
+</ion-view>

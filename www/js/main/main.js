@@ -39,6 +39,23 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         },
                         authenticate: true
                     })
+                    .state('menu.booking-status', {
+                        cache: false,
+                        url: '/bookings/status/:id',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/booking-status-ctrl.html',
+                                controller: 'BookingStatusCtrl as ctrl'
+                            }
+                   },
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
+                                    return UserServ.booking({id: $stateParams.id}).$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
                     .state('menu.new-booking', {
                         cache: false,
                         url: '/new-booking',

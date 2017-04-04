@@ -1,7 +1,6 @@
 'use strict';
 angular.module('main')
         .controller('AccountCtrl', ["$scope", "$localStorage", 'UserServ', "$state", function ($scope, $localStorage, UserServ, $state) {
-
                 var $this = this;
                 $scope.user = $localStorage.user;
 

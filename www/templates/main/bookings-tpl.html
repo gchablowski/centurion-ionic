@@ -16,7 +16,7 @@
                 </div>
 
                 <div ng-if="!list.category_id" ng-attr-id="{{ list.category_id == 2 ? 'golf-bookings' : 'restaurant-bookings' }}">
-                    <a ui-sref= "bookings-status({id:list.id})" class="card" >
+                    <a ui-sref= "menu.booking-status({id:list.id})" class="card" >
                         <div class="icon">
                             <p>{{list.start| dateFormat:"d "}}</p>
                             <p class="month">{{list.start| dateFormat:"MMM"}}</p>

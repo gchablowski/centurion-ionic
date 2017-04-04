@@ -39,6 +39,15 @@ describe('news list page', function () {
         expect(elements.count()).toEqual(20);
         expect(elements.get(0).getText()).toContain('Tee Time Bookings');
     });
+    
+    it('should allow me to go to the new booking status page', function () {
+        var elements = element.all(protractor.By.css('.card')).first();
+
+        elements.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/bookings/status/196");
+
+    });
 
     it('should allow me to go to the new bookings page', function () {
         var elements = element(protractor.By.id('new-booking-link'));

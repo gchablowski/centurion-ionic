@@ -2,7 +2,7 @@
 describe('module: main, controller: BookingsCtrl', function () {
 
     // instantiate controller
-    var BookingsCtrl, datasetsMock, scope, spy;
+    var BookingsCtrl, datasetsMock, scope;
 
     // load the controller's module
     beforeEach(module('main'));

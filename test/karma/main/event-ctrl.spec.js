@@ -48,7 +48,7 @@ describe('module: main, controller: EventCtrl', function () {
         spyOn($ionicPopup, 'confirm').and.callFake(function () {
             return deferred.promise
         });
-        ;
+
         spyOn(UserServMock, 'registration').and.callThrough();
         spyOn(UserServMock, 'cancelRegistration').and.callThrough();
         spyOn($cordovaSocialSharingMock, 'shareViaFacebook').and.callThrough();

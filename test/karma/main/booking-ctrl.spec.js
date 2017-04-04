@@ -13,8 +13,8 @@ describe('module: main, controller: BookingsCtrl', function () {
     beforeEach(inject(function () {
 
         datasetsMock = {
-            courses: new Array({data: 1}),
-            listings: new Array({data: 2}),
+            courses: [{id:2, bookings: [{id: 21},{id: 22}]}],
+            listings: [{id:1, bookings: [{id: 11},{id: 12}]}],
             bookings: 1
         };
 
@@ -30,8 +30,8 @@ describe('module: main, controller: BookingsCtrl', function () {
         });
     }));
 
-    it('should populate $scope.concat with a concatenation of dataset.course and dataset.listings', function () {
-        expect(scope.concat).toEqual(new Array({data: 1}, {data: 2}));
+    it('should populate $scope.lists with a concatenation of dataset.course and dataset.listings', function () {
+        expect(scope.lists).toEqual([ { id: 2, bookings: [ { id: 21 }, { id: 22 } ] }, { id: 21 }, { id: 22 }, { id: 1, bookings: [ { id: 11 }, { id: 12 } ] }, { id: 11 }, { id: 12 } ]);
     });
 
     it('should call the datasets service and populate $scope.bookings with dataset.bookings', function () {

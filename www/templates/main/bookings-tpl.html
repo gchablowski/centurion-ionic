@@ -4,40 +4,39 @@
         <div>
 
             <p class="no-bookings" ng-if="bookings == 0">You have no future bookings!</p>
-
-            <div collection-repeat="list in concat"
+            <div collection-repeat="list in lists"
                  item-width="100%"
-                 item-height="170"
-                 ui-sref= "{{list.category_id == 2 ? 'menu.restaurant-booking({id: list.id})' : 'menu.golf-booking({id: list.id})'}}"
-                 class="booking-section"
+                 item-height="60px"
+                 class="booking-section bookings"
                  ng-hide="list.bookings.length == 0"
                  >
 
-                <div ng-click="drop = true" ng-class="{'show-info': drop, 'hidden-info': !drop}" class="section-image sticky" style="background: url('{{list.avatar}}') no-repeat center center; background-size: cover">
+                <div ng-if="list.category_id" ui-sref= "{{list.category_id == 2 ? 'menu.restaurant-booking({id: list.id})' : 'menu.golf-booking({id: list.id})'}}" class="section-image sticky" style="background: url('{{list.avatar}}') no-repeat center center; background-size: cover">
                     <p>{{list.name}}<span> - {{list.tagline}}</span></p>
                 </div>
 
-                <div ng-attr-id="{{ list.category_id == 2 ? 'golf-bookings' : 'restaurant-bookings' }}">
-                    <a ui-sref= "bookings-status({id:list.id})')" class="card" ng-repeat="booking in list.bookings| toArray | filter : {listing_id: booking.id} | orderBy: 'start'">
+                <div ng-if="!list.category_id" ng-attr-id="{{ list.category_id == 2 ? 'golf-bookings' : 'restaurant-bookings' }}">
+                    <a ui-sref= "bookings-status({id:list.id})" class="card" >
                         <div class="icon">
-                            <p>{{booking.start| dateFormat:"d "}}</p>
-                            <p class="month">{{booking.start| dateFormat:"MMM"}}</p>
+                            <p>{{list.start| dateFormat:"d "}}</p>
+                            <p class="month">{{list.start| dateFormat:"MMM"}}</p>
                         </div>
-                        <p class="card-text">{{booking.start| dateFormat:"HH:mm"}}</p>
-                        <span ng-if="booking.status == 'New'" class="typcn typcn-arrow-sync-outline status"></span>
-                        <span ng-if="booking.status == 'Accepted'" class="typcn typcn-tick-outline status"></span>
-                        <span ng-if="booking.status == 'Rejected'" class="typcn typcn-times-outline status"></span>
+                        <p class="card-text">{{list.start| dateFormat:"HH:mm"}}</p>
+                        <span ng-if="list.status == 'New'" class="typcn typcn-arrow-sync-outline status"></span>
+                        <span ng-if="list.status == 'Accepted'" class="typcn typcn-tick-outline status"></span>
+                        <span ng-if="list.status == 'Rejected'" class="typcn typcn-times-outline status"></span>
                         <div class="card-info">
-                            <p>{{booking.persons}}</p>
+                            <p>{{list.persons}}</p>
                         </div>
                     </a>
                 </div>
 
             </div>
-
-            <a ui-sref="menu.new-booking" class="new-booking"><span class="typcn typcn-plus-outline"></span></a>
-            <p class="new-booking-text">New Booking</p>
-
         </div>
+        <br/>
+        <a ui-sref="menu.new-booking" class="new-booking"><span class="typcn typcn-plus-outline"></span></a>
+        <p class="new-booking-text">New Booking</p>
+
+
     </ion-content>
 </ion-view>

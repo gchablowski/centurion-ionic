@@ -45,7 +45,7 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         views: {
                             "content": {
                                 templateUrl: 'templates/main/new-booking-tpl.html',
-                                controller: 'BookingsCtrl as ctrl'
+                                controller: 'ListCtrl as ctrl'
                             }
                         },
                         resolve: {

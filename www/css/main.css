@@ -1269,7 +1269,7 @@ input.terms {
     height: 70px;
     border-radius: 50%;
     border: 1px solid rgba(255,255,255,0.4);
-    margin: 10px auto 5px;
+    margin: 0px auto 5px;
     text-align: center;
 }
 

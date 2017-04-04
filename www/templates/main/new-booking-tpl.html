@@ -1,7 +1,7 @@
 <ion-view view-title="New Booking">
     <ion-content class="has-header page-has-header">
 
-        <div collection-repeat="list in concat"
+        <div collection-repeat="list in posts"
              item-width="100%" 
              item-height="170"
              ui-sref= "{{list.category_id == 2 ? 'menu.restaurant-booking({id: list.id})' : 'menu.golf-booking({id: list.id})'}}"

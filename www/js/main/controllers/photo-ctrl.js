@@ -17,6 +17,13 @@ angular.module('main')
                     $state.go('home');
                 };
                 
+                 $this.error = function () {
+                     $ionicPopup.alert({
+                        title: "An error occured",
+                        template: "We can't proceed. Please try again."
+                    });
+                };
+                
                 $this.changeImage = function (imageData) {
                     $scope.user.avatar = "data:image/jpeg;base64," + imageData;
                     $scope.user.avatar_new = $scope.user.avatar;
@@ -41,7 +48,7 @@ angular.module('main')
 
                 $scope.changeAvatar = function () {
                     if ($scope.user.avatar_new) {
-                        UserServ.updateInfo({}, $scope.user, $this.success);
+                        UserServ.updateInfo({}, $scope.user, $this.success, $this.error);
                     }
                 };
 

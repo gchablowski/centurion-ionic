@@ -23,9 +23,13 @@ angular.module('main')
                     $state.go('account');
 
                 };
+                
+                $this.error = function () {
+                    $this.showAlert('Invalid Details', "We encouter a problem to change your password in");
+                };
 
                 $scope.passwordUpdate = function () {
-                    UserServ.password({}, $scope.updateData, $this.success);
+                    UserServ.password({}, $scope.updateData, $this.success, $this.error);
                 };
 
             }]);

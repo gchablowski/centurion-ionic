@@ -25,6 +25,13 @@ angular.module('main')
                     
                     $scope.booking = data.booking;
                 };
+                
+                 $this.error = function () {
+                    $ionicPopup.alert({
+                        title: "An error occured",
+                        template: "We can't proceed. Please try again."
+                    });
+                };
 
                 $this.showCancel = function () {
 
@@ -41,12 +48,12 @@ angular.module('main')
                         ]});
 
                     cancelPopup.then(function () {
-                        UserServ.bookingCancel({id: $scope.booking.id}, {}, $this.success);
+                        UserServ.bookingCancel({id: $scope.booking.id}, {}, $this.success, $this.error);
                     });
                 };
 
                 $scope.reschedule = function () {
-                    UserServ.bookingReschedule({id: $scope.booking.id}, {}, $this.success);
+                    UserServ.bookingReschedule({id: $scope.booking.id}, {}, $this.success, $this.error);
                 };
 
                 $scope.messageCancelAppear = function () {

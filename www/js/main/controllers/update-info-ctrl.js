@@ -17,9 +17,16 @@ angular.module('main')
                     $localStorage.user = data.user;
                     $state.go('account');
                 };
+                
+                $this.error = function () {
+                     $ionicPopup.alert({
+                        title: "An error occured",
+                        template: "We can't proceed. Please try again."
+                    });
+                };
 
                 $scope.processUpdate = function () {
-                    UserServ.updateInfo({}, $scope.updateData, $this.success);
+                    UserServ.updateInfo({}, $scope.updateData, $this.success, $this.error);
                 };
 
             }]);

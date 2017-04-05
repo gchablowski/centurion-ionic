@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-        .controller('AccountCtrl', ["$scope", "$localStorage", 'UserServ', "$state", function ($scope, $localStorage, UserServ, $state) {
+        .controller('AccountCtrl', ["$scope", "$localStorage", 'UserServ', "$state", "$ionicPopup", function ($scope, $localStorage, UserServ, $state, $ionicPopup) {
                 var $this = this;
                 $scope.user = $localStorage.user;
 
@@ -8,9 +8,16 @@ angular.module('main')
                     $localStorage.$reset({});
                     $state.go('login');
                 };
+                
+                 $this.error = function () {
+                    $ionicPopup.alert({
+                        title: "An error occured",
+                        template: "We can't proceed. Please try again."
+                    });
+                };
 
                 $scope.logout = function () {
-                    UserServ.logout({}, $this.success);
+                    UserServ.logout({}, $this.success, $this.error);
                 };
 
             }]);

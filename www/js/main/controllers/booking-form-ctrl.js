@@ -21,10 +21,17 @@ angular.module('main')
                     $state.go('menu.bookings');
 
                 };
+                
+                 $this.error = function () {
+                    $ionicPopup.alert({
+                        title: "An error occured",
+                        template: "We can't proceed. Please try again."
+                    });
+                };
 
                 $scope.submitForm = function () {
                     $scope.formData.fulldate = $filter('date')($scope.formData.date, 'yyyy-MM-dd') + ' ' + $filter('date')($scope.formData.time, 'h:mm:00');
-                    UserServ.bookingformPost({id: $scope.listing.id}, $scope.formData, $this.success);
+                    UserServ.bookingformPost({id: $scope.listing.id}, $scope.formData, $this.success, $this.error);
                 };
 
             }]);

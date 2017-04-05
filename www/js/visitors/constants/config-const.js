@@ -1,6 +1,6 @@
 'use strict';
 angular.module('visitors')
-.constant('Config', {
+.constant('ConfigVisitors', {
 
   ENV: {
     'SERVER_URL': 'https://centurion.back9solutions.com'

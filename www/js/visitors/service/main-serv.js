@@ -1,6 +1,6 @@
 'use strict';
 angular.module('visitors')
-        .factory('MainServ', ['Config', '$resource',
+        .factory('MainServ', ['ConfigVisitors', '$resource',
             function (Config, $resource) {
                 return $resource(Config.ENV.SERVER_URL + '/visitors/:action/:id', {id: '@id'}, {
                     memberships: {method: 'GET', params: {action: 'memberships'}, isArray: false},

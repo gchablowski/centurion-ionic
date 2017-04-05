@@ -1742,12 +1742,19 @@ textarea {
 
 /* Weather
 =================================*/
-
-
+.weather{
+    clear:both;
+    margin-bottom: 10px;
+}
 .weather-title {
     text-align: center;
-    margin-top: 30px;
+    padding-top: 30px;
     font-size: 24px;
+    color: #fff;
+}
+
+.weather-subtitle{
+    color: #fff;
 }
 
 .weather-time {
@@ -1756,18 +1763,21 @@ textarea {
 
 .weather .forcast-day {
     text-align: left;
+    clear: both;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    background-color: #292926;
+    margin: 0px;
 }
 
-
 .weather-card {
-    background: rgba(0,0,0,0.5);
-    z-index: 0;
+    background: #141413;
 }
 
 .table-view, .table-view-cell {
     background: none;
     border-top: none;
-    z-index: 0;
 }
 
 

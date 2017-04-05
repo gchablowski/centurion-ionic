@@ -47,7 +47,7 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                                 templateUrl: 'templates/main/booking-status-ctrl.html',
                                 controller: 'BookingStatusCtrl as ctrl'
                             }
-                   },
+                        },
                         resolve: {
                             UserServ: 'UserServ',
                             datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
@@ -171,6 +171,23 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                             UserServ: 'UserServ',
                             datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
                                     return UserServ.event({id: $stateParams.id}).$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
+                    .state('menu.weather', {
+                        cache: false,
+                        url: '/weather',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/weather-ctrl.html',
+                                controller: 'ListCtrl as ctrl'
+                            }
+                        },
+                        resolve: {
+                            WeatherServ: 'WeatherServ',
+                            datasets: ['WeatherServ', function (WeatherServ) {
+                                    return WeatherServ.query().$promise;
                                 }]
                         },
                         authenticate: true

@@ -1,0 +1,43 @@
+<ion-view view-title="Weather">
+    <ion-content class="has-header page-has-header" overflow-scroll="false">
+
+        <div class="weather">
+
+            <h1 class="weather-title">{{ posts.location.city}}</h1>		
+            <h2 class="weather-time">Now</h2>
+
+            <div class="weather-card">
+                <ul class="table-view">
+                    <li class="table-view-cell">
+                        <img class="media-object pull-left" src="img/weather/{{posts.item.condition.code}}.png" width="50" height="50">
+                        <div class="media-body">
+                            <h3 class="weather-subtitle">{{ posts.item.condition.text}}</h3>
+                            <p class="inline-list"><span>{{ posts.item.condition.temp}}°</span></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="weather" collection-repeat="forecast in posts.item.forecast" item-width="100%" item-height="125px">
+            <h2 class="content-padded forcast-day">{{ forecast.day}} {{ forecast.date}}</h2>
+            <div class="weather-card">
+                <ul class="table-view">
+                    <li class="table-view-cell">
+                        <img class="media-object pull-left" src="img/weather/{{forecast.code}}.png" width="50" height="50">
+                        <div class="media-body">
+                            <h3 class="weather-subtitle">{{ forecast.text}}</h3>
+                            <p class="inline-list"><span>High: {{ forecast.high}}°</span><span>Low: {{ forecast.low}}°</span></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <br/>
+        <a id="new-booking-link" ui-sref="menu.new-booking" class="new-booking"><span class="typcn typcn-plus-outline"></span></a>
+        <p class="new-booking-text">New Booking</p>
+        <br/>
+
+    </ion-content>
+</ion-view>

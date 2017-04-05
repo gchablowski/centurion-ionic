@@ -78,6 +78,11 @@ describe('module: main, controller: BookingStatusCtrl', function () {
         expect(scope.booking).toEqual({status: 'read'});
     }));
 
+    it('should define a this.error function that call $ionicPopup.alert', inject(function ($ionicPopup) {
+        BookingStatusCtrl.error();
+        expect($ionicPopup.alert).toHaveBeenCalledWith({ title: 'An error occured', template: "We can't proceed. Please try again." });
+    }));
+
     it('should define a this.showCancel function that call $ionicPopup', inject(function ($ionicPopup) {
         BookingStatusCtrl.showCancel();
         expect($ionicPopup.confirm).toHaveBeenCalledWith({title: 'Cancel', template: 'Are you sure you want to cancel this booking?', buttons: [{text: 'No'}, {text: 'Yes', onTap: jasmine.any(Function)}]});
@@ -86,13 +91,13 @@ describe('module: main, controller: BookingStatusCtrl', function () {
     it('should define a this.showCancel function that call UserServ.bookingCancel()', function () {
         BookingStatusCtrl.showCancel();
         scope.$digest();
-        expect(UserServMock.bookingCancel).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function));
+        expect(UserServMock.bookingCancel).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function), jasmine.any(Function));
     });
 
     it('should define a $scope.reschedule function that call UserServ.bookingReschedule()', function () {
         scope.reschedule();
         scope.$digest();
-        expect(UserServMock.bookingReschedule).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function));
+        expect(UserServMock.bookingReschedule).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function), jasmine.any(Function));
     });
 
     it('should define a $scope.messageCancelAppear function that call this.showCancel() if $scope.booking.today =true', function () {
@@ -100,10 +105,10 @@ describe('module: main, controller: BookingStatusCtrl', function () {
         spyOn(BookingStatusCtrl, 'showAlert');
         scope.messageCancelAppear();
         scope.$digest();
-        expect(BookingStatusCtrl.showAlert).toHaveBeenCalledWith('Cancelation Policy', 'To cancel within 24 hours please call the club. Thank you' );
+        expect(BookingStatusCtrl.showAlert).toHaveBeenCalledWith('Cancelation Policy', 'To cancel within 24 hours please call the club. Thank you');
     });
-    
-        it('should define a $scope.messageCancelAppear function that call this.showCancel() if $scope.booking.today =true', function () {
+
+    it('should define a $scope.messageCancelAppear function that call this.showCancel() if $scope.booking.today =true', function () {
         spyOn(BookingStatusCtrl, 'showCancel');
         scope.messageCancelAppear();
         scope.$digest();

@@ -60,10 +60,15 @@ describe('module: main, controller: UpdateInfoCtrl', function () {
         expect($state.go).toHaveBeenCalledWith('account');
     }));
 
+    it('should define a this.error function that call $ionicPopup.alert', inject(function ($ionicPopup) {
+        UpdateInfoCtrl.error();
+        expect($ionicPopup.alert).toHaveBeenCalledWith({ title: 'An error occured', template: "We can't proceed. Please try again." });
+    }));
+
     it('should define a scope.processUpdate function that call UserServ.updateInfo for submit the update form', function () {
         scope.updateData = {data: 1};
         scope.processUpdate();
-        expect(UserServMock.updateInfo).toHaveBeenCalledWith({}, scope.updateData, jasmine.any(Function));
+        expect(UserServMock.updateInfo).toHaveBeenCalledWith({}, scope.updateData, jasmine.any(Function), jasmine.any(Function));
     });
 });
 

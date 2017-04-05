@@ -86,6 +86,11 @@ describe('module: main, controller: PhotoCtrl', function () {
         expect($state.go).toHaveBeenCalledWith('home');
     }));
 
+    it('should define a this.error function that call $ionicPopup.alert', inject(function ($ionicPopup) {
+        PhotoCtrl.error();
+        expect($ionicPopup.alert).toHaveBeenCalledWith({ title: 'An error occured', template: "We can't proceed. Please try again." });
+    }));
+
     it('should define a this.changeImage function that populate $scope.user.avatar', function () {
         var data = 1;
         PhotoCtrl.changeImage(data);
@@ -112,7 +117,7 @@ describe('module: main, controller: PhotoCtrl', function () {
     it('should define a $scope.changeAvatar function that call UserServ.updateInfo for submit the image if $scope.user.avatar_new is defined', function () {
         scope.user.avatar_new = 1;
         scope.changeAvatar();
-        expect(UserServMock.updateInfo).toHaveBeenCalledWith({}, scope.user, jasmine.any(Function));
+        expect(UserServMock.updateInfo).toHaveBeenCalledWith({}, scope.user, jasmine.any(Function), jasmine.any(Function));
     });
 
 });

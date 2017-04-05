@@ -67,18 +67,23 @@ describe('module: main, controller: BookingFormCtrl', function () {
         BookingFormCtrl.success(data);
         expect($state.go).toHaveBeenCalledWith('menu.bookings');
     }));
-    
-        it('should define add fulldate key in $scope.formData', inject(function ($filter) {
+
+    it('should define a this.error function that call $ionicPopup.alert', inject(function ($ionicPopup) {
+        BookingFormCtrl.error();
+        expect($ionicPopup.alert).toHaveBeenCalledWith({ title: 'An error occured', template: "We can't proceed. Please try again." });
+    }));
+
+    it('should define add fulldate key in $scope.formData', inject(function ($filter) {
         scope.formData = {date: new Date(), time: new Date()};
         scope.submitForm();
         expect(scope.formData.fulldate).toEqual($filter('date')(scope.formData.date, 'yyyy-MM-dd') + ' ' + $filter('date')(scope.formData.time, 'h:mm:00'));
     }));
-    
+
     it('should define a $scope.submitForm function that call UserServ.bookingformPost', function () {
         scope.formData = {date: new Date(), time: new Date()};
         scope.submitForm();
-        expect(UserServMock.bookingformPost).toHaveBeenCalledWith({ id: 1 }, scope.formData, jasmine.any(Function));
+        expect(UserServMock.bookingformPost).toHaveBeenCalledWith({id: 1}, scope.formData, jasmine.any(Function), jasmine.any(Function));
     });
-    
+
 });
 

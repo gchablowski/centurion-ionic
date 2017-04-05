@@ -50,7 +50,7 @@ describe('module: main, controller: AccountCtrl', function () {
 
     it('should define a scope.logout function that call UserServ.logout for login out', function () {
         scope.logout();
-        expect(UserServMock.logout).toHaveBeenCalledWith({}, jasmine.any(Function));
+        expect(UserServMock.logout).toHaveBeenCalledWith({}, jasmine.any(Function), jasmine.any(Function));
     });
 
     it('should define a this.success function that call localStorage.$reset()', function () {
@@ -61,6 +61,12 @@ describe('module: main, controller: AccountCtrl', function () {
     it('should define a this.success function that call $state.go("login")', inject(function ($state) {
         AccountCtrl.success();
         expect($state.go).toHaveBeenCalledWith('login');
+    }));
+    
+    it('should define a this.error function that call $ionicPopup.alert', inject(function ($ionicPopup) {
+        spyOn($ionicPopup, 'alert').and.callThrough();
+        AccountCtrl.error();
+        expect($ionicPopup.alert).toHaveBeenCalledWith({ title: 'An error occured', template: "We can't proceed. Please try again." });
     }));
 
 });

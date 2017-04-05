@@ -69,11 +69,18 @@ describe('module: main, controller: PasswordCtrl', function () {
         PasswordCtrl.success(data);
         expect($state.go).toHaveBeenCalledWith('account');
     }));
+    
+    it('should define a this.error function that call $this.showAlert for displaying an error', function () {
+        spyOn(PasswordCtrl, 'showAlert');
+        PasswordCtrl.error();
+        expect(PasswordCtrl.showAlert).toHaveBeenCalledWith('Invalid Details', 'We encouter a problem to change your password in');
+    });
+
 
     it('should define a scope.passwordUpdate function that call UserServ.password for submit the update form', function () {
         scope.updateData = {data: 1};
         scope.passwordUpdate();
-        expect(UserServMock.password).toHaveBeenCalledWith({}, scope.updateData, jasmine.any(Function));
+        expect(UserServMock.password).toHaveBeenCalledWith({}, scope.updateData, jasmine.any(Function), jasmine.any(Function));
     });
 });
 

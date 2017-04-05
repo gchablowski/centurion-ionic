@@ -31,7 +31,7 @@ describe('module: main, controller: EventCtrl', function () {
                 registrations: [{id: 1}]
             }
         };
-        
+
         $cordovaSocialSharingMock = {
             shareViaFacebook: function () {
                 return true;
@@ -43,7 +43,7 @@ describe('module: main, controller: EventCtrl', function () {
                 return true;
             }
         };
-        
+
         spyOn($state, "go");
         spyOn($ionicPopup, 'confirm').and.callFake(function () {
             return deferred.promise
@@ -81,6 +81,12 @@ describe('module: main, controller: EventCtrl', function () {
         expect($state.go).toHaveBeenCalledWith("menu.events");
     }));
 
+    it('should define a this.error function that call $ionicPopup.alert', inject(function ($ionicPopup) {
+        spyOn($ionicPopup, 'alert').and.callThrough();
+        EventCtrl.error();
+        expect($ionicPopup.alert).toHaveBeenCalledWith({ title: 'An error occured', template: "We can't proceed. Please try again." });
+    }));
+
     it('should define a $scope.showConfirm function that call $ionicPopup with registration sentence if type = true', inject(function ($ionicPopup) {
         scope.showConfirm(true);
         expect($ionicPopup.confirm).toHaveBeenCalledWith({title: 'a', template: 'Are you sure you want to enter the a', buttons: [{text: 'No'}, {text: 'Yes', onTap: jasmine.any(Function)}]});
@@ -100,7 +106,7 @@ describe('module: main, controller: EventCtrl', function () {
     it('should define a $scope.showConfirm function that call UserServ.registration() if type = true', function () {
         scope.showConfirm(false);
         scope.$digest();
-        expect(UserServMock.cancelRegistration).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function));
+        expect(UserServMock.cancelRegistration).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function), jasmine.any(Function));
     });
 
     it('should define a $scope.share function that call $cordovaSocialSharing.shareViaFacebook if type = 1', function () {
@@ -112,8 +118,8 @@ describe('module: main, controller: EventCtrl', function () {
         scope.share(2);
         expect($cordovaSocialSharingMock.shareViaTwitter).toHaveBeenCalledWith('Checkout the a on the Invalid Date at the Centurion Club. Go to http://www.centurionclub.co.uk for more', null, null);
     });
-    
-        it('should define a $scope.share function that call $cordovaSocialSharing.shareViaSMS if type = 3', function () {
+
+    it('should define a $scope.share function that call $cordovaSocialSharing.shareViaSMS if type = 3', function () {
         scope.share(3);
         expect($cordovaSocialSharingMock.shareViaSMS).toHaveBeenCalledWith('Checkout the a on the Invalid Date at the Centurion Club. Go to http://www.centurionclub.co.uk for more', null);
     });

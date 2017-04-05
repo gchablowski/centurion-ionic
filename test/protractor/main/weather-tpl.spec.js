@@ -1,6 +1,6 @@
 'use strict';
 
-describe('booking status list page', function () {
+describe('news list page', function () {
 
     beforeAll(function () {
         browser.get('/#/login');
@@ -26,24 +26,16 @@ describe('booking status list page', function () {
     });
 
     beforeEach(function () {
-        browser.get('/#/menu/bookings/status/196');
+        browser.get('/#/menu/weather');
     });
 
     it('Should have a title', function () {
-        expect(browser.getTitle()).toEqual('May 3, 2017');
+        expect(browser.getTitle()).toEqual('Weather');
     });
 
-    it('Should get a list of infos', function () {
-        var elements = element.all(protractor.By.css('.card-info'));
-        expect(elements.get(0).getText()).toContain('2');
-        expect(elements.get(1).getText()).toContain('10:00');
+    it('Should get a list of elements', function () {
+        var elements = element.all(protractor.By.css('.weather-card'));
+        expect(elements.count()).toEqual(21);
     });
-
-    it('Should get 3 buttons', function () {
-        var elements = element.all(protractor.By.css('.btn-block'));
-        expect(elements.count()).toEqual(4);
-    });
-
-    //TODO see to test cancel and rescheldule
-
+    
 });

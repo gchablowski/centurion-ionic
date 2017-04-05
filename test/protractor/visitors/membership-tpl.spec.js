@@ -33,9 +33,11 @@ describe('membership page', function () {
     });
 
     it('should allow me to go to the reciprocals page when I click on Reciprocal', function () {
-        var elements = element.all(protractor.By.css('#reciprocals'));
+        var reciprocals = element(protractor.By.css('#reciprocals'));
 
-        elements.click();
+        browser.actions().mouseMove(reciprocals).perform();
+
+        reciprocals.click();
 
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/reciprocals");
     });

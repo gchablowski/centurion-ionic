@@ -29,6 +29,12 @@ describe('module: main, controller: ListCtrl', function () {
                 courses: [3],
                 listings: [4]
             };
+        } else if (spy == 4) {
+            datasetsMock = {
+                query: {
+                    results: {channel: 5}
+                }
+            };
         }
         spy++;
     }));
@@ -57,6 +63,10 @@ describe('module: main, controller: ListCtrl', function () {
 
     it('should call the datasets service and populate $scope.posts with a concatenation of dataset.courses and dataset.listings if it exist', function () {
         expect(scope.posts).toEqual([3, 4]);
+    });
+
+    it('should call the datasets service and populate $scope.posts with datasets.query.results.channel if it exist', function () {
+        expect(scope.posts).toEqual(5);
     });
 
 });

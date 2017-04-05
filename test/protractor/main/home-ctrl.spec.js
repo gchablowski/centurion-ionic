@@ -90,10 +90,24 @@ describe('home page', function () {
     it('should allow me to go to the new booking page page when I click on + icon', function () {
 
         var newBooking = element(protractor.By.id('new-booking'));
+        
+        browser.actions().mouseMove(newBooking).perform();
 
         newBooking.click();
 
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/new-booking");
+
+    });
+    
+    it('should allow me to go to the wheater page page when I click on the weather link', function () {
+
+        var weather = element(protractor.By.id('weather'));
+        
+        browser.actions().mouseMove(weather).perform();
+
+        weather.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/weather");
 
     });
 

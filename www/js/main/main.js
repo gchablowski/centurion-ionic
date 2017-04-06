@@ -1,5 +1,5 @@
 'use strict';
-angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordova', 'validation.match'])
+angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordova', 'validation.match', 'angular.filter'])
 
         .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
 
@@ -18,6 +18,23 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                             UserServ: 'UserServ',
                             datasets: ['UserServ', function (UserServ) {
                                     return UserServ.profile().$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
+                    .state('menu.friends', {
+                        cache: false,
+                        url: '/friends',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/friends-ctrl.html',
+                                controller: 'FriendsCtrl as ctrl',
+                            }
+                        },
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', function (UserServ) {
+                                    return UserServ.friends().$promise;
                                 }]
                         },
                         authenticate: true

@@ -19,6 +19,7 @@ angular.module('main')
                     bookingform: {method: 'GET', params: {action: 'bookingform'}, isArray: false},
                     bookingformPost: {method: 'POST', params: {action: 'bookingform'}, headers: {'Content-Type': 'application/json'}, isArray: false},
                     bookingCancel: {method: 'POST', params: {action: 'booking-cancel'}, headers: {'Content-Type': 'application/json'}, isArray: false},
-                    bookingReschedule: {method: 'POST', params: {action: 'booking-reschedule'}, headers: {'Content-Type': 'application/json'}, isArray: false}
+                    bookingReschedule: {method: 'POST', params: {action: 'booking-reschedule'}, headers: {'Content-Type': 'application/json'}, isArray: false},
+                    friends: {method: 'GET', params: {action: 'friends'}, isArray: false}
                 });
             }]);

@@ -1,21 +1,8 @@
 'use strict';
 angular.module('main')
-        .controller('FriendsCtrl', ["$scope", "datasets", "$cordovaSocialSharing", function ($scope, datasets, $cordovaSocialSharing) {
+        .controller('FriendsCtrl', ["$scope", "datasets", "$cordovaSocialSharing", "$filter", function ($scope, datasets, $cordovaSocialSharing, $filter) {
 
-                var tmp = {};
-                for (i = 0; i < datasets.data.follow.length; i++) {
-                    var letter = datasets.data.follow[i].name.charAt(0);
-                    if (tmp[ letter] == undefined) {
-                        tmp[ letter] = []
-                    }
-                    tmp[ letter].push(datasets.data.follow[i]);
-                }
-
-
-                $scope.follow = datasets.data.follow;
-                $scope.pending = datasets.data.pending;
-                $scope.requested = datasets.data.requested;
-
+                $scope.follow = $filter('groupDataset')(datasets.follow, 'pivot.status', ['Accepted', 'Approved'], ['Requested', 'Pending', 'Accepted']);
 
                 $scope.share = function (type) {
                     var message = 'Download the new Centurion Club app! http://centurion.back9solutions.com/download';

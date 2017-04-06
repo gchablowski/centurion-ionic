@@ -1,0 +1,38 @@
+<ion-view view-title="Friends">
+    <ion-content class="has-header page-has-header">
+
+        <div class="content friends">
+            <span ng-repeat="(key, value) in follow">
+                <span ng-if="key == 2 && value.length > 0">
+                    <a href="#/users" class="btn btn-block btn-positive">Add Friend</a>
+
+                    <div class="first-section"></div>
+                </span>
+
+                <div class="section" >
+                    <p ng-if="key == 0 && value.length > 0" class="share-header">Awaiting Approval</p>
+                    <p ng-if="key == 1 && value.length > 0" class="share-header">Friend Requests</p>
+                    
+                    <a ng-click="go('/friend/{{friend.id}}')" class="card" ng-repeat="friend in value| orderBy: 'friend.name'">
+                        <div class="icon">
+                            <img src="{{friend.avatar}}">
+                        </div>
+                        <p class="card-text">{{friend.name}}</p>
+                        <span class="typcn typcn-chevron-right-outline card-arrow"></span>
+                    </a>
+
+                </div>
+
+            </span>
+
+
+            <p class="share-header">Invite a Member onto the App</p>
+            <a ng-click="share(1)" class="share-button"><i class="typcn typcn-social-facebook"></i></a>
+            <a ng-click="share(2)" class="share-button"><i class="typcn typcn-social-twitter"></i></a>
+            <a ng-click="share(3)" class="share-button"><i class="typcn typcn-message"></i></a>
+
+
+        </div>	
+
+    </ion-content>
+</ion-view>

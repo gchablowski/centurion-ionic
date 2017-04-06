@@ -152,4 +152,13 @@ describe('module: main, service: UserServ', function () {
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
+    
+     it('should send a request to GET the friends', function () {
+
+        $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/friends').respond(200, {data: 1});
+        var result = UserServ.friends();
+        $httpBackend.expectGET('https://centurion.back9solutions.com/app/friends');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
 });

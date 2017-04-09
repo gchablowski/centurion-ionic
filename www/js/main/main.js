@@ -39,6 +39,23 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         },
                         authenticate: true
                     })
+                    .state('menu.friend', {
+                        cache: false,
+                        url: '/friend/:id',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/friend-ctrl.html',
+                                controller: 'FriendCtrl as ctrl',
+                            }
+                        },
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
+                                    return UserServ.user({id: $stateParams.id}).$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
                     .state('menu.bookings', {
                         cache: false,
                         url: '/bookings',

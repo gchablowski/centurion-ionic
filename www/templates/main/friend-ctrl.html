@@ -1,0 +1,25 @@
+<ion-view view-title="{{user.name}}">
+    <ion-content class="has-header page-has-header">
+        
+        <div class="content friend">
+
+            <div class="avatar" style="background: url('{{user.avatar}}'); background-size: cover;"></div>
+
+            <p ng-hide="!friend || user.pivot.status == 'Pending' || user.pivot.status == 'Requested'" class="friend-check"><i class="typcn typcn-tick"></i>Friends</p>
+            <div ng-hide="!friend || user.pivot.status == 'Pending' || user.pivot.status == 'Requested'" class="card">
+                <div class="icon">
+                    <i class="typcn typcn-message"></i>
+                </div>
+                <p ng-click="go('/chat/{{user.pivot.conversation_id}}/{{user.id}}/0')" class="card-text">Send Message</p>
+                <span class="typcn typcn-chevron-right-outline card-arrow"></span>
+
+            </div>
+
+            <a ng-if="!friend" ng-click="friendRequest(user.email, user.name)" class="btn btn-block btn-positive">Add as Friend</a>
+            <a ng-if="user.pivot.status == 'Pending'" ng-click="friendAccept(user.id)" class="btn btn-block btn-positive">Accept</a>
+            <a ng-if="user.pivot.status == 'Pending'" ng-click="friendDeny(user.id)" class="btn btn-block btn-positive">Deny</a>
+            <a ng-if="user.pivot.status == 'Requested'" class="btn btn-block btn-positive">Awaiting Approval</a>
+        </div>
+
+    </ion-content>
+</ion-view>

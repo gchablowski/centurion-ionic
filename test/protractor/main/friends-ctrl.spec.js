@@ -1,6 +1,6 @@
 'use strict';
 
-describe('news list page', function () {
+describe('friends page', function () {
 
     beforeAll(function () {
         browser.get('/#/login');
@@ -51,6 +51,15 @@ describe('news list page', function () {
         button.click();
 
         expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/friend/121");
+
+    });
+    
+    it('should allow me to go to the add friend page', function () {
+        var button = element(protractor.By.css('.btn'));
+
+        button.click();
+
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/users");
 
     });
 

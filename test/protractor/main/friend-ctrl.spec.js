@@ -1,6 +1,6 @@
 'use strict';
 
-describe('news list page', function () {
+describe('friend page', function () {
 
     beforeAll(function () {
         browser.get('/#/login');

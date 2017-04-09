@@ -1390,8 +1390,8 @@ input.terms {
 /* Friends 
 =======================================*/
 
-.users {
-    margin-top: 50px;
+.page-has-header-user {
+    margin-top: 90px;
 }
 
 .friends .section {
@@ -1399,26 +1399,23 @@ input.terms {
     padding-bottom: 0;
 }
 
-.search-bar {
-    height: 50px;
-    position: fixed;
-    top: 70px;
-    width: 100%;
+.usersearch { 
     background: #222;
-    z-index: 100;
+    border: none;
 }
 
-.search-bar i {
-    display: block;
-    position: absolute;
-    top: 5px;
-    left: 5%;
-    width: 50px;
-    line-height: 37px;
-    text-align: center;
+.usersearch .item-input-wrapper{
+    background: none;
+}
+
+.bar.item-input-inset.usersearch .item-input-wrapper input {
+    background: rgba(255,255,255,0.1);
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+.usersearch .placeholder-icon {
     color: #5A447A;
-    font-size: 25px;
-    vertical-align: center;
 }
 
 .search-bar input {

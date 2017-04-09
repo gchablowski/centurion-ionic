@@ -24,6 +24,7 @@ angular.module('main')
                     user: {method: 'GET', params: {action: 'user'}, isArray: false},
                     import: {method: 'POST', params: {action: 'import'}, headers: {'Content-Type': 'application/json'}, isArray: false},
                     approve: {method: 'POST', params: {action: 'approve'}, headers: {'Content-Type': 'application/json'}, isArray: false},
-                    deny: {method: 'POST', params: {action: 'deny'}, headers: {'Content-Type': 'application/json'}, isArray: false}
+                    deny: {method: 'POST', params: {action: 'deny'}, headers: {'Content-Type': 'application/json'}, isArray: false},
+                    users: {method: 'GET', params: {action: 'users'}, isArray: false}
                 });
             }]);

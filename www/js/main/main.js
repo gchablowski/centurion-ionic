@@ -192,6 +192,23 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         },
                         authenticate: true
                     })
+                    .state('menu.users', {
+                        cache: false,
+                        url: '/users',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/users-ctrl.html',
+                                controller: 'ListCtrl as ctrl'
+                            }
+                        },
+                        resolve: {
+                            WeatherServ: 'UserServ',
+                            datasets: ['UserServ', function (UserServ) {
+                                    return UserServ.users().$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
                     .state('menu.eventsItem', {
                         cache: false,
                         url: '/event/:id',

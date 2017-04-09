@@ -3,8 +3,8 @@
 
         <div class="content friends">
             <span ng-repeat="(key, value) in follow">
-                <span ng-if="key == 2 && value.length > 0">
-                    <a href="#/users" class="btn btn-block btn-positive">Add Friend</a>
+                <span ng-if="key == 2">
+                    <a ui-sref="menu.users" class="btn btn-block btn-positive">Add Friend</a>
 
                     <div class="first-section"></div>
                 </span>

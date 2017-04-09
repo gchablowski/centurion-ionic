@@ -26,32 +26,17 @@ describe('news list page', function () {
     });
 
     beforeEach(function () {
-        browser.get('/#/menu/friends');
+        browser.get('/#/menu/friend/121');
     });
 
     it('Should have a title', function () {
-        expect(browser.getTitle()).toEqual('Friends');
+        expect(browser.getTitle()).toEqual('bob');
     });
 
-    it('Should have some cards', function () {
-        var cards = element.all(protractor.By.css('.card'));
+    it('Should have a button', function () {
+        var button = element.all(protractor.By.css('.btn'));
 
-        expect(cards.count()).toEqual(3);
-    });
-
-    it('Should have 3 share buttons', function () {
-        var share = element.all(protractor.By.css('.share-button'));
-
-        expect(share.count()).toEqual(3);
-    });
-
-    it('should allow me to go to the friend page', function () {
-        var button = element.all(protractor.By.css('.card')).first();
-
-        button.click();
-
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/friend/121");
-
+        expect(button.count()).toEqual(1);
     });
 
 });

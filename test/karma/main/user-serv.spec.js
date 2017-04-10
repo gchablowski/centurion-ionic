@@ -197,4 +197,13 @@ describe('module: main, service: UserServ', function () {
         $httpBackend.flush();
         expect(result.data).toEqual(1);
     });
+    
+    it('should send a request to Get conversations', function () {
+
+        $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/conversations').respond(200, {data: 1});
+        var result = UserServ.conversations();
+        $httpBackend.expectGET('https://centurion.back9solutions.com/app/conversations');
+        $httpBackend.flush();
+        expect(result.data).toEqual(1);
+    });
 });

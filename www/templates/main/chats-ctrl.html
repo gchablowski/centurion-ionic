@@ -1,0 +1,32 @@
+<ion-view view-title="Chats">
+    <ion-content class="has-header page-has-header">
+
+
+        <div collection-repeat="chat in chats|  orderBy: '-created_at.date'"
+             item-width="100%" 
+             item-height="80px"
+             ui-sref="menu.chat({ id: chat.conversation_id })"
+             >
+            <div class="card">
+                <div class="icon">
+                    <img ng-if="chat.participants.length <= 1 && !chat.listing" src="{{chat.participants[0].avatar}}">
+                    <img ng-if="chat.participants.length > 1 && !chat.listing" src="{{chat.conversation_avatar}}">
+                    <img ng-if="chat.listing" src="{{chat.listing_data.avatar}}">
+                </div>
+                <p ng-if="chat.participants.length <= 1 && !chat.listing" class="card-text">{{chat.participants[0].name}}</p>
+                <p ng-if="chat.participants.length > 1 && !chat.listing" class="card-text">{{chat.conversation_name}}</p>
+                <div class="shortcode">
+                    <span ng-repeat="person in chat.participants" ng-if="chat.participants.length > 1">{{person.name| shortcode}}</span>
+                </div>
+                <p ng-if="chat.listing" class="card-text">{{chat.listing_data.name}}</p>
+                <p class="card-notification" ng-bind="chat.unread" ng-hide="chat.unread <= 0"></p>
+            </div>
+        </div>
+        
+        <div class="first-section"></div>
+
+        <a href="#/new-chat" class="btn btn-block btn-positive">New</a>
+        <a href="#/add-group" class="btn btn-block btn-positive">New Group</a>
+
+    </ion-content>
+</ion-view>

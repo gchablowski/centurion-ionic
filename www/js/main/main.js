@@ -56,6 +56,23 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         },
                         authenticate: true
                     })
+                    .state('menu.chats', {
+                        cache: false,
+                        url: '/chats',
+                        views: {
+                            "content": {
+                                templateUrl: 'templates/main/chats-ctrl.html',
+                                controller: 'ChatsCtrl as ctrl',
+                            }
+                        },
+                        resolve: {
+                            UserServ: 'UserServ',
+                            datasets: ['UserServ', function (UserServ) {
+                                    return UserServ.conversations().$promise;
+                                }]
+                        },
+                        authenticate: true
+                    })
                     .state('menu.bookings', {
                         cache: false,
                         url: '/bookings',

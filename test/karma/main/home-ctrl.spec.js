@@ -2,7 +2,7 @@
 describe('module: main, controller: HomeCtrl', function () {
 
     // instantiate controller
-    var HomeCtrl, $localStorageMock, datasetsMock, scope;
+    var HomeCtrl, $localStorageMock, datasetsMock, scope, $cordovaInAppBrowserMock;
 
     // load the controller's module
     beforeEach(module('main'));
@@ -10,7 +10,7 @@ describe('module: main, controller: HomeCtrl', function () {
     beforeEach(module('ngHtml2Js'));
 
     // define a mock of service called
-    beforeEach(inject(function () {
+    beforeEach(inject(function ($q) {
 
         $localStorageMock = {user: 1};
         datasetsMock = {
@@ -23,6 +23,20 @@ describe('module: main, controller: HomeCtrl', function () {
             unread: 8
         };
 
+        $cordovaInAppBrowserMock = {
+            open: function () {
+                return true;
+            }
+        };
+
+        var deferred = $q.defer();
+        deferred.resolve(true);
+        spyOn($cordovaInAppBrowserMock, 'open').and.callFake(function () {
+            return deferred.promise;
+        });
+
+        spyOn(ionic.Platform, 'ready').and.callThrough();
+
     }));
 
     // instantiate controller
@@ -32,7 +46,8 @@ describe('module: main, controller: HomeCtrl', function () {
         HomeCtrl = $controller('HomeCtrl', {
             $scope: scope,
             datasets: datasetsMock,
-            $localStorage: $localStorageMock
+            $localStorage: $localStorageMock,
+            $cordovaInAppBrowser: $cordovaInAppBrowserMock
         });
     }));
 
@@ -66,6 +81,21 @@ describe('module: main, controller: HomeCtrl', function () {
 
     it('should define a $scope.unread', function () {
         expect(scope.unread).toEqual(8);
+    });
+
+    it('should define a this.inAppBrowser(url) function that will call $cordovaInAppBrowser.open', function () {
+        HomeCtrl.inAppBrowser("url");
+        expect($cordovaInAppBrowserMock.open).toHaveBeenCalledWith( 'url', '_blank', { location: 'no', clearcache: 'yes', toolbar: 'yes' });
+    });
+
+    it('should define a $scope.launchTwitter function that call ionic.Platform.ready', function () {
+        scope.launchTwitter();
+        expect(ionic.Platform.ready).toHaveBeenCalled();
+    });
+
+    it('should define a $scope.launchFacebook function that call ionic.Platform.ready', function () {
+        scope.launchFacebook();
+        expect(ionic.Platform.ready).toHaveBeenCalled();
     });
 
 });

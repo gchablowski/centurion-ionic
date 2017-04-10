@@ -11,10 +11,10 @@
                         <h2 ui-sref="account" id="accounttitle">{{user.name}}</h2>	
                     </ks-swiper-slide>
                     <ks-swiper-slide class="swiper-slide next-event" ng-if="booking_next.length > 0">
-                        <div class="avatar" style="background: url('{{booking_next[0].listing.avatar}}') center center; background-size: cover;" ng-click="go('/bookings/status/{{booking_next[0].id}}')">
+                        <div class="avatar" style="background: url('{{booking_next[0].listing.avatar}}') center center; background-size: cover;" ui-sref="'menu.booking-status({id: booking_next[0].id})">
                             <p class="date">{{booking_next[0].start| dateFormat:"d "}}</p>
                             <p class="month">{{booking_next[0].start| dateFormat:"MMM"}}</p>
-                            <h2 ng-click="go('/bookings/status/{{booking_next[0].id}}')">Next Booking</h2>
+                            <h2 ui-sref="'menu.booking-status({id: booking_next[0].id})">Next Booking</h2>
                         </div>
                     </ks-swiper-slide>
                     <ks-swiper-slide class="swiper-slide next-event" ng-if="events.length > 0">

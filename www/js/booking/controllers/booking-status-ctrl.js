@@ -1,6 +1,6 @@
 'use strict';
-angular.module('main')
-        .controller('BookingStatusCtrl', ["$scope", "datasets", "$ionicPopup", "UserServ", "$state", function ($scope, datasets, $ionicPopup, UserServ, $state) {
+angular.module('booking')
+        .controller('BookingStatusCtrl', ["$scope", "datasets", "$ionicPopup", "BookingServ", "$state", function ($scope, datasets, $ionicPopup, BookingServ, $state) {
 
                 var $this = this;
                 $scope.booking = datasets.booking;
@@ -17,16 +17,16 @@ angular.module('main')
                         $this.showAlert('Error', data.error);
                         return false;
                     }
-                    
-                    if(data.booking.status == "Cancelled"){
+
+                    if (data.booking.status == "Cancelled") {
                         $state.go('menu.bookings');
                         return false;
                     }
-                    
+
                     $scope.booking = data.booking;
                 };
-                
-                 $this.error = function () {
+
+                $this.error = function () {
                     $ionicPopup.alert({
                         title: "An error occured",
                         template: "We can't proceed. Please try again."
@@ -47,13 +47,15 @@ angular.module('main')
                             }
                         ]});
 
-                    cancelPopup.then(function () {
-                        UserServ.bookingCancel({id: $scope.booking.id}, {}, $this.success, $this.error);
+                    cancelPopup.then(function (data) {
+                        if (data) {
+                            BookingServ.bookingCancel({id: $scope.booking.id}, {}, $this.success, $this.error);
+                        }
                     });
                 };
 
                 $scope.reschedule = function () {
-                    UserServ.bookingReschedule({id: $scope.booking.id}, {}, $this.success, $this.error);
+                    BookingServ.bookingReschedule({id: $scope.booking.id}, {}, $this.success, $this.error);
                 };
 
                 $scope.messageCancelAppear = function () {

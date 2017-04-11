@@ -26,7 +26,7 @@ describe('booking status list page', function () {
     });
 
     beforeEach(function () {
-        browser.get('/#/menu/bookings/status/196');
+        browser.get('/#/menu/bookings/status/199');
     });
 
     it('Should have a title', function () {
@@ -35,8 +35,8 @@ describe('booking status list page', function () {
 
     it('Should get a list of infos', function () {
         var elements = element.all(protractor.By.css('.card-info'));
-        expect(elements.get(0).getText()).toContain('2');
-        expect(elements.get(1).getText()).toContain('10:00');
+        expect(elements.get(0).getText()).toContain('3');
+        expect(elements.get(1).getText()).toContain('12:00');
     });
 
     it('Should get 3 buttons', function () {

@@ -1,11 +1,11 @@
 'use strict';
-describe('module: main, controller: BookingFormCtrl', function () {
+describe('module: booking, controller: BookingFormCtrl', function () {
 
     // instantiate controller
-    var BookingFormCtrl, datasetsMock, scope, $localStorageMock, UserServMock;
+    var BookingFormCtrl, datasetsMock, scope, $localStorageMock, BookingServMock;
 
     // load the controller's module
-    beforeEach(module('main'));
+    beforeEach(module('booking'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 
@@ -20,7 +20,7 @@ describe('module: main, controller: BookingFormCtrl', function () {
             user: 1
         };
 
-        UserServMock = {
+        BookingServMock = {
             bookingformPost: function () {
                 return true;
             }
@@ -28,7 +28,7 @@ describe('module: main, controller: BookingFormCtrl', function () {
 
         spyOn($state, 'go');
         spyOn($ionicPopup, 'alert').and.callThrough();
-        spyOn(UserServMock, 'bookingformPost').and.callThrough();
+        spyOn(BookingServMock, 'bookingformPost').and.callThrough();
     }));
 
     // instantiate controller
@@ -39,7 +39,7 @@ describe('module: main, controller: BookingFormCtrl', function () {
             $scope: scope,
             datasets: datasetsMock,
             $localStorage: $localStorageMock,
-            UserServ: UserServMock
+            BookingServ: BookingServMock
         });
     }));
 
@@ -79,10 +79,10 @@ describe('module: main, controller: BookingFormCtrl', function () {
         expect(scope.formData.fulldate).toEqual($filter('date')(scope.formData.date, 'yyyy-MM-dd') + ' ' + $filter('date')(scope.formData.time, 'h:mm:00'));
     }));
 
-    it('should define a $scope.submitForm function that call UserServ.bookingformPost', function () {
+    it('should define a $scope.submitForm function that call BookingServ.bookingformPost', function () {
         scope.formData = {date: new Date(), time: new Date()};
         scope.submitForm();
-        expect(UserServMock.bookingformPost).toHaveBeenCalledWith({id: 1}, scope.formData, jasmine.any(Function), jasmine.any(Function));
+        expect(BookingServMock.bookingformPost).toHaveBeenCalledWith({id: 1}, scope.formData, jasmine.any(Function), jasmine.any(Function));
     });
 
 });

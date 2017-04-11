@@ -32,7 +32,7 @@
                 <h2 ng-if="booking.status == 'New'"><span class="typcn typcn-arrow-sync-outline"></span> Pending Approval</h2>
                 <h2 ng-if="booking.status == 'Accepted'"><span class="typcn typcn-tick-outline"></span> Approved</h2>
 
-                <p class="reschedule" ng-if="booking.reschedule">New time: {{booking.reschedule| myTimeFormat}}</p>
+                <p class="reschedule" ng-if="booking.reschedule">New time: {{booking.reschedule| dateFormat:"HH:mm"}}</p>
                 <p class="comment" ng-if="booking.status == 'Rejected'" ng-bind-html="booking.comment | nl2br"></p>
 
                 <a ng-click="messageCancelAppear()" class="btn btn-block btn-positive" ng-hide="booking.status == 'Rejected'">Cancel</a>

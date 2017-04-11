@@ -1,5 +1,5 @@
 'use strict';
-angular.module('main')
+angular.module('booking')
         .controller('BookingsCtrl', ["$scope", "datasets", "$filter", function ($scope, datasets, $filter) {
 
                 //create a list that is flat for the collection-repeat

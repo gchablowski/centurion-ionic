@@ -1,6 +1,6 @@
 'use strict';
 
-describe('news list page', function () {
+describe('booking list page with booking', function () {
 
     beforeAll(function () {
         browser.get('/#/login');
@@ -45,7 +45,7 @@ describe('news list page', function () {
 
         elements.click();
 
-        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/bookings/status/196");
+        expect(browser.getCurrentUrl()).toEqual("http://localhost:8100/#/menu/bookings/status/204");
 
     });
 

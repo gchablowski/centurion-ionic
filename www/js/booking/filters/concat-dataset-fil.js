@@ -1,5 +1,5 @@
 'use strict';
-angular.module('main')
+angular.module('booking')
         .filter("concatDataset", ["$filter", function ($filter) {
                 return function (obj, key) {
                     if (obj.length == 1) {

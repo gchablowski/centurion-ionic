@@ -1,9 +1,9 @@
 'use strict';
 
-describe('module: main, filter: concatDataset', function () {
+describe('module: booking, filter: concatDataset', function () {
 
     // load the filter's module
-    beforeEach(module('main'));
+    beforeEach(module('booking'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 

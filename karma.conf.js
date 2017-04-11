@@ -13,20 +13,20 @@ module.exports = function (config) {
         basePath: '',
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: [ 'jasmine', 'angular-filesort'],
-        
-         // sort www/**/*.js files
-         angularFilesort: {
+        frameworks: ['jasmine', 'angular-filesort'],
+        // sort www/**/*.js files
+        angularFilesort: {
             whitelist: [
                 'www/lib/**/*.js'
             ]
         },
-    
         // list of files / patterns to load in the browser
         files: bowerFiles.concat([
             'www/js/**/main.js',
+            'www/js/**/booking.js',
             'www/js/**/visitors.js',
             'www/js/**/*.js',
+            
             // other
             'www/lib/ionic/js/ionic.bundle.js',
             'www/lib/angular-resource/angular-resource.js',
@@ -35,6 +35,8 @@ module.exports = function (config) {
             'http://maps.google.com/maps/api/js',
             'www/lib/ngmap/build/scripts/ng-map.min.js',
             'www/lib/ngstorage/ngStorage.js',
+            'www/lib/angular-validation-match/dist/angular-validation-match.js',
+            'www/lib/angular-filter/dist/angular-filter.min.js',
             
             // test
             'test/karma/**/*.js',

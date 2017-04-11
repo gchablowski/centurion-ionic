@@ -1,18 +1,18 @@
 'use strict';
-describe('module: main, controller: BookingStatusCtrl', function () {
+describe('module: booking, controller: BookingStatusCtrl', function () {
 
     // instantiate controller
-    var BookingStatusCtrl, datasetsMock, scope, UserServMock;
+    var BookingStatusCtrl, datasetsMock, scope, BookingServMock;
 
     // load the controller's module
-    beforeEach(module('main'));
+    beforeEach(module('booking'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 
     // define a mock of service called
     beforeEach(inject(function ($state, $ionicPopup, $q) {
 
-        UserServMock = {
+        BookingServMock = {
             bookingReschedule: function () {
                 return true;
             },
@@ -21,8 +21,8 @@ describe('module: main, controller: BookingStatusCtrl', function () {
             }
         };
 
-        spyOn(UserServMock, 'bookingReschedule').and.callThrough();
-        spyOn(UserServMock, 'bookingCancel').and.callThrough();
+        spyOn(BookingServMock, 'bookingReschedule').and.callThrough();
+        spyOn(BookingServMock, 'bookingCancel').and.callThrough();
 
         datasetsMock = {
             booking: {id: 1, today: false}
@@ -46,7 +46,7 @@ describe('module: main, controller: BookingStatusCtrl', function () {
         BookingStatusCtrl = $controller('BookingStatusCtrl', {
             $scope: scope,
             datasets: datasetsMock,
-            UserServ: UserServMock
+            BookingServ: BookingServMock
         });
     }));
 
@@ -88,16 +88,16 @@ describe('module: main, controller: BookingStatusCtrl', function () {
         expect($ionicPopup.confirm).toHaveBeenCalledWith({title: 'Cancel', template: 'Are you sure you want to cancel this booking?', buttons: [{text: 'No'}, {text: 'Yes', onTap: jasmine.any(Function)}]});
     }));
 
-    it('should define a this.showCancel function that call UserServ.bookingCancel()', function () {
+    it('should define a this.showCancel function that call BookingServ.bookingCancel()', function () {
         BookingStatusCtrl.showCancel();
         scope.$digest();
-        expect(UserServMock.bookingCancel).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function), jasmine.any(Function));
+        expect(BookingServMock.bookingCancel).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function), jasmine.any(Function));
     });
 
-    it('should define a $scope.reschedule function that call UserServ.bookingReschedule()', function () {
+    it('should define a $scope.reschedule function that call BookingServ.bookingReschedule()', function () {
         scope.reschedule();
         scope.$digest();
-        expect(UserServMock.bookingReschedule).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function), jasmine.any(Function));
+        expect(BookingServMock.bookingReschedule).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function), jasmine.any(Function));
     });
 
     it('should define a $scope.messageCancelAppear function that call this.showCancel() if $scope.booking.today =true', function () {

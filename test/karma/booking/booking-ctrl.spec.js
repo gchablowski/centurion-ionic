@@ -1,11 +1,11 @@
 'use strict';
-describe('module: main, controller: BookingsCtrl', function () {
+describe('module: booking, controller: BookingsCtrl', function () {
 
     // instantiate controller
     var BookingsCtrl, datasetsMock, scope;
 
     // load the controller's module
-    beforeEach(module('main'));
+    beforeEach(module('booking'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 

@@ -1,11 +1,11 @@
 'use strict';
-describe('module: main, controller: FriendCtrl', function () {
+describe('module: friends, controller: FriendCtrl', function () {
 
     // instantiate controller
-    var FriendCtrl, datasetsMock, scope, UserServMock;
+    var FriendCtrl, datasetsMock, scope, FriendsServMock;
 
     // load the controller's module
-    beforeEach(module('main'));
+    beforeEach(module('friends'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 
@@ -17,7 +17,7 @@ describe('module: main, controller: FriendCtrl', function () {
             friend: 2
         };
 
-        UserServMock = {
+        FriendsServMock = {
             import: function () {
                 return true;
             },
@@ -31,9 +31,9 @@ describe('module: main, controller: FriendCtrl', function () {
 
         spyOn($ionicPopup, 'alert').and.callThrough();
         spyOn($state, 'go');
-        spyOn(UserServMock, 'import').and.callThrough();
-        spyOn(UserServMock, 'approve').and.callThrough();
-        spyOn(UserServMock, 'deny').and.callThrough();
+        spyOn(FriendsServMock, 'import').and.callThrough();
+        spyOn(FriendsServMock, 'approve').and.callThrough();
+        spyOn(FriendsServMock, 'deny').and.callThrough();
 
     }));
 
@@ -44,7 +44,7 @@ describe('module: main, controller: FriendCtrl', function () {
         FriendCtrl = $controller('FriendCtrl', {
             $scope: scope,
             datasets: datasetsMock,
-            UserServ: UserServMock
+            FriendsServ: FriendsServMock
         });
     }));
 

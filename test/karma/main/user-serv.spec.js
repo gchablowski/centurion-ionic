@@ -36,7 +36,7 @@ describe('module: main, service: UserServ', function () {
         expect(result.data).toEqual(1);
     });
 
-    it('should send a request to POST to update info', function () {
+    it('should send a request to POST password', function () {
 
         $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/password').respond(200, {data: 1});
         var result = UserServ.password();
@@ -45,57 +45,4 @@ describe('module: main, service: UserServ', function () {
         expect(result.data).toEqual(1);
     });
 
-    it('should send a request to GET the friends', function () {
-
-        $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/friends').respond(200, {data: 1});
-        var result = UserServ.friends();
-        $httpBackend.expectGET('https://centurion.back9solutions.com/app/friends');
-        $httpBackend.flush();
-        expect(result.data).toEqual(1);
-    });
-
-    it('should send a request to GET the user', function () {
-
-        $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/user/1').respond(200, {data: 1});
-        var result = UserServ.user({id: 1});
-        $httpBackend.expectGET('https://centurion.back9solutions.com/app/user/1');
-        $httpBackend.flush();
-        expect(result.data).toEqual(1);
-    });
-
-    it('should send a request to POST to import', function () {
-
-        $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/import').respond(200, {data: 1});
-        var result = UserServ.import();
-        $httpBackend.expectPOST('https://centurion.back9solutions.com/app/import');
-        $httpBackend.flush();
-        expect(result.data).toEqual(1);
-    });
-
-    it('should send a request to POST to approve', function () {
-
-        $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/approve/1').respond(200, {data: 1});
-        var result = UserServ.approve({id: 1});
-        $httpBackend.expectPOST('https://centurion.back9solutions.com/app/approve/1');
-        $httpBackend.flush();
-        expect(result.data).toEqual(1);
-    });
-
-    it('should send a request to POST to deny', function () {
-
-        $httpBackend.when('POST', 'https://centurion.back9solutions.com/app/deny/1').respond(200, {data: 1});
-        var result = UserServ.deny({id: 1});
-        $httpBackend.expectPOST('https://centurion.back9solutions.com/app/deny/1');
-        $httpBackend.flush();
-        expect(result.data).toEqual(1);
-    });
-    
-    it('should send a request to Get conversations', function () {
-
-        $httpBackend.when('GET', 'https://centurion.back9solutions.com/app/conversations').respond(200, {data: 1});
-        var result = UserServ.conversations();
-        $httpBackend.expectGET('https://centurion.back9solutions.com/app/conversations');
-        $httpBackend.flush();
-        expect(result.data).toEqual(1);
-    });
 });

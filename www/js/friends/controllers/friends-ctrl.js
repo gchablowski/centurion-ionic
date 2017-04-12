@@ -1,5 +1,5 @@
 'use strict';
-angular.module('main')
+angular.module('friends')
         .controller('FriendsCtrl', ["$scope", "datasets", "$cordovaSocialSharing", "$filter", function ($scope, datasets, $cordovaSocialSharing, $filter) {
 
                 $scope.follow = $filter('groupDataset')(datasets.follow, 'pivot.status', ['Accepted', 'Approved'], ['Requested', 'Pending', 'Accepted']);

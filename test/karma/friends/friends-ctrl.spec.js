@@ -1,11 +1,11 @@
 'use strict';
-describe('module: main, controller: FriendsCtrl', function () {
+describe('module: friends, controller: FriendsCtrl', function () {
 
     // instantiate controller
     var FriendsCtrl, datasetsMock, scope, $cordovaSocialSharingMock;
 
     // load the controller's module
-    beforeEach(module('main'));
+    beforeEach(module('friends'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 

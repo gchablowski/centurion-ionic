@@ -1,11 +1,11 @@
 'use strict';
-describe('module: main, controller: ListCtrl', function () {
+describe('module: friends, controller: ChatsCtrl', function () {
 
     // instantiate controller
-    var ListCtrl, datasetsMock, scope, spy;
+    var ChatsCtrl, datasetsMock, scope;
 
     // load the controller's module
-    beforeEach(module('main'));
+    beforeEach(module('friends'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 
@@ -13,7 +13,7 @@ describe('module: main, controller: ListCtrl', function () {
     beforeEach(inject(function () {
         
             datasetsMock = {
-                users: 1
+                conversations: 1
             };
         
     }));
@@ -22,14 +22,14 @@ describe('module: main, controller: ListCtrl', function () {
     beforeEach(inject(function ($controller, $rootScope) {
 
         scope = $rootScope.$new();
-        ListCtrl = $controller('ListCtrl', {
+        ChatsCtrl = $controller('ChatsCtrl', {
             $scope: scope,
             datasets: datasetsMock
         });
     }));
 
-    it('should call the datasets service and populate $scope.posts with dataset.users if it exist', function () {
-        expect(scope.posts).toEqual(1);
+    it('should call the datasets service and populate $scope.chats with dataset.conversations', function () {
+        expect(scope.chats).toEqual(1);
     });
 
 });

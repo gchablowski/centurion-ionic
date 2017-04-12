@@ -1,6 +1,6 @@
 'use strict';
-angular.module('main')
-        .controller('FriendCtrl', ["$scope", "datasets", "$ionicPopup", "$state", "UserServ", function ($scope, datasets, $ionicPopup, $state, UserServ) {
+angular.module('friends')
+        .controller('FriendCtrl', ["$scope", "datasets", "$ionicPopup", "$state", "FriendsServ", function ($scope, datasets, $ionicPopup, $state, FriendsServ) {
 
                 var $this = this;
                 $scope.user = datasets.user;
@@ -27,15 +27,15 @@ angular.module('main')
                 };
 
                 $scope.friendRequest = function (email, name) {
-                    UserServ.import({}, {'name': name, 'email': email}, $this.success, $this.error);
+                    FriendsServ.import({}, {'name': name, 'email': email}, $this.success, $this.error);
                 };
 
                 $scope.friendAccept = function (id) {
-                    UserServ.approve({id: id}, {}, $this.success, $this.error);
+                    FriendsServ.approve({id: id}, {}, $this.success, $this.error);
                 };
 
                 $scope.friendDeny = function (id) {
-                    UserServ.deny({id: id}, {}, $this.success, $this.error);
+                    FriendsServ.deny({id: id}, {}, $this.success, $this.error);
                 };
 
             }]);

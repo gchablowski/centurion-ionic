@@ -1,5 +1,5 @@
 'use strict';
-angular.module('main')
+angular.module('friends')
         .filter("groupDataset", ["$filter", function ($filter) {
                 return function (obj, groupParam, concatParam, orderList) {
 

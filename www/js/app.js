@@ -5,6 +5,7 @@ angular.module('centurion', [
     'main',
     'members',
     'booking',
+    'friends',
     'visitors'
 ])
         .config(function ($ionicConfigProvider) {

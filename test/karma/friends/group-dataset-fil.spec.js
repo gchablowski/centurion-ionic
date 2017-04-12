@@ -1,9 +1,9 @@
 'use strict';
 
-describe('module: main, filter: grouptDataset', function () {
+describe('module: friends, filter: grouptDataset', function () {
 
     // load the filter's module
-    beforeEach(module('main'));
+    beforeEach(module('friends'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 

@@ -1,6 +1,6 @@
 'use strict';
-angular.module('main')
-        .controller('EventCtrl', ["$scope", "datasets", "UserServ", "$ionicPopup", "$state", "$stateParams", "$cordovaSocialSharing", "$filter", function ($scope, datasets, UserServ, $ionicPopup, $state, $stateParams, $cordovaSocialSharing, $filter) {
+angular.module('members')
+        .controller('EventCtrl', ["$scope", "datasets", "MembersServ", "$ionicPopup", "$state", "$stateParams", "$cordovaSocialSharing", "$filter", function ($scope, datasets, MembersServ, $ionicPopup, $state, $stateParams, $cordovaSocialSharing, $filter) {
 
                 var $this = this;
                 var id = $stateParams.id;
@@ -34,9 +34,9 @@ angular.module('main')
 
                     confirmPopup.then(function () {
                         if (type) {
-                            UserServ.registration({id: id}, {}, $this.success);
+                            MembersServ.registration({id: id}, {}, $this.success);
                         } else if (!type) {
-                            UserServ.cancelRegistration({id: $scope.event.registrations[0].id}, {}, $this.success, $this.error);
+                            MembersServ.cancelRegistration({id: $scope.event.registrations[0].id}, {}, $this.success, $this.error);
                         }
                     });
                 };

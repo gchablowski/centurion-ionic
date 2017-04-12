@@ -25,6 +25,7 @@ module.exports = function (config) {
             'www/js/**/main.js',
             'www/js/**/booking.js',
             'www/js/**/visitors.js',
+            'www/js/**/members.js',
             'www/js/**/*.js',
             
             // other

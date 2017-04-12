@@ -1,9 +1,9 @@
 'use strict';
 
-describe('module: main, service: WeatherServ', function () {
+describe('module: members, service: WeatherServ', function () {
     var $httpBackend, WeatherServ;
     // load the service's module
-    beforeEach(module('main'));
+    beforeEach(module('members'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 

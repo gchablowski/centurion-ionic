@@ -1,5 +1,5 @@
 'use strict';
-angular.module('main')
+angular.module('members')
         .controller('HomeCtrl', ["$scope", "datasets", "$localStorage", "$cordovaInAppBrowser", function ($scope, datasets, $localStorage, $cordovaInAppBrowser) {
 
                 var $this = this;

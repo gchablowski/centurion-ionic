@@ -9,19 +9,6 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
             $httpProvider.interceptors.push('LoaderInjectorServ');
 
             $stateProvider
-                    .state('home', {
-                        cache: false,
-                        url: '/',
-                        templateUrl: 'templates/main/home-ctrl.html',
-                        controller: 'HomeCtrl as ctrl',
-                        resolve: {
-                            UserServ: 'UserServ',
-                            datasets: ['UserServ', function (UserServ) {
-                                    return UserServ.profile().$promise;
-                                }]
-                        },
-                        authenticate: true
-                    })
                     .state('menu.friends', {
                         cache: false,
                         url: '/friends',
@@ -73,57 +60,6 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                         },
                         authenticate: true
                     })
-                    .state('menu.news', {
-                        cache: false,
-                        url: '/news',
-                        views: {
-                            "content": {
-                                templateUrl: 'templates/main/news-tpl.html',
-                                controller: 'ListCtrl as ctrl'
-                            }
-                        },
-                        resolve: {
-                            UserServ: 'UserServ',
-                            datasets: ['UserServ', function (UserServ) {
-                                    return UserServ.posts().$promise;
-                                }]
-                        },
-                        authenticate: true
-                    })
-                    .state('menu.newsItem', {
-                        cache: false,
-                        url: '/news-item/:id',
-                        views: {
-                            "content": {
-                                templateUrl: 'templates/main/news-item-tpl.html',
-                                controller: 'ListCtrl as ctrl'
-                            }
-                        },
-                        resolve: {
-                            UserServ: 'UserServ',
-                            datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
-                                    return UserServ.post({id: $stateParams.id}).$promise;
-                                }]
-                        },
-                        authenticate: true
-                    })
-                    .state('menu.events', {
-                        cache: false,
-                        url: '/events',
-                        views: {
-                            "content": {
-                                templateUrl: 'templates/main/events-tpl.html',
-                                controller: 'ListCtrl as ctrl'
-                            }
-                        },
-                        resolve: {
-                            UserServ: 'UserServ',
-                            datasets: ['UserServ', '$stateParams', function (UserServ) {
-                                    return UserServ.events().$promise;
-                                }]
-                        },
-                        authenticate: true
-                    })
                     .state('menu.users', {
                         cache: false,
                         url: '/users',
@@ -137,40 +73,6 @@ angular.module('main', ['ionic', 'ngResource', 'ngStorage', 'ksSwiper', 'ngCordo
                             WeatherServ: 'UserServ',
                             datasets: ['UserServ', function (UserServ) {
                                     return UserServ.users().$promise;
-                                }]
-                        },
-                        authenticate: true
-                    })
-                    .state('menu.eventsItem', {
-                        cache: false,
-                        url: '/event/:id',
-                        views: {
-                            "content": {
-                                templateUrl: 'templates/main/event-ctrl.html',
-                                controller: 'EventCtrl as ctrl'
-                            }
-                        },
-                        resolve: {
-                            UserServ: 'UserServ',
-                            datasets: ['UserServ', '$stateParams', function (UserServ, $stateParams) {
-                                    return UserServ.event({id: $stateParams.id}).$promise;
-                                }]
-                        },
-                        authenticate: true
-                    })
-                    .state('menu.weather', {
-                        cache: false,
-                        url: '/weather',
-                        views: {
-                            "content": {
-                                templateUrl: 'templates/main/weather-ctrl.html',
-                                controller: 'ListCtrl as ctrl'
-                            }
-                        },
-                        resolve: {
-                            WeatherServ: 'WeatherServ',
-                            datasets: ['WeatherServ', function (WeatherServ) {
-                                    return WeatherServ.query().$promise;
                                 }]
                         },
                         authenticate: true

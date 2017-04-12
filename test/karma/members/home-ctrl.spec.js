@@ -1,11 +1,11 @@
 'use strict';
-describe('module: main, controller: HomeCtrl', function () {
+describe('module: members, controller: HomeCtrl', function () {
 
     // instantiate controller
     var HomeCtrl, $localStorageMock, datasetsMock, scope, $cordovaInAppBrowserMock;
 
     // load the controller's module
-    beforeEach(module('main'));
+    beforeEach(module('members'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 

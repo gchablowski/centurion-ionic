@@ -3,6 +3,7 @@
 angular.module('centurion', [
     // load your modules here
     'main',
+    'members',
     'booking',
     'visitors'
 ])

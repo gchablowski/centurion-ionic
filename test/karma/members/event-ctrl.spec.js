@@ -1,11 +1,11 @@
 'use strict';
-describe('module: main, controller: EventCtrl', function () {
+describe('module: members, controller: EventCtrl', function () {
 
     // instantiate controller
-    var EventCtrl, datasetsMock, scope, UserServMock, $stateParamsMock, $cordovaSocialSharingMock;
+    var EventCtrl, datasetsMock, scope, MembersServMock, $stateParamsMock, $cordovaSocialSharingMock;
 
     // load the controller's module
-    beforeEach(module('main'));
+    beforeEach(module('members'));
     // load all the templates to prevent unexpected $http requests from ui-router
     beforeEach(module('ngHtml2Js'));
 
@@ -14,7 +14,7 @@ describe('module: main, controller: EventCtrl', function () {
         var deferred = $q.defer();
         deferred.resolve(true);
 
-        UserServMock = {
+        MembersServMock = {
             registration: function () {
                 return true;
             },
@@ -49,8 +49,8 @@ describe('module: main, controller: EventCtrl', function () {
             return deferred.promise
         });
 
-        spyOn(UserServMock, 'registration').and.callThrough();
-        spyOn(UserServMock, 'cancelRegistration').and.callThrough();
+        spyOn(MembersServMock, 'registration').and.callThrough();
+        spyOn(MembersServMock, 'cancelRegistration').and.callThrough();
         spyOn($cordovaSocialSharingMock, 'shareViaFacebook').and.callThrough();
         spyOn($cordovaSocialSharingMock, 'shareViaTwitter').and.callThrough();
         spyOn($cordovaSocialSharingMock, 'shareViaSMS').and.callThrough();
@@ -63,7 +63,7 @@ describe('module: main, controller: EventCtrl', function () {
         EventCtrl = $controller('EventCtrl', {
             $scope: scope,
             datasets: datasetsMock,
-            UserServ: UserServMock,
+            MembersServ: MembersServMock,
             $stateParams: $stateParamsMock,
             $cordovaSocialSharing: $cordovaSocialSharingMock
         });
@@ -92,10 +92,10 @@ describe('module: main, controller: EventCtrl', function () {
         expect($ionicPopup.confirm).toHaveBeenCalledWith({title: 'a', template: 'Are you sure you want to enter the a', buttons: [{text: 'No'}, {text: 'Yes', onTap: jasmine.any(Function)}]});
     }));
 
-    it('should define a $scope.showConfirm function that call UserServ.registration() if type = true', function () {
+    it('should define a $scope.showConfirm function that call MembersServ.registration() if type = true', function () {
         scope.showConfirm(true);
         scope.$digest();
-        expect(UserServMock.registration).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function));
+        expect(MembersServMock.registration).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function));
     });
 
     it('should define a $scope.showConfirm function that call $ionicPopup with cancel sentence if type = true', inject(function ($ionicPopup) {
@@ -103,10 +103,10 @@ describe('module: main, controller: EventCtrl', function () {
         expect($ionicPopup.confirm).toHaveBeenCalledWith({title: 'a', template: 'Are you sure you want to cancel your registration?', buttons: [{text: 'No'}, {text: 'Yes', onTap: jasmine.any(Function)}]});
     }));
 
-    it('should define a $scope.showConfirm function that call UserServ.registration() if type = true', function () {
+    it('should define a $scope.showConfirm function that call MembersServ.registration() if type = true', function () {
         scope.showConfirm(false);
         scope.$digest();
-        expect(UserServMock.cancelRegistration).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function), jasmine.any(Function));
+        expect(MembersServMock.cancelRegistration).toHaveBeenCalledWith({id: 1}, {}, jasmine.any(Function), jasmine.any(Function));
     });
 
     it('should define a $scope.share function that call $cordovaSocialSharing.shareViaFacebook if type = 1', function () {
